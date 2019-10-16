@@ -24,6 +24,8 @@ function Menu(props) {
 			// grabbing data frmo our props.
 			// The props are passed to menu from MainComponent.js
 			//
+
+
 			<ListItem
 				// Setting unique key and is what is supplied to our keyextractor in flatlist
 				key={index}
@@ -32,6 +34,8 @@ function Menu(props) {
 				subtitle={item.description}
 				// Hiding list elements like list unstyled in bootstrap
 				hideChevron={true}
+				// added onPress to our listItem, this function is passed down from main component as a prop.
+				onPress={() => props.onPress(item.id)}
 				// Setting a picture.
 				leftAvatar={{ source: require('./images/uthappizza.png') }}
 			/>
