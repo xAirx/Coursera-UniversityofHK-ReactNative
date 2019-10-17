@@ -4,12 +4,14 @@ import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Home from './HomeComponent';
+import Contact from './ContactComponent';
+import About from './AboutComponent';
 
 // Will use menu component and dishdetail component and set up navigation between the two.
 //and create menunavigator component which we can use
 const MenuNavigator = createStackNavigator({
 	Menu: { screen: Menu },
-	DishDetail: { screen: DishDetail }
+	DishDetail: { screen: DishDetail },
 },
 {
 	initialRouteName: 'Menu',
@@ -42,6 +44,36 @@ const HomeNavigator = createStackNavigator({
 	}
 }
 );
+const ContactNavigator = createStackNavigator({
+	Contact: { screen: Contact },
+},
+{
+	navigationOptions: {
+		headerStyle: {
+			backgroundColor: "#512DA8"
+		},
+		headerTintColor: '#fff',
+		headerTitleStyle: {
+			color: "#fff"
+		}
+	}
+}
+);
+const AboutNavigator = createStackNavigator({
+	About: { screen: About },
+},
+{
+	navigationOptions: {
+		headerStyle: {
+			backgroundColor: "#512DA8"
+		},
+		headerTintColor: '#fff',
+		headerTitleStyle: {
+			color: "#fff"
+		}
+	}
+}
+);
 const MainNavigator = createDrawerNavigator({
     Home:
       { screen: HomeNavigator,
@@ -55,6 +87,20 @@ const MainNavigator = createDrawerNavigator({
         navigationOptions: {
           title: 'Menu',
           drawerLabel: 'Menu'
+        },
+	  },
+	Contact:
+      { screen: ContactNavigator,
+        navigationOptions: {
+          title: 'Contact information',
+          drawerLabel: 'Contact'
+        },
+	  },
+	About:
+      { screen: AboutNavigator,
+        navigationOptions: {
+          title: 'About us',
+          drawerLabel: 'About'
         },
       }
 }, {
