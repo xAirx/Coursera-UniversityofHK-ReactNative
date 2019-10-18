@@ -73,34 +73,34 @@ const AboutNavigator = createStackNavigator({
 }
 );
 const MainNavigator = createDrawerNavigator({
-Home:
-{ screen: HomeNavigator,
-navigationOptions: {
-title: 'Home',
-drawerLabel: 'Home'
-}
-     },
-     About:
-{ screen: AboutNavigator,
-navigationOptions: {
-title: 'About us',
-drawerLabel: 'About us'
-},
-},
-Menu:
-{ screen: MenuNavigator,
-navigationOptions: {
-title: 'Menu',
-drawerLabel: 'Menu'
-},
-     },
-    Contact:
-{ screen: ContactNavigator,
-navigationOptions: {
-title: 'Contact information',
-drawerLabel: 'Contact Us'
-},
-     },
+    Home:
+      { screen: HomeNavigator,
+        navigationOptions: {
+          title: 'Home',
+          drawerLabel: 'Home'
+        }
+	  },
+	  About:
+      { screen: AboutNavigator,
+        navigationOptions: {
+          title: 'About us',
+          drawerLabel: 'About us'
+        },
+      },
+    Menu:
+      { screen: MenuNavigator,
+        navigationOptions: {
+          title: 'Menu',
+          drawerLabel: 'Menu'
+        },
+	  },
+	Contact:
+      { screen: ContactNavigator,
+        navigationOptions: {
+          title: 'Contact information',
+          drawerLabel: 'Contact Us'
+        },
+	  },
 }, {
 drawerBackgroundColor: '#D1C4E9'
 });
