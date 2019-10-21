@@ -22,40 +22,17 @@ class Menu extends Component {
 
 	render() {
 
-
-
-		// Grabbing our ListITEMS
-
-		/* 		renderItem
-		renderItem({item, index, separators});
-		Takes an item from data and renders it into the list.
-		Provides additional metadata like index if you need it */
-
-		/*
-		It takes item and then the index as the two parameters
-		The "Item" is what will give me access to each item in the array (this.props.dishes)
-		When you supply data  to the flatlist below data which is an array each item is mapped as "item"
-		Each element in the array will become an item that is supplied to the function getting the "mapped"
-		data in this case the flatlist. */
-
-
-
 		const renderMenuItem = ({ item, index }) => {
 			// We set the ITEM and Key here we want to loop over.
 			return (
 
 			<ListItem
-				// Setting unique key and is what is supplied to our keyextractor in flatlist
+
 				key={index}
-				// grabbing data from props. The looped value is named item.
 				title={item.name}
 				subtitle={item.description}
-				// Hiding list elements like list unstyled in bootstrap
 				hideChevron={true}
-				// added onPress to our listItem, this function is passed down from main component as a method
-				// This will make sure to navigate to this component on press and pass ID.
 				onPress={() => navigate('DishDetail', { dishId: item.id })}
-				// Setting a picture.
 				leftAvatar={{ source: require('./images/uthappizza.png') }}
 			/>
 			);

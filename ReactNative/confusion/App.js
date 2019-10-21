@@ -7,10 +7,3 @@ export default function App() {
       <Main />
   );
 }
-
-
-/*  <View>
-<SafeAreaView> */
-
-{/*   </SafeAreaView>
-  </View>  */}
