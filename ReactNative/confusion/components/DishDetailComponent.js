@@ -5,6 +5,8 @@ import { Card, Icon } from 'react-native-elements';
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 
+const formatter = new Intl.DateTimeFormat('en-GB');
+
 function RenderComments(props) {
   const { comments } = props;
 
@@ -12,7 +14,9 @@ function RenderComments(props) {
     <View key={index} style={{ margin: 10 }}>
       <Text style={{ fontSize: 14 }}>{item.comment}</Text>
       <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
-      <Text style={{ fontSize: 12 }}>{`-- ${item.author}, ${item.date}`} </Text>
+      <Text style={{ fontSize: 12 }}>
+        {`-- ${item.author}, ${formatter.format(Date.parse(item.date))}`}{' '}
+      </Text>
     </View>
   );
 
