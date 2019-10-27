@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseurl';
 
+// /////////////////////////////// COMMENTS/////////////////////////////////
 export const commentsFailed = errmess => ({
   type: ActionTypes.COMMENTS_FAILED,
   payload: errmess,
@@ -32,6 +33,8 @@ export const fetchComments = () => dispatch =>
     .then(response => response.json())
     .then(comments => dispatch(addComments(comments)))
     .catch(error => dispatch(commentsFailed(error.message)));
+
+// /////////////////////////////// DISHES/////////////////////////////////
 
 export const dishesLoading = () => ({
   type: ActionTypes.DISHES_LOADING,
@@ -72,6 +75,7 @@ export const fetchDishes = () => dispatch => {
     .catch(error => dispatch(dishesFailed(error.message)));
 };
 
+// /////////////////////////////// PROMOTIONS/////////////////////////////////
 export const promosLoading = () => ({
   type: ActionTypes.PROMOS_LOADING,
 });
@@ -110,6 +114,8 @@ export const fetchPromos = () => dispatch => {
     .then(promos => dispatch(addPromos(promos)))
     .catch(error => dispatch(promosFailed(error.message)));
 };
+
+// /////////////////////////////// LEADERS /////////////////////////////////
 
 export const leadersLoading = () => ({
   type: ActionTypes.LEADERS_LOADING,
