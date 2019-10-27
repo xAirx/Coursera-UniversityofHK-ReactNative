@@ -12,6 +12,7 @@ export const addComments = comments => ({
   payload: comments,
 });
 
+// ////// FETCHING DATA FROM API /////////
 export const fetchComments = () => dispatch =>
   fetch(`${baseUrl}comments`)
     .then(
@@ -49,6 +50,8 @@ export const addDishes = dishes => ({
   type: ActionTypes.ADD_DISHES,
   payload: dishes,
 });
+
+// ////// FETCHING DATA FROM API /////////
 
 export const fetchDishes = () => dispatch => {
   dispatch(dishesLoading());
@@ -90,6 +93,8 @@ export const addPromos = promos => ({
   payload: promos,
 });
 
+// ////// FETCHING DATA FROM API /////////
+
 export const fetchPromos = () => dispatch => {
   dispatch(promosLoading());
 
@@ -130,6 +135,8 @@ export const addLeaders = leaders => ({
   type: ActionTypes.ADD_LEADERS,
   payload: leaders,
 });
+
+// ////// FETCHING DATA FROM API /////////
 
 export const fetchLeaders = () => dispatch => {
   dispatch(leadersLoading());

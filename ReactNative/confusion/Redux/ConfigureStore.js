@@ -1,18 +1,22 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+// We just learned that calling fetch from an action creator does not work
+/* That’s because Redux is expecting objects as actions but we’re trying to return a Promise.
+With redux-thunk we can overcome the problem and return functions from action creators.
+ */
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
+import { dishes } from './reducers/dishes';
+import { comments } from './reducers/comments';
+import { promotions } from './reducers/promotions';
+import { leaders } from './reducers/leaders';
 
 export const ConfigureStore = () => {
   const store = createStore(
     combineReducers({
-      DISHES,
-      COMMENTS,
-      PROMOTIONS,
-      LEADERS,
+      dishes,
+      comments,
+      promotions,
+      leaders,
     }),
     applyMiddleware(thunk, logger)
   );

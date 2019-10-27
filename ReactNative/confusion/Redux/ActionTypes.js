@@ -1,3 +1,10 @@
+/* While it is certainly possible to manually create action objects everywhere, and write each type value by hand,
+defining reusable constants makes maintaining code easier. */
+
+/* Actions are plain JavaScript objects that must have a type,
+and reducers determine what to do based on specified action.
+Let’s define constants to hold the different actions.
+ */
 export const DISHES_LOADING = 'DISHES_LOADING';
 export const ADD_DISHES = 'ADD_DISHES';
 export const DISHES_FAILED = 'DISHES_FAILED';

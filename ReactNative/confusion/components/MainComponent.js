@@ -235,7 +235,7 @@ const MainNavigator = createDrawerNavigator(
     contentComponent: CustomDrawerContentComponent,
   }
 );
-xw;
+
 class Main extends Component {
   render() {
     return (
