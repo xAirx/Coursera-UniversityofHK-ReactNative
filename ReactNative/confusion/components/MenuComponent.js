@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import PropTypes from 'prop-types';
 import { DISHES } from '../shared/dishes';
 
 // We will  make a class component here because we need to move the state into all of our components to get it ready with redux.
@@ -15,11 +16,17 @@ class Menu extends Component {
   }
 
   // Local Navigation options ...
+
   static navigationOptions = {
     title: 'Menu',
   };
 
   render() {
+    /* const { navigate } = this.props; */
+    const { dishes } = this.state;
+
+    const { navigate } = this.props.navigation;
+
     const renderMenuItem = ({ item, index }) => (
       // We set the ITEM and Key here we want to loop over.
       <ListItem
@@ -28,21 +35,21 @@ class Menu extends Component {
         subtitle={item.description}
         hideChevron
         onPress={() => navigate('DishDetail', { dishId: item.id })}
+        // eslint-disable-next-line global-require
         leftAvatar={{ source: require('./images/uthappizza.png') }}
       />
     );
 
     // our props for this component will conatain one propery named navigation, we are extracting it here.
     // When we press an item in the menucomponent  we will pass this information to dishdetailcomponent with the navigator
-    const { navigate } = this.props.navigation;
 
     return (
       // Will iterate over each item in the array, in the view given from rendermenuitem.
       /* The FlatList component requires two props: data and renderItem. data is the source of information for the list.
-							  renderItem takes one item from the source and returns a formatted component to render. */
+      renderItem takes one item from the source and returns a formatted component to render. */
 
       <FlatList
-        data={this.state.dishes}
+        data={dishes}
         // Rendering our items in our flatlist.
         renderItem={renderMenuItem}
         // When we render a list of items we need to grab the key of each item

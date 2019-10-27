@@ -6,14 +6,7 @@ import {
   DrawerItems,
   SafeAreaView,
 } from 'react-navigation';
-import {
-  View,
-  Platform,
-  Text,
-  ScrollView,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
 import Menu from './MenuComponent';
@@ -151,6 +144,7 @@ const AboutNavigator = createStackNavigator(
   }
 );
 
+// Display logo and stuff inside drawer
 const CustomDrawerContentComponent = props => (
   <ScrollView>
     <SafeAreaView
@@ -169,7 +163,7 @@ const CustomDrawerContentComponent = props => (
           <Text style={styles.drawerHeaderText}>Ristorante Con Fusion</Text>
         </View>
       </View>
-      {/*       whatever the props are just pass it into the drawer items, rest operator.
+      {/*      EXPLAIN  whatever the props are just pass it into the drawer items, rest operator.
        */}
       <DrawerItems {...props} />
     </SafeAreaView>
@@ -237,6 +231,7 @@ const MainNavigator = createDrawerNavigator(
   },
   {
     drawerBackgroundColor: '#D1C4E9',
+    // Setting drawer component here
     contentComponent: CustomDrawerContentComponent,
   }
 );

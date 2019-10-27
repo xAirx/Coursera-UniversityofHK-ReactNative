@@ -53,7 +53,7 @@ class Home extends Component {
 
     return (
       <ScrollView>
-        {/*         ////////////// Noget mere CHECK PÅ OM DER RENT FAKTISK ER DATA
+        {/* ////////////// Noget mere CHECK PÅ OM DER RENT FAKTISK ER DATA////////////// ////////////// ////////////// //////////////
          */}
         <RenderItem item={dishes.filter(dish => dish.featured)[0]} />
         <RenderItem item={promotions.filter(promo => promo.featured)[0]} />

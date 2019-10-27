@@ -15,7 +15,7 @@ function RenderComments(props) {
       <Text style={{ fontSize: 14 }}>{item.comment}</Text>
       <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
       <Text style={{ fontSize: 12 }}>
-        {`-- ${item.author}, ${formatter.format(Date.parse(item.date))}`}{' '}
+        {`-- ${item.author}, ${formatter.format(Date.parse(item.date))}`}
       </Text>
     </View>
   );
@@ -31,39 +31,38 @@ function RenderComments(props) {
   );
 }
 
-RenderComments.propTypes = {
+/* RenderComments.propTypes = {
   // // WTF?
-  // eslint-disable-next-line react/no-unused-prop-types
   item: PropTypes.array.isRequired,
   comments: PropTypes.array.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
   index: PropTypes.array.isRequired,
-};
+}; */
 
 function RenderDish(props) {
   // Setting the const dish as our passed down props.
 
-  const { dish } = props;
+  /*  const { dish } = props; */
 
   // Conditional rendering.
-  if (dish != null) {
+  if (props != null) {
+    console.log(
+      ` THESE ARE THE PROPS INSIDE DISHDETAILCOMPONENT ${JSON.stringify(props)}`
+    );
     console.log('We are here');
     return (
       <Card
-        featuredTitle={dish.name}
+        featuredTitle={props.dish.name}
         // eslint-disable-next-line global-require
         image={require('./images/uthappizza.png')}
       >
-        <Text style={{ margin: 10 }}>{dish.description}</Text>
+        <Text style={{ margin: 10 }}>{props.dish.description}</Text>
         <Icon
           raised
           reverse
-          // eslint-disable-next-line react/prop-types
           name={props.favorite ? 'heart' : 'heart-o'}
           type="font-awesome"
           color="#f50"
           onPress={() =>
-            // eslint-disable-next-line react/prop-types
             props.favorite ? console.log('Already favorite') : props.onPress()
           }
         />
@@ -73,12 +72,6 @@ function RenderDish(props) {
 
   return <View></View>;
 }
-
-RenderDish.propTypes = {
-  dish: PropTypes.array.isRequired,
-  /*   props: PropTypes.array.isRequired,
-   */
-};
 
 class DishDetail extends Component {
   constructor(props) {
@@ -115,7 +108,11 @@ class DishDetail extends Component {
 
     return (
       <ScrollView>
-        <RenderDish dish={dishes[+dishId]} />
+        <RenderDish
+          dish={dishes[+dishId]}
+          favorite={favorites.some(el => el === dishId)}
+          onPress={() => this.markFavorite(dishId)}
+        />
         <RenderComments
           comments={comments.filter(comment => comment.dishId === dishId)}
         />
@@ -125,8 +122,7 @@ class DishDetail extends Component {
 }
 
 DishDetail.propTypes = {
-  /*   dish: PropTypes.object.isRequired,
-   */ navigation: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default DishDetail;
