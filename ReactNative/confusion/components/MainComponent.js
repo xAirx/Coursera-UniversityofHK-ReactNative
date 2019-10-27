@@ -1,117 +1,254 @@
+/* eslint-disable react/display-name */
 import React, { Component } from 'react';
-import { View, SafeAreaView, Platform, Text } from 'react-native';
+import {
+  createStackNavigator,
+  createDrawerNavigator,
+  DrawerItems,
+  SafeAreaView,
+} from 'react-navigation';
+import {
+  View,
+  Platform,
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+} from 'react-native';
+import PropTypes from 'prop-types';
+import { Icon } from 'react-native-elements';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 
-const MenuNavigator = createStackNavigator({
-    Menu: { screen: Menu },
-    DishDetail: { screen: DishDetail },
-},
-{
-    initialRouteName: 'Menu',
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#512DA8"
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            color: "#fff"
-        }
-    }
-}
-);
-
-const HomeNavigator = createStackNavigator({
-    Home: { screen: Home },
-},
-{
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#512DA8"
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            color: "#fff"
-        }
-    }
-}
-);
-const ContactNavigator = createStackNavigator({
-    Contact: { screen: Contact },
-},
-{
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#512DA8"
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            color: "#fff"
-        }
-    }
-}
-);
-const AboutNavigator = createStackNavigator({
-    About: { screen: About },
-},
-{
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#512DA8"
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            color: "#fff"
-        }
-    }
-}
-);
-const MainNavigator = createDrawerNavigator({
-    Home:
-      { screen: HomeNavigator,
-        navigationOptions: {
-          title: 'Home',
-          drawerLabel: 'Home'
-        }
-	  },
-	  About:
-      { screen: AboutNavigator,
-        navigationOptions: {
-          title: 'About us',
-          drawerLabel: 'About us'
-        },
-      },
-    Menu:
-      { screen: MenuNavigator,
-        navigationOptions: {
-          title: 'Menu',
-          drawerLabel: 'Menu'
-        },
-	  },
-	Contact:
-      { screen: ContactNavigator,
-        navigationOptions: {
-          title: 'Contact information',
-          drawerLabel: 'Contact Us'
-        },
-	  },
-}, {
-drawerBackgroundColor: '#D1C4E9'
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  drawerHeader: {
+    backgroundColor: '#512DA8',
+    height: 140,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+  },
+  drawerHeaderText: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  drawerImage: {
+    margin: 10,
+    width: 80,
+    height: 60,
+  },
 });
 
+const MenuNavigator = createStackNavigator(
+  {
+    Menu: {
+      screen: Menu,
+      // Hvor kommer disse navigation options fra ?
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Icon
+            name="menu"
+            size={24}
+            color="white"
+            onPress={() => navigation.toggleDrawer()}
+          />
+        ),
+      }),
+    },
+    DishDetail: { screen: DishDetail },
+  },
+  {
+    initialRouteName: 'Menu',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#512DA8',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff',
+      },
+    },
+  }
+);
+
+const HomeNavigator = createStackNavigator(
+  {
+    Home: { screen: Home },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff',
+      },
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          color="white"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
+  }
+);
+const ContactNavigator = createStackNavigator(
+  {
+    Contact: { screen: Contact },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff',
+      },
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          color="white"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
+  }
+);
+const AboutNavigator = createStackNavigator(
+  {
+    About: { screen: About },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: '#fff',
+      },
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          color="white"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
+  }
+);
+
+const CustomDrawerContentComponent = props => (
+  <ScrollView>
+    <SafeAreaView
+      style={styles.container}
+      forceInset={{ top: 'always', horizontal: 'never' }}
+    >
+      <View style={styles.drawerHeader}>
+        <View style={{ flex: 1 }}>
+          <Image
+            // eslint-disable-next-line global-require
+            source={require('./images/logo.png')}
+            style={styles.drawerImage}
+          />
+        </View>
+        <View style={{ flex: 2 }}>
+          <Text style={styles.drawerHeaderText}>Ristorante Con Fusion</Text>
+        </View>
+      </View>
+      {/*       whatever the props are just pass it into the drawer items, rest operator.
+       */}
+      <DrawerItems {...props} />
+    </SafeAreaView>
+  </ScrollView>
+);
+
+const MainNavigator = createDrawerNavigator(
+  {
+    Home: {
+      screen: HomeNavigator,
+      navigationOptions: {
+        title: 'Home',
+        drawerLabel: 'Home',
+        // eslint-disable-next-line react/prop-types
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon name="home" type="font-awesome" size={24} color={tintColor} />
+        ),
+      },
+    },
+    About: {
+      screen: AboutNavigator,
+      navigationOptions: {
+        title: 'About us',
+        drawerLabel: 'About us',
+        // eslint-disable-next-line react/prop-types
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon
+            name="info-circle"
+            type="font-awesome"
+            size={24}
+            color={tintColor}
+          />
+        ),
+      },
+    },
+    Menu: {
+      screen: MenuNavigator,
+      navigationOptions: {
+        title: 'Menu',
+        drawerLabel: 'Menu',
+        // ADDING PROPTYPES
+        // eslint-disable-next-line react/prop-types
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon name="list" ype="font-awesome" size={24} color={tintColor} />
+        ),
+      },
+    },
+    Contact: {
+      screen: ContactNavigator,
+      navigationOptions: {
+        title: 'Contact information',
+        drawerLabel: 'Contact Us',
+        // ADDING PROPTYPES
+        // eslint-disable-next-line react/prop-types
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon
+            name="address-card"
+            type="font-awesome"
+            size={22}
+            color={tintColor}
+          />
+        ),
+      },
+    },
+  },
+  {
+    drawerBackgroundColor: '#D1C4E9',
+    contentComponent: CustomDrawerContentComponent,
+  }
+);
 
 class Main extends Component {
- 
-    render() {
-        return (
-/*                <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
- */                    <MainNavigator />
-/*                </View>          
- */        );
-    }
+  render() {
+    return (
+      /* <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
+       */ <MainNavigator />
+      /* </View>
+       */
+    );
+  }
 }
 export default Main;
