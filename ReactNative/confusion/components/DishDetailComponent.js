@@ -7,16 +7,22 @@ import { connect } from 'react-redux';
 import { COMMENTS } from '../shared/comments'; */
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
-import { fetchDishes, fetchComments } from '../Redux/Api/ActionCreators';
+import {
+  fetchDishes,
+  fetchComments,
+  postFavorite,
+} from '../Redux/Api/ActionCreators';
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
   comments: state.comments,
+  favorites: state.favorites,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchDishes: dispatch(fetchDishes()),
   fetchComments: dispatch(fetchComments()),
+  postFavorite: dishId => dispatch(postFavorite(dishId)),
 });
 
 const formatter = new Intl.DateTimeFormat('en-GB');
@@ -105,10 +111,14 @@ class DishDetail extends Component {
     };
   }
 
+  /*  markFavorite(dishId) {
+     const { favorites } = this.state;
+     this.setState({ favorites: favorites.concat(dishId) });
+     console.log('Setting Favorites');
+   }
+  */
   markFavorite(dishId) {
-    const { favorites } = this.state;
-    this.setState({ favorites: favorites.concat(dishId) });
-    console.log('Setting Favorites');
+    this.props.postFavorite(dishId);
   }
 
   static navigationOptions = {
@@ -146,7 +156,7 @@ class DishDetail extends Component {
       <ScrollView>
         <RenderDish
           dish={this.props.dishes.dishes[+dishId]}
-          favorite={favorites.some(el => el === dishId)}
+          favorite={this.props.favorites.some(el => el === dishId)}
           onPress={() => this.markFavorite(dishId)}
         />
         <RenderComments

@@ -172,3 +172,16 @@ export const fetchLeaders = () => dispatch => {
     .then(leaders => dispatch(addLeaders(leaders)))
     .catch(error => dispatch(leadersFailed(error.message)));
 };
+
+// ///////////////// favorites
+
+export const postFavorite = dishId => dispatch => {
+  setTimeout(() => {
+    dispatch(addFavorite(dishId));
+  }, 100);
+};
+
+export const addFavorite = dishId => ({
+  type: ActionTypes.DONE_FAVORITE,
+  payload: dishId,
+});

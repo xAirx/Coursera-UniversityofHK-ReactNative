@@ -22,3 +22,5 @@ export const LEADERS_DONE = 'LEADERS_DONE';
 export const DISHES_DONE = 'LEADERS_DONE';
 export const COMMENTS_DONE = 'LEADERS_DONE';
 export const PROMOTIONS_DONE = 'LEADERS_DONE';
+export const POST_FAVORITE = 'POST_FAVORITE';
+export const DONE_FAVORITE = 'DONE_FAVORITE';
