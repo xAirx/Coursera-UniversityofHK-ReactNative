@@ -14,6 +14,38 @@ import {
 import { Card } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 
+const styles = StyleSheet.create({
+  formRow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    margin: 20,
+  },
+  formLabel: {
+    fontSize: 18,
+    flex: 2,
+  },
+  formItem: {
+    flex: 1,
+  },
+  modal: {
+    justifyContent: 'center',
+    margin: 20,
+  },
+  modalTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    backgroundColor: '#512DA8',
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 20,
+  },
+  modalText: {
+    fontSize: 18,
+    margin: 10,
+  },
+});
 class Reservation extends Component {
   constructor(props) {
     super(props);
@@ -53,13 +85,15 @@ class Reservation extends Component {
   }
 
   render() {
+    const { guests, date, smoking, showModal } = this.state;
+
     return (
       <ScrollView>
         <View style={styles.formRow}>
           <Text style={styles.formLabel}>Number of Guests</Text>
           <Picker
             style={styles.formItem}
-            selectedValue={this.state.guests}
+            selectedValue={guests}
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ guests: itemValue })
             }
@@ -76,7 +110,7 @@ class Reservation extends Component {
           <Text style={styles.formLabel}>Smoking/Non-Smoking?</Text>
           <Switch
             style={styles.formItem}
-            value={this.state.smoking}
+            value={smoking}
             onTintColor="#512DA8"
             onValueChange={value => this.setState({ smoking: value })}
           ></Switch>
@@ -85,7 +119,7 @@ class Reservation extends Component {
           <Text style={styles.formLabel}>Date and Time</Text>
           <DatePicker
             style={{ flex: 2, marginRight: 20 }}
-            date={this.state.date}
+            date={date}
             format=""
             mode="datetime"
             placeholder="select date and Time"
@@ -104,6 +138,7 @@ class Reservation extends Component {
               },
               // ... You can check the source to find the other keys.
             }}
+            // eslint-disable-next-line no-shadow
             onDateChange={date => {
               this.setState({ date });
             }}
@@ -120,22 +155,18 @@ class Reservation extends Component {
         <Modal
           animationType="slide"
           transparent={false}
-          visible={this.state.showModal}
+          visible={showModal}
           onDismiss={() => this.dismissModal()}
           onRequestClose={() => this.dismissModal()}
         >
           <SafeAreaView>
             <View style={styles.modal}>
               <Text style={styles.modalTitle}>Your Reservation</Text>
+              <Text style={styles.modalText}>Number of Guests: {guests}</Text>
               <Text style={styles.modalText}>
-                Number of Guests: {this.state.guests}
+                Smoking?: {smoking ? 'Yes' : 'No'}
               </Text>
-              <Text style={styles.modalText}>
-                Smoking?: {this.state.smoking ? 'Yes' : 'No'}
-              </Text>
-              <Text style={styles.modalText}>
-                Date and Time: {this.state.date}
-              </Text>
+              <Text style={styles.modalText}>Date and Time: {date}</Text>
 
               <Button
                 onPress={() => {
@@ -152,38 +183,5 @@ class Reservation extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  formRow: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    margin: 20,
-  },
-  formLabel: {
-    fontSize: 18,
-    flex: 2,
-  },
-  formItem: {
-    flex: 1,
-  },
-  modal: {
-    justifyContent: 'center',
-    margin: 20,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    backgroundColor: '#512DA8',
-    textAlign: 'center',
-    color: 'white',
-    marginBottom: 20,
-  },
-  modalText: {
-    fontSize: 18,
-    margin: 10,
-  },
-});
 
 export default Reservation;

@@ -49,7 +49,8 @@ class About extends Component {
   };
 
   render() {
-    /* const { leaders } = this.props.leaders; */
+    // eslint-disable-next-line react/destructuring-assignment
+    const { leaders } = this.props;
 
     const renderMenuItem = ({ item, key }) => (
       // We set the ITEM and Key here we want to loop over.
@@ -69,7 +70,7 @@ class About extends Component {
       />
     );
 
-    if (this.props.leaders.isLoading) {
+    if (leaders.isLoading) {
       return (
         <ScrollView>
           <History />
@@ -79,12 +80,12 @@ class About extends Component {
         </ScrollView>
       );
     }
-    if (this.props.leaders.errMess) {
+    if (leaders.errMess) {
       return (
         <ScrollView>
           <History />
           <Card title="Corporate Leadership">
-            <Text>{this.props.leaders.errMess}</Text>
+            <Text>{leaders.errMess}</Text>
           </Card>
         </ScrollView>
       );
@@ -95,7 +96,7 @@ class About extends Component {
         <History />
         <Card title="Corporate Leadership">
           <FlatList
-            data={this.props.leaders.leaders}
+            data={leaders.leaders}
             renderItem={renderMenuItem}
             keyExtractor={item => item.id.toString()}
           />
@@ -106,8 +107,6 @@ class About extends Component {
 }
 
 About.propTypes = {
-  // // WTF?
-  /*   item: PropTypes.array.isRequired, */
   leaders: PropTypes.object.isRequired,
 };
 

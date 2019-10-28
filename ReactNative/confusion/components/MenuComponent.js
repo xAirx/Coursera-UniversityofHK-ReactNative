@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, ScrollView } from 'react-native';
+import { View, FlatList, ScrollView, Text } from 'react-native';
 import { Tile } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -21,8 +21,10 @@ class Menu extends Component {
 
   render() {
     /* const { navigate } = this.props; */
-    const { dishes } = this.props.dishes;
+    // eslint-disable-next-line react/destructuring-assignment
+    const { dishes } = this.props;
 
+    // eslint-disable-next-line react/destructuring-assignment
     const { navigate } = this.props.navigation;
 
     const renderMenuItem = ({ item, index }) => (
@@ -40,20 +42,20 @@ class Menu extends Component {
 
     // our props for this component will conatain one propery named navigation, we are extracting it here.
     // When we press an item in the menucomponent  we will pass this information to dishdetailcomponent with the navigator
-    if (this.props.dishes.isLoading) {
+    if (dishes.isLoading) {
       return <Loading />;
     }
-    if (this.props.dishes.errMess) {
+    if (dishes.errMess) {
       return (
         <View>
-          <Text>{props.dishes.errMess}</Text>
+          <Text>{dishes.errMess}</Text>
         </View>
       );
     }
 
     return (
       <FlatList
-        data={this.props.dishes.dishes}
+        data={dishes.dishes}
         renderItem={renderMenuItem}
         keyExtractor={item => item.id.toString()}
       />

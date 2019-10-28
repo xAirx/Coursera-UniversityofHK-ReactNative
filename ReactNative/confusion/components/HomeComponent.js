@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View, Text } from 'react-native';
@@ -36,7 +37,7 @@ function RenderItem(props) {
   if (props.errMess) {
     return (
       <View>
-        <Text>{props.erreMess}</Text>
+        <Text>{props.errMess}</Text>
       </View>
     );
   }
@@ -79,21 +80,19 @@ class Home extends Component {
         {/* ////////////// Noget mere CHECK PÅ OM DER RENT FAKTISK ER DATA////////////// ////////////// ////////////// //////////////
          */}
         <RenderItem
-          item={this.props.dishes.dishes.filter(dish => dish.featured)[0]}
+          item={dishes.filter(dish => dish.featured)[0]}
           isLoading={this.props.dishes.isLoading}
-          erreMess={this.props.dishes.erreMess}
+          errMess={this.props.dishes.errMess}
         />
         <RenderItem
-          item={
-            this.props.promotions.promotions.filter(promo => promo.featured)[0]
-          }
-          erreMess={this.props.promotions.erreMess}
+          item={promotions.filter(promo => promo.featured)[0]}
+          errMess={this.props.promotions.errMess}
           isLoading={this.props.promotions.isLoading}
         />
         <RenderItem
-          item={this.props.leaders.leaders.filter(leader => leader.featured)[0]}
+          item={leaders.filter(leader => leader.featured)[0]}
           isLoading={this.props.leaders.isLoading}
-          erreMess={this.props.leaders.erreMess}
+          errMess={this.props.leaders.errMess}
         />
       </ScrollView>
     );

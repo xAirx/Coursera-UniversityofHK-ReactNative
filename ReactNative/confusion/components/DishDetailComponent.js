@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
@@ -98,26 +99,14 @@ function RenderDish(props) {
 RenderDish.propTypes = {
   // // WTF?
   /*   item: PropTypes.array.isRequired, */
-  dishes: PropTypes.array.isRequired,
+  dish: PropTypes.array.isRequired,
   favorite: PropTypes.array.isRequired,
   onPress: PropTypes.array.isRequired,
 };
 
 class DishDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      favorites: [],
-    };
-  }
-
-  /*  markFavorite(dishId) {
-     const { favorites } = this.state;
-     this.setState({ favorites: favorites.concat(dishId) });
-     console.log('Setting Favorites');
-   }
-  */
   markFavorite(dishId) {
+    // eslint-disable-next-line react/destructuring-assignment
     this.props.postFavorite(dishId);
   }
 
@@ -126,11 +115,6 @@ class DishDetail extends Component {
   };
 
   render() {
-    /*   const { dishes } = this.props.dishes; */
-
-    /* const { comments } = this.props.comments; */
-
-    const { favorites } = this.state;
     // showing which dish to show based on the ID passed in from menucomponent
     // This.props.navigation are passed in to all components in my navigator,
     // We have access here to the getParam(), which allows us to access the parameters that are passed in.
@@ -156,7 +140,7 @@ class DishDetail extends Component {
       <ScrollView>
         <RenderDish
           dish={this.props.dishes.dishes[+dishId]}
-          favorite={this.props.favorites.some(el => el === dishId)}
+          favorite={this.props.dishes.dishes.some(el => el === dishId)}
           onPress={() => this.markFavorite(dishId)}
         />
         <RenderComments
@@ -175,6 +159,7 @@ DishDetail.propTypes = {
   dishes: PropTypes.array.isRequired,
   navigation: PropTypes.array.isRequired,
   comments: PropTypes.array.isRequired,
+  postFavorite: PropTypes.array.isRequired,
 };
 
 export default connect(
