@@ -12,12 +12,16 @@ import { leaders } from './reducers/leaders';
 
 export const ConfigureStore = () => {
   const store = createStore(
-    combineReducers({
-      dishes,
-      comments,
-      promotions,
-      leaders,
-    }),
+    combineReducers(
+      {
+        dishes,
+        comments,
+        promotions,
+        leaders,
+      },
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    ),
     applyMiddleware(thunk, logger)
   );
 

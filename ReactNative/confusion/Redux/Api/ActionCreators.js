@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseurl';
+import { baseUrl } from '../../shared/baseurl';
 
 // /////////////////////////////// COMMENTS/////////////////////////////////
 export const commentsFailed = errmess => ({
@@ -13,10 +13,13 @@ export const addComments = comments => ({
 });
 
 // ////// FETCHING DATA FROM API /////////
-export const fetchComments = () => dispatch =>
+export const fetchComments = () => dispatch => {
+  /*  fetch(`${baseUrl}comments`) */
+  /*  console.log('FETCHING OUR DATA FROM API'); */
   fetch(`${baseUrl}comments`)
     .then(
       response => {
+        /* console.log(`DATA ${response}`); */
         if (response.ok) {
           return response;
         }
@@ -34,7 +37,7 @@ export const fetchComments = () => dispatch =>
     .then(response => response.json())
     .then(comments => dispatch(addComments(comments)))
     .catch(error => dispatch(commentsFailed(error.message)));
-
+};
 // /////////////////////////////// DISHES/////////////////////////////////
 
 export const dishesLoading = () => ({

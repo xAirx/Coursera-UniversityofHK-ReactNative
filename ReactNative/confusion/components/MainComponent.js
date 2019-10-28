@@ -9,11 +9,26 @@ import {
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import {
+  fetchDishes,
+  fetchComments,
+  fetchPromos,
+  fetchLeaders,
+} from '../Redux/Api/ActionCreators';
+
+/* const mapStateToProps = state => {}; */
+const mapDispatchToProps = dispatch => ({
+  fetchDishes: dispatch(fetchDishes()),
+  fetchComments: dispatch(fetchComments()),
+  fetchPromos: dispatch(fetchPromos()),
+  fetchLeaders: dispatch(fetchLeaders()),
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -237,6 +252,13 @@ const MainNavigator = createDrawerNavigator(
 );
 
 class Main extends Component {
+  componentDidMount() {
+    fetchDishes();
+    fetchLeaders();
+    fetchComments();
+    fetchPromos();
+  }
+
   render() {
     return (
       /* <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
@@ -246,4 +268,7 @@ class Main extends Component {
     );
   }
 }
-export default Main;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Main);

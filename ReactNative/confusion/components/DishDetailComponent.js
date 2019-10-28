@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'react-native-elements';
-import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments';
+import { connect } from 'react-redux';
+/* import { DISHES } from '../shared/dishes';
+import { COMMENTS } from '../shared/comments'; */
+import { baseUrl } from '../shared/baseurl';
+import { fetchDishes, fetchComments } from '../Redux/Api/ActionCreators';
+
+const mapStateToProps = state => ({
+  dishes: state.dishes,
+  comments: state.comments,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchDishes: dispatch(fetchDishes()),
+  fetchComments: dispatch(fetchComments()),
+});
 
 const formatter = new Intl.DateTimeFormat('en-GB');
 
 function RenderComments(props) {
   const { comments } = props;
 
-  const renderCommentItem = ({ item, index }) => (
-    <View key={index} style={{ margin: 10 }}>
+  const renderCommentItem = ({ item, key }) => (
+    <View key={key} style={{ margin: 10 }}>
       <Text style={{ fontSize: 14 }}>{item.comment}</Text>
       <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
       <Text style={{ fontSize: 12 }}>
@@ -31,31 +44,33 @@ function RenderComments(props) {
   );
 }
 
-/* RenderComments.propTypes = {
+RenderComments.propTypes = {
   // // WTF?
-  item: PropTypes.array.isRequired,
+  /*   item: PropTypes.array.isRequired, */
   comments: PropTypes.array.isRequired,
-  index: PropTypes.array.isRequired,
-}; */
+  key: PropTypes.number.isRequired,
+  item: PropTypes.array.isRequired,
+};
 
 function RenderDish(props) {
   // Setting the const dish as our passed down props.
 
-  /*  const { dish } = props; */
+  /* console.log(`THESE ARE THE PROPS IN RENDERDISH ${JSON.stringify(props)}`); */
 
+  const { dish } = props;
   // Conditional rendering.
-  if (props != null) {
-    console.log(
+  if (dish != null) {
+    /* console.log(
       ` THESE ARE THE PROPS INSIDE DISHDETAILCOMPONENT ${JSON.stringify(props)}`
-    );
+    ); */
     console.log('We are here');
     return (
       <Card
-        featuredTitle={props.dish.name}
+        featuredTitle={dish.name}
         // eslint-disable-next-line global-require
-        image={require('./images/uthappizza.png')}
+        image={{ uri: baseUrl + dish.image }}
       >
-        <Text style={{ margin: 10 }}>{props.dish.description}</Text>
+        <Text style={{ margin: 10 }}>{dish.description}</Text>
         <Icon
           raised
           reverse
@@ -73,12 +88,18 @@ function RenderDish(props) {
   return <View></View>;
 }
 
+RenderDish.propTypes = {
+  // // WTF?
+  /*   item: PropTypes.array.isRequired, */
+  dishes: PropTypes.array.isRequired,
+  favorite: PropTypes.array.isRequired,
+  onPress: PropTypes.array.isRequired,
+};
+
 class DishDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishes: DISHES,
-      comments: COMMENTS,
       favorites: [],
     };
   }
@@ -94,7 +115,11 @@ class DishDetail extends Component {
   };
 
   render() {
-    const { dishes, comments, favorites } = this.state;
+    /*   const { dishes } = this.props.dishes; */
+
+    /* const { comments } = this.props.comments; */
+
+    const { favorites } = this.state;
     // showing which dish to show based on the ID passed in from menucomponent
     // This.props.navigation are passed in to all components in my navigator,
     // We have access here to the getParam(), which allows us to access the parameters that are passed in.
@@ -106,15 +131,20 @@ class DishDetail extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     const dishId = this.props.navigation.getParam('dishId', '');
 
+    console.log(
+      `THESE ARE OUR DISHES PROPS ${JSON.stringify(this.props.dishes.dishes)}`
+    );
     return (
       <ScrollView>
         <RenderDish
-          dish={dishes[+dishId]}
+          dish={this.props.dishes.dishes[+dishId]}
           favorite={favorites.some(el => el === dishId)}
           onPress={() => this.markFavorite(dishId)}
         />
         <RenderComments
-          comments={comments.filter(comment => comment.dishId === dishId)}
+          comments={this.props.comments.comments.filter(
+            comment => comment.dishId === dishId
+          )}
         />
       </ScrollView>
     );
@@ -122,7 +152,14 @@ class DishDetail extends Component {
 }
 
 DishDetail.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  // // WTF?
+  /*   item: PropTypes.array.isRequired, */
+  dishes: PropTypes.array.isRequired,
+  navigation: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
-export default DishDetail;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DishDetail);

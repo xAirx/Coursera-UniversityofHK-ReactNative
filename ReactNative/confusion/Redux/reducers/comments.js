@@ -1,4 +1,4 @@
-import * as ActionTypes from '../ActionTypes';
+import * as ActionTypes from '../Api/ActionTypes';
 
 // This is the dishes reducer
 export const comments = (
@@ -15,7 +15,7 @@ export const comments = (
   switch (action.type) {
     // Setting actiontype
     // When add_dishes action is called we do the following:
-    case ActionTypes.ADD.COMMENTS:
+    case ActionTypes.ADD_COMMENTS:
       return {
         ...state,
         errMess: null,

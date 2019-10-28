@@ -1,4 +1,4 @@
-import * as ActionTypes from '../ActionTypes';
+import * as ActionTypes from '../Api/ActionTypes';
 
 // This is the dishes reducer
 export const dishes = (
