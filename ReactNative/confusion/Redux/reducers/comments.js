@@ -15,7 +15,7 @@ export const comments = (
   switch (action.type) {
     // Setting actiontype
     // When add_dishes action is called we do the following:
-    case ActionTypes.ADD_COMMENTS:
+    case ActionTypes.DONE_COMMENTS:
       return {
         ...state,
         errMess: null,

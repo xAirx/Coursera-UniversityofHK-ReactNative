@@ -17,7 +17,7 @@ export const dishes = (
   switch (action.type) {
     // Setting actiontype
     // When add_dishes action is called we do the following:
-    case ActionTypes.ADD_DISHES:
+    case ActionTypes.DONE_DISHES:
       return {
         ...state,
         isLoading: false,

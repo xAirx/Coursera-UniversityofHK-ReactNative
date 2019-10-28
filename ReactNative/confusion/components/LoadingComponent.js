@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
   loadingView: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 100,
+    marginBottom: 100,
     flex: 2,
   },
   loadingText: {

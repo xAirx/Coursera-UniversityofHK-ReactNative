@@ -4,9 +4,6 @@ import { ScrollView, View, Text } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseurl';
-/* import { DISHES } from '../shared/dishes';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders'; */
 
 import {
   fetchDishes,
@@ -14,6 +11,9 @@ import {
   fetchLeaders,
 } from '../Redux/Api/ActionCreators';
 import { Loading } from './LoadingComponent';
+/* import { DISHES } from '../shared/dishes';
+import { PROMOTIONS } from '../shared/promotions';
+import { LEADERS } from '../shared/leaders'; */
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
@@ -87,8 +87,8 @@ class Home extends Component {
           item={
             this.props.promotions.promotions.filter(promo => promo.featured)[0]
           }
-          isLoading={this.props.promotions.isLoading}
           erreMess={this.props.promotions.erreMess}
+          isLoading={this.props.promotions.isLoading}
         />
         <RenderItem
           item={this.props.leaders.leaders.filter(leader => leader.featured)[0]}

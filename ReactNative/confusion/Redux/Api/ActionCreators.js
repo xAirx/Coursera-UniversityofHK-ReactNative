@@ -8,7 +8,7 @@ export const commentsFailed = errmess => ({
 });
 
 export const addComments = comments => ({
-  type: ActionTypes.ADD_COMMENTS,
+  type: ActionTypes.DONE_COMMENTS,
   payload: comments,
 });
 
@@ -57,7 +57,7 @@ export const dishesFailed = errmess => ({
 });
 
 export const addDishes = dishes => ({
-  type: ActionTypes.ADD_DISHES,
+  type: ActionTypes.DONE_DISHES,
   payload: dishes,
 });
 
@@ -99,7 +99,7 @@ export const promosFailed = errmess => ({
 });
 
 export const addPromos = promos => ({
-  type: ActionTypes.ADD_PROMOS,
+  type: ActionTypes.DONE_PROMOS,
   payload: promos,
 });
 
@@ -142,7 +142,7 @@ export const leadersFailed = errmess => ({
 });
 
 export const addLeaders = leaders => ({
-  type: ActionTypes.ADD_LEADERS,
+  type: ActionTypes.DONE_LEADERS,
   payload: leaders,
 });
 

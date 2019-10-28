@@ -17,7 +17,7 @@ export const promotions = (
   switch (action.type) {
     // Setting actiontype
     // When add_dishes action is called we do the following:
-    case ActionTypes.ADD_PROMOS:
+    case ActionTypes.DONE_PROMOS:
       return {
         ...state,
         isLoading: false,

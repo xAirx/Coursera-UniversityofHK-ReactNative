@@ -17,7 +17,7 @@ export const leaders = (
   switch (action.type) {
     // Setting actiontype
     // When add_dishes action is called we do the following:
-    case ActionTypes.ADD_LEADERS:
+    case ActionTypes.DONE_LEADERS:
       return {
         ...state,
         isLoading: false,

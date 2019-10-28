@@ -62,7 +62,6 @@ class Menu extends Component {
 }
 
 Menu.propTypes = {
-  // // WTF?
   /*   item: PropTypes.array.isRequired, */
   dishes: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
