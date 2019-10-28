@@ -173,7 +173,7 @@ export const fetchLeaders = () => dispatch => {
     .catch(error => dispatch(leadersFailed(error.message)));
 };
 
-// ///////////////// favorites
+// ///////////////// favorites // /////////////////// /////////////////// /////////////////
 
 export const postFavorite = dishId => dispatch => {
   setTimeout(() => {

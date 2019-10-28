@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
+
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -10,6 +11,7 @@ import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import Reservation from './ReservationComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import Home from './HomeComponent';
@@ -104,6 +106,30 @@ const HomeNavigator = createStackNavigator(
           name="menu"
           size={24}
           color="white"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
+  }
+);
+const ReservationNavigator = createStackNavigator(
+  {
+    Reservation: { screen: Reservation },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: '#512DA8',
+      },
+      headerTitleStyle: {
+        color: '#fff',
+      },
+      headerTintColor: '#fff',
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          iconStyle={{ color: 'white' }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -223,6 +249,21 @@ const MainNavigator = createDrawerNavigator(
         // eslint-disable-next-line react/prop-types
         drawerIcon: ({ tintColor, focused }) => (
           <Icon name="list" ype="font-awesome" size={24} color={tintColor} />
+        ),
+      },
+    },
+    Reservation: {
+      screen: ReservationNavigator,
+      navigationOptions: {
+        title: 'Reserve Table',
+        drawerLabel: 'Reserve Table',
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon
+            name="cutlery"
+            type="font-awesome"
+            size={24}
+            iconStyle={{ color: tintColor }}
+          />
         ),
       },
     },
