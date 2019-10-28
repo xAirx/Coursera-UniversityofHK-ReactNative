@@ -13,6 +13,7 @@ import {
   fetchPromos,
   fetchLeaders,
 } from '../Redux/Api/ActionCreators';
+import { Loading } from './LoadingComponent';
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
@@ -29,12 +30,22 @@ const mapDispatchToProps = dispatch => ({
 function RenderItem(props) {
   const { item } = props;
 
+  if (props.isLoading) {
+    return <Loading />;
+  }
+  if (props.errMess) {
+    return (
+      <View>
+        <Text>{props.erreMess}</Text>
+      </View>
+    );
+  }
+  /* if (props.) */
   if (item != null) {
     return (
       <Card
         featuredTitle={item.name}
         featuredSubtitle={item.designation}
-        // eslint-disable-next-line global-require
         image={{ uri: baseUrl + item.image }}
       >
         <Text style={{ margin: 10 }}>{item.description}</Text>
@@ -67,11 +78,23 @@ class Home extends Component {
       <ScrollView>
         {/* ////////////// Noget mere CHECK PÅ OM DER RENT FAKTISK ER DATA////////////// ////////////// ////////////// //////////////
          */}
-        <RenderItem item={dishes.filter(dish => dish.featured)[0]} />
         <RenderItem
-          item={promotions.filter(promotion => promotion.featured)[0]}
+          item={this.props.dishes.dishes.filter(dish => dish.featured)[0]}
+          isLoading={this.props.dishes.isLoading}
+          erreMess={this.props.dishes.erreMess}
         />
-        <RenderItem item={leaders.filter(leader => leader.featured)[0]} />
+        <RenderItem
+          item={
+            this.props.promotions.promotions.filter(promo => promo.featured)[0]
+          }
+          isLoading={this.props.promotions.isLoading}
+          erreMess={this.props.promotions.erreMess}
+        />
+        <RenderItem
+          item={this.props.leaders.leaders.filter(leader => leader.featured)[0]}
+          isLoading={this.props.leaders.isLoading}
+          erreMess={this.props.leaders.erreMess}
+        />
       </ScrollView>
     );
   }

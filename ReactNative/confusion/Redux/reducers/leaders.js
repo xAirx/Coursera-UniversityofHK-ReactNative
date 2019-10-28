@@ -20,7 +20,7 @@ export const leaders = (
     case ActionTypes.ADD_LEADERS:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
         errMess: null,
         // our dishes is the action payload.
         leaders: action.payload,

@@ -12,8 +12,13 @@ export const addComments = comments => ({
   payload: comments,
 });
 
+export const commentsLoading = () => ({
+  type: ActionTypes.COMMENTS_LOADING,
+});
+
 // ////// FETCHING DATA FROM API /////////
 export const fetchComments = () => dispatch => {
+  dispatch(commentsLoading());
   /*  fetch(`${baseUrl}comments`) */
   /*  console.log('FETCHING OUR DATA FROM API'); */
   fetch(`${baseUrl}comments`)
@@ -37,6 +42,8 @@ export const fetchComments = () => dispatch => {
     .then(response => response.json())
     .then(comments => dispatch(addComments(comments)))
     .catch(error => dispatch(commentsFailed(error.message)));
+
+  // / Fetch on success dispatch commentsDONE.
 };
 // /////////////////////////////// DISHES/////////////////////////////////
 

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 /* import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments'; */
 import { baseUrl } from '../shared/baseurl';
+import { Loading } from './LoadingComponent';
 import { fetchDishes, fetchComments } from '../Redux/Api/ActionCreators';
 
 const mapStateToProps = state => ({
@@ -56,13 +57,13 @@ function RenderDish(props) {
   // Setting the const dish as our passed down props.
 
   /* console.log(`THESE ARE THE PROPS IN RENDERDISH ${JSON.stringify(props)}`); */
-
-  const { dish } = props;
   // Conditional rendering.
+  const { dish } = props;
   if (dish != null) {
     /* console.log(
       ` THESE ARE THE PROPS INSIDE DISHDETAILCOMPONENT ${JSON.stringify(props)}`
     ); */
+
     console.log('We are here');
     return (
       <Card
@@ -131,9 +132,16 @@ class DishDetail extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     const dishId = this.props.navigation.getParam('dishId', '');
 
-    console.log(
-      `THESE ARE OUR DISHES PROPS ${JSON.stringify(this.props.dishes.dishes)}`
-    );
+    /*     console.log(
+          `THESE ARE OUR DISHES PROPS ${JSON.stringify(this.props.dishes.dishes)}`
+        ); */
+
+    if (this.props.dishes.isLoading) {
+      return <Loading />;
+    }
+    if (this.props.dishes.errMess) {
+      return <Text>{this.props.dishes.errMess}</Text>;
+    }
     return (
       <ScrollView>
         <RenderDish

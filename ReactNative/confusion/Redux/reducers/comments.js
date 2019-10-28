@@ -19,9 +19,14 @@ export const comments = (
       return {
         ...state,
         errMess: null,
+        isLoading: false,
         // our dishes is the action payload.
         comments: action.payload,
       };
+
+    case ActionTypes.COMMENTS_LOADING:
+      // Takes all props from state. with ...state
+      return { ...state, isLoading: true, errMess: null, leaders: [] };
 
     case ActionTypes.COMMENTS_FAILED:
       // Takes all props from state. with ...state

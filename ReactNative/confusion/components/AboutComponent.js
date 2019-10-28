@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { baseUrl } from '../shared/baseurl';
 import { fetchLeaders } from '../Redux/Api/ActionCreators';
+import { Loading } from './LoadingComponent';
 
 const mapStateToProps = state => ({
   leaders: state.leaders,
@@ -48,7 +49,7 @@ class About extends Component {
   };
 
   render() {
-    const { leaders } = this.props.leaders;
+    /* const { leaders } = this.props.leaders; */
 
     const renderMenuItem = ({ item, key }) => (
       // We set the ITEM and Key here we want to loop over.
@@ -68,21 +69,38 @@ class About extends Component {
       />
     );
 
-    return (
-      <>
-        <History />
+    if (this.props.leaders.isLoading) {
+      return (
         <ScrollView>
+          <History />
           <Card title="Corporate Leadership">
-            <FlatList
-              // Loading message is included here
-              data={leaders}
-              // Rendering our items in our flatlist.
-              renderItem={renderMenuItem}
-              keyExtractor={item => item.id.toString()}
-            />
+            <Loading />
           </Card>
         </ScrollView>
-      </>
+      );
+    }
+    if (this.props.leaders.errMess) {
+      return (
+        <ScrollView>
+          <History />
+          <Card title="Corporate Leadership">
+            <Text>{this.props.leaders.errMess}</Text>
+          </Card>
+        </ScrollView>
+      );
+    }
+
+    return (
+      <ScrollView>
+        <History />
+        <Card title="Corporate Leadership">
+          <FlatList
+            data={this.props.leaders.leaders}
+            renderItem={renderMenuItem}
+            keyExtractor={item => item.id.toString()}
+          />
+        </Card>
+      </ScrollView>
     );
   }
 }
