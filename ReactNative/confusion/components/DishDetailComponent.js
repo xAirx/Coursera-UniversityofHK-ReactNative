@@ -11,7 +11,9 @@ import { Loading } from './LoadingComponent';
 import {
   fetchDishes,
   fetchComments,
-  postFavorite,
+  removeFavorite,
+  addFavorite,
+  /*  postremoveFavorite, */
 } from '../Redux/Api/ActionCreators';
 
 const mapStateToProps = state => ({
@@ -23,7 +25,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchDishes: dispatch(fetchDishes()),
   fetchComments: dispatch(fetchComments()),
-  postFavorite: dishId => dispatch(postFavorite(dishId)),
+  addFavorite: dishId => dispatch(addFavorite(dishId)),
+  removeFavorite: dishId => dispatch(removeFavorite(dishId)),
+  /* postremoveFavorite: item => dispatch(postremoveFavorite(item)), */
 });
 
 const formatter = new Intl.DateTimeFormat('en-GB');
@@ -86,7 +90,9 @@ function RenderDish(props) {
           type="font-awesome"
           color="#f50"
           onPress={() =>
-            props.favorite ? console.log('Already favorite') : props.onPress()
+            props.favorite
+              ? props.removeMarkedFavorite(props.dish.dishId)
+              : props.markedFavorite(props.dish.dishId)
           }
         />
       </Card>
@@ -105,10 +111,25 @@ RenderDish.propTypes = {
 };
 
 class DishDetail extends Component {
-  markFavorite(dishId) {
+  markedFavorite(dishId) {
+    console.log(`THIS IS THE DISHID${dishId}`);
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.postFavorite(dishId);
+    // call action from mapstatetoprops
+    console.log(`THIS ARE PROPS INSIDE markedFavorite${this.props}`);
+    addFavorite(dishId);
   }
+
+  removeMarkedFavorite(dishId) {
+    console.log(`THIS IS THE DISHID${dishId}`);
+    // eslint-disable-next-line react/destructuring-assignment
+    // call action from mapstatetoprops
+    console.log(`THIS ARE PROPS INSIDE REMOVEDMARKEDFAVORITE${this.props}`);
+    removeFavorite(dishId);
+  }
+
+  /* removeFavorite(item) {
+    this.props.removeFavorite(item);
+  } */
 
   static navigationOptions = {
     title: 'Dish Details',
@@ -124,11 +145,14 @@ class DishDetail extends Component {
     // The plus here means that since this will be a string that is passed in i am going to turn that into a number.
 
     // eslint-disable-next-line react/destructuring-assignment
+
+    /* console.log(
+          `THESE ARE OUR DISHES PROPS ${ JSON.stringify(this.props.dishes.dishes) }`
+        ); */
+
     const dishId = this.props.navigation.getParam('dishId', '');
 
-    /*     console.log(
-          `THESE ARE OUR DISHES PROPS ${JSON.stringify(this.props.dishes.dishes)}`
-        ); */
+    console.log(`THIS IS THE DISHID${dishId}`);
 
     if (this.props.dishes.isLoading) {
       return <Loading />;
@@ -139,9 +163,11 @@ class DishDetail extends Component {
     return (
       <ScrollView>
         <RenderDish
-          dish={this.props.dishes.dishes[+dishId]}
-          favorite={this.props.dishes.dishes.some(el => el === dishId)}
-          onPress={() => this.markFavorite(dishId)}
+          dish={this.props.dishes.dishes[dishId]}
+          // find dish id in favorite to make sure we can show icon
+          favorite={this.props.favorites.some(el => el === dishId)}
+          markedFavorite={this.markedFavorite}
+          removeMarkedFavorite={this.removeMarkedFavorite}
         />
         <RenderComments
           comments={this.props.comments.comments.filter(

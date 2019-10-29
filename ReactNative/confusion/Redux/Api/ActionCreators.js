@@ -175,13 +175,12 @@ export const fetchLeaders = () => dispatch => {
 
 // ///////////////// favorites // /////////////////// /////////////////// /////////////////
 
-export const postFavorite = dishId => dispatch => {
-  setTimeout(() => {
-    dispatch(addFavorite(dishId));
-  }, 100);
-};
-
 export const addFavorite = dishId => ({
-  type: ActionTypes.DONE_FAVORITE,
+  type: ActionTypes.ADD_FAVORITE,
+  payload: dishId,
+});
+
+export const removeFavorite = dishId => ({
+  type: ActionTypes.FAVORITE_DELETE,
   payload: dishId,
 });
