@@ -4,8 +4,6 @@ import { Text, View, ScrollView, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-/* import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments'; */
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
 import {
@@ -13,7 +11,6 @@ import {
   fetchComments,
   removeFavorite,
   addFavorite,
-  /*  postremoveFavorite, */
 } from '../Redux/Api/ActionCreators';
 
 const mapStateToProps = state => ({
@@ -27,7 +24,6 @@ const mapDispatchToProps = dispatch => ({
   fetchComments: dispatch(fetchComments()),
   addFavorite: dishId => dispatch(addFavorite(dishId)),
   removeFavorite: dishId => dispatch(removeFavorite(dishId)),
-  /* postremoveFavorite: item => dispatch(postremoveFavorite(item)), */
 });
 
 const formatter = new Intl.DateTimeFormat('en-GB');
@@ -65,16 +61,8 @@ RenderComments.propTypes = {
 };
 
 function RenderDish(props) {
-  // Setting the const dish as our passed down props.
-
-  /* console.log(`THESE ARE THE PROPS IN RENDERDISH ${JSON.stringify(props)}`); */
-  // Conditional rendering.
   const { dish } = props;
   if (dish != null) {
-    /* console.log(
-      ` THESE ARE THE PROPS INSIDE DISHDETAILCOMPONENT ${JSON.stringify(props)}`
-    ); */
-
     console.log('We are here');
     return (
       <Card
@@ -89,11 +77,7 @@ function RenderDish(props) {
           name={props.favorite ? 'heart' : 'heart-o'}
           type="font-awesome"
           color="#f50"
-          onPress={() =>
-            props.favorite
-              ? props.removeMarkedFavorite(props.dish.dishId)
-              : props.markedFavorite(props.dish.dishId)
-          }
+          onPress={() => props.toggleFavorite()}
         />
       </Card>
     );
@@ -103,53 +87,27 @@ function RenderDish(props) {
 }
 
 RenderDish.propTypes = {
-  // // WTF?
-  /*   item: PropTypes.array.isRequired, */
   dish: PropTypes.array.isRequired,
   favorite: PropTypes.array.isRequired,
   onPress: PropTypes.array.isRequired,
 };
 
 class DishDetail extends Component {
-  markedFavorite(dishId) {
-    console.log(`THIS IS THE DISHID${dishId}`);
-    // eslint-disable-next-line react/destructuring-assignment
-    // call action from mapstatetoprops
-    console.log(`THIS ARE PROPS INSIDE markedFavorite${this.props}`);
-    addFavorite(dishId);
+  toggleFavorite(dishId) {
+    if (this.props.favorites.some(el => el === dishId)) {
+      console.log('REMOVIONG FAVORITE');
+      this.props.removeFavorite(dishId);
+    } else {
+      console.log('ADDING FAVORITE');
+      this.props.addFavorite(dishId);
+    }
   }
-
-  removeMarkedFavorite(dishId) {
-    console.log(`THIS IS THE DISHID${dishId}`);
-    // eslint-disable-next-line react/destructuring-assignment
-    // call action from mapstatetoprops
-    console.log(`THIS ARE PROPS INSIDE REMOVEDMARKEDFAVORITE${this.props}`);
-    removeFavorite(dishId);
-  }
-
-  /* removeFavorite(item) {
-    this.props.removeFavorite(item);
-  } */
 
   static navigationOptions = {
     title: 'Dish Details',
   };
 
   render() {
-    // showing which dish to show based on the ID passed in from menucomponent
-    // This.props.navigation are passed in to all components in my navigator,
-    // We have access here to the getParam(), which allows us to access the parameters that are passed in.
-
-    // Passing props to our function and returning it as the view for our component here..
-    // this.state.dishes is a javascript object array so we have to specifically select the dish we want.
-    // The plus here means that since this will be a string that is passed in i am going to turn that into a number.
-
-    // eslint-disable-next-line react/destructuring-assignment
-
-    /* console.log(
-          `THESE ARE OUR DISHES PROPS ${ JSON.stringify(this.props.dishes.dishes) }`
-        ); */
-
     const dishId = this.props.navigation.getParam('dishId', '');
 
     console.log(`THIS IS THE DISHID${dishId}`);
@@ -166,8 +124,7 @@ class DishDetail extends Component {
           dish={this.props.dishes.dishes[dishId]}
           // find dish id in favorite to make sure we can show icon
           favorite={this.props.favorites.some(el => el === dishId)}
-          markedFavorite={this.markedFavorite}
-          removeMarkedFavorite={this.removeMarkedFavorite}
+          toggleFavorite={() => this.toggleFavorite(dishId)}
         />
         <RenderComments
           comments={this.props.comments.comments.filter(
