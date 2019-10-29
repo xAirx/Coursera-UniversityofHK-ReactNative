@@ -20,9 +20,8 @@ export const LEADERS_FAILED = 'LEADERS_FAILED';
 
 export const LEADERS_DONE = 'LEADERS_DONE';
 export const DISHES_DONE = 'LEADERS_DONE';
-export const COMMENTS_DONE = 'LEADERS_DONE';
 export const PROMOTIONS_DONE = 'LEADERS_DONE';
 export const POST_FAVORITE = 'POST_FAVORITE';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const FAVORITE_DELETE = 'FAVORITE_DELETE';
-export const ADD_COMMENT = 'ADD_COMMENT';
+export const COMMENTS_DONE = 'COMMENTS_DONE';

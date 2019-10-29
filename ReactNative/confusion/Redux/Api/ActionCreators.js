@@ -8,9 +8,14 @@ export const commentsFailed = errmess => ({
 });
 
 export const addComments = comments => ({
-  type: ActionTypes.DONE_COMMENTS,
+  type: ActionTypes.COMMENTS_DONE,
   payload: comments,
 });
+
+/* export const postComments = comments, dishid, rating, author => ({
+  type: ActionTypes.POST_COMMENTS,
+  payload: comments, dishid, rating, author,
+}) */
 
 export const commentsLoading = () => ({
   type: ActionTypes.COMMENTS_LOADING,
@@ -181,18 +186,6 @@ export const addFavorite = dishId => ({
 });
 
 export const removeFavorite = dishId => ({
-  type: ActionTypes.FAVORITE_DELETE,
-  payload: dishId,
-});
-
-// ///////////////// comments // /////////////////// /////////////////// /////////////////
-
-export const postComment = dishId => ({
-  type: ActionTypes.ADD_FAVORITE,
-  payload: dishId,
-});
-
-export const addComment = dishId => ({
   type: ActionTypes.FAVORITE_DELETE,
   payload: dishId,
 });

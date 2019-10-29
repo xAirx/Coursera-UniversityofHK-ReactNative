@@ -20,6 +20,7 @@ import {
   fetchComments,
   removeFavorite,
   addFavorite,
+  addComments,
 } from '../Redux/Api/ActionCreators';
 
 const styles = {
@@ -41,6 +42,7 @@ const mapDispatchToProps = dispatch => ({
   fetchComments: dispatch(fetchComments()),
   addFavorite: dishId => dispatch(addFavorite(dishId)),
   removeFavorite: dishId => dispatch(removeFavorite(dishId)),
+  /* addComments: dishcomments, dishid, rating, author => dispatch(addComments(comments, dishid, rating, author)), */
 });
 
 const formatter = new Intl.DateTimeFormat('en-GB');
@@ -77,7 +79,6 @@ RenderComments.propTypes = {
 
 function RenderDish(props) {
   const { dish } = props;
-  const { showModal } = props;
   if (dish != null) {
     console.log('We are here');
     return (
@@ -105,51 +106,6 @@ function RenderDish(props) {
             color="purple"
             onPress={() => props.toggleModal(true)}
           />
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={showModal}
-            onDismiss={() => props.dismissModal(false)}
-            onRequestClose={() => props.dismissModal(false)}
-          >
-            <SafeAreaView>
-              <View style={styles.modal}>
-                <Rating
-                  type="star"
-                  ratingCount={5}
-                  imageSize={60}
-                  showRating
-                  onFinishRating={this.ratingCompleted}
-                />
-                <Input
-                  placeholder="Author"
-                  leftIcon={{ type: 'font-awesome', name: 'user' }}
-                  style={styles}
-                />
-
-                <Input
-                  placeholder="Comment"
-                  leftIcon={{ type: 'font-awesome', name: 'comment' }}
-                  style={styles}
-                />
-
-                <Button
-                  onPress={() => {
-                    props.dismissModal(false);
-                  }}
-                  color="purple"
-                  title="SUBMIT"
-                />
-                <Button
-                  onPress={() => {
-                    props.dismissModal(false);
-                  }}
-                  color="#512DA8"
-                  title="Cancel"
-                />
-              </View>
-            </SafeAreaView>
-          </Modal>
         </View>
       </Card>
     );
@@ -169,8 +125,12 @@ class DishDetail extends Component {
 
     this.toggleModal = this.toggleModal.bind(this);
     this.dismissModal = this.dismissModal.bind(this);
+    this.ratingCompleted = this.ratingCompleted.bind(this);
     this.state = {
       showModal: false,
+      rating: '',
+      author: '',
+      comment: '',
     };
   }
 
@@ -190,6 +150,19 @@ class DishDetail extends Component {
       /* console.log('ADDING FAVORITE'); */
       this.props.addFavorite(dishId);
     }
+  }
+
+  ratingCompleted(rating) {
+    console.log(`Rating is: ${rating}`);
+    // eslint-disable-next-line object-shorthand
+    this.setState({ rating: rating });
+  }
+
+  handleSubmit() {
+    console.log(`THIS IS THE STATE AFTER SUBMIT ${JSON.stringify(this.state)}`);
+    /* addComments(dishId, rating, author, comment) {
+    this.props.addComments(dishId, rating, author, comment);
+  } */
   }
 
   static navigationOptions = {
@@ -215,14 +188,65 @@ class DishDetail extends Component {
           favorite={this.props.favorites.some(el => el === dishId)}
           toggleFavorite={() => this.toggleFavorite(dishId)}
           toggleModal={this.toggleModal}
-          dismissModal={this.dismissModal}
-          showModal={this.state.showModal}
+          /* dismissModal={this.dismissModal}
+showModal={this.state.showModal}
+addComments={this.addComments} */
         />
         <RenderComments
           comments={this.props.comments.comments.filter(
             comment => comment.dishId === dishId
           )}
         />
+        <Modal
+          animationType="slide"
+          transparent={false}
+          addComments={this.addComments}
+          visible={this.state.showModal}
+          onDismiss={() => this.dismissModal(false)}
+          onRequestClose={() => this.dismissModal(false)}
+        >
+          <SafeAreaView>
+            <View style={styles.modal}>
+              <Rating
+                type="star"
+                ratingCount={5}
+                imageSize={60}
+                showRating
+                onFinishRating={this.ratingCompleted}
+              />
+              <Input
+                placeholder="Author"
+                leftIcon={{ type: 'font-awesome', name: 'user' }}
+                style={styles}
+                onChangeText={value => this.setState({ author: value })}
+              />
+
+              <Input
+                placeholder="Comment"
+                leftIcon={{ type: 'font-awesome', name: 'comment' }}
+                style={styles}
+                onChangeText={value => this.setState({ comment: value })}
+              />
+
+              <Button
+                onPress={() => {
+                  this.handleSubmit();
+                  this.dismissModal(false);
+                  /*  this.addComments(dishId, rating, author, comment); */
+                }}
+                color="purple"
+                title="SUBMIT"
+              />
+              <Button
+                onPress={() => {
+                  this.dismissModal(true);
+                }}
+                color="#512DA8"
+                title="Cancel"
+              />
+            </View>
+          </SafeAreaView>
+        </Modal>
       </ScrollView>
     );
   }
