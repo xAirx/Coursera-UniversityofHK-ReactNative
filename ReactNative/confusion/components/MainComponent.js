@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
-
 import {
   createStackNavigator,
   createDrawerNavigator,

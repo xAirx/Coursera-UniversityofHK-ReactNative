@@ -25,3 +25,4 @@ export const PROMOTIONS_DONE = 'LEADERS_DONE';
 export const POST_FAVORITE = 'POST_FAVORITE';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const FAVORITE_DELETE = 'FAVORITE_DELETE';
+export const ADD_COMMENT = 'ADD_COMMENT';

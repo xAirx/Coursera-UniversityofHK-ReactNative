@@ -71,6 +71,7 @@ class Home extends Component {
   };
 
   render() {
+    console.log(`THIS IS PROPS FOR NAVIGATION: ${  this.props.navigtion}`);
     const { promotions } = this.props.promotions;
     const { dishes } = this.props.dishes;
     const { leaders } = this.props.leaders;
@@ -83,16 +84,22 @@ class Home extends Component {
           item={dishes.filter(dish => dish.featured)[0]}
           isLoading={this.props.dishes.isLoading}
           errMess={this.props.dishes.errMess}
+          /*           onPress={() => this.props.navigation.toggleDrawer()}
+           */
         />
         <RenderItem
           item={promotions.filter(promo => promo.featured)[0]}
           errMess={this.props.promotions.errMess}
           isLoading={this.props.promotions.isLoading}
+          /*           onPress={() => this.props.navigation.toggleDrawer()}
+           */
         />
         <RenderItem
           item={leaders.filter(leader => leader.featured)[0]}
           isLoading={this.props.leaders.isLoading}
           errMess={this.props.leaders.errMess}
+          /*           onPress={() => this.props.navigation.toggleDrawer()}
+           */
         />
       </ScrollView>
     );
