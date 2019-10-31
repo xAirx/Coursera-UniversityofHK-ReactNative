@@ -7,18 +7,38 @@ export const commentsFailed = errmess => ({
   payload: errmess,
 });
 
-export const addComments = comments => ({
-  type: ActionTypes.COMMENTS_DONE,
-  payload: comments,
+export const updateComments = (dishId, rating, author, comment, date) => ({
+  type: ActionTypes.UPDATE_COMMENTS,
+  payload: {
+    dishId,
+    rating,
+    author,
+    comment,
+    date,
+  },
 });
 
-/* export const postComments = comments, dishid, rating, author => ({
-  type: ActionTypes.POST_COMMENTS,
-  payload: comments, dishid, rating, author,
-}) */
+export const postComments = (dishId, rating, author, comment) => dispatch => {
+  console.log('THIS IS POSTCOMMENTS PRE TIMEOUT');
+  /* type: ActionTypes.ADD_COMMENTS,
+  payload: (dishid, rating, author, comment, date), */
+  const d = new Date();
+  const n = d.toISOString();
+
+  setTimeout(() => {
+    dispatch(updateComments(dishId, rating, author, comment, n));
+    console.log('THIS IS POSTCOMMENTS POST TIMEOUT');
+    dispatch(commentsLoading());
+  }, 2000);
+};
 
 export const commentsLoading = () => ({
   type: ActionTypes.COMMENTS_LOADING,
+});
+
+export const setComments = comments => ({
+  type: ActionTypes.SET_COMMENTS,
+  payload: comments,
 });
 
 // ////// FETCHING DATA FROM API /////////
@@ -45,11 +65,13 @@ export const fetchComments = () => dispatch => {
       }
     )
     .then(response => response.json())
-    .then(comments => dispatch(addComments(comments)))
+    // comments is promise resolve response after json format
+    .then(comments => dispatch(setComments(comments)))
     .catch(error => dispatch(commentsFailed(error.message)));
 
   // / Fetch on success dispatch commentsDONE.
 };
+
 // /////////////////////////////// DISHES/////////////////////////////////
 
 export const dishesLoading = () => ({

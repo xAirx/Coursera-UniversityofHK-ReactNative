@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
-import { Container, Row, Col } from 'reactstrap';
+/* import { Container, Row, Col } from 'reactstrap'; */
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
@@ -20,7 +20,7 @@ import {
   fetchComments,
   removeFavorite,
   addFavorite,
-  addComments,
+  postComments,
 } from '../Redux/Api/ActionCreators';
 
 const styles = {
@@ -42,14 +42,17 @@ const mapDispatchToProps = dispatch => ({
   fetchComments: dispatch(fetchComments()),
   addFavorite: dishId => dispatch(addFavorite(dishId)),
   removeFavorite: dishId => dispatch(removeFavorite(dishId)),
-  /* addComments: dishcomments, dishid, rating, author => dispatch(addComments(comments, dishid, rating, author)), */
+  postComments: (dishId, rating, author, comment) => {
+    dispatch(postComments(dishId, rating, author, comment));
+  },
 });
 
 const formatter = new Intl.DateTimeFormat('en-GB');
 
 function RenderComments(props) {
   const { comments } = props;
-
+  console.log('PROPS IN RENDERCOMMENTS ', props);
+  console.log('WE ARE RENDERING COMMENTS');
   const renderCommentItem = ({ item, key }) => (
     <View key={key} style={{ margin: 10 }}>
       <Text style={{ fontSize: 14 }}>{item.comment}</Text>
@@ -131,6 +134,7 @@ class DishDetail extends Component {
       rating: '',
       author: '',
       comment: '',
+      dishId: '',
     };
   }
 
@@ -155,14 +159,20 @@ class DishDetail extends Component {
   ratingCompleted(rating) {
     console.log(`Rating is: ${rating}`);
     // eslint-disable-next-line object-shorthand
-    this.setState({ rating: rating });
+    this.setState({ rating });
   }
 
-  handleSubmit() {
-    console.log(`THIS IS THE STATE AFTER SUBMIT ${JSON.stringify(this.state)}`);
-    /* addComments(dishId, rating, author, comment) {
-    this.props.addComments(dishId, rating, author, comment);
-  } */
+  handleSubmit(dishId) {
+    // eslint-disable-next-line object-shorthand
+    console.log('THIS IS THE STATE', dishId);
+    // eslint-disable-next-line object-shorthand
+    this.props.postComments(
+      dishId,
+      this.state.rating,
+      this.state.author,
+      this.state.comment,
+      this.state.date
+    );
   }
 
   static navigationOptions = {
@@ -170,9 +180,10 @@ class DishDetail extends Component {
   };
 
   render() {
+    console.log('THIS ARE THISPROPS ', this.props);
     const dishId = this.props.navigation.getParam('dishId', '');
 
-    /* console.log(`THIS IS THE DISHID${dishId}`); */
+    console.log(`THIS IS THE DISHID${dishId}`);
 
     if (this.props.dishes.isLoading) {
       return <Loading />;
@@ -187,10 +198,7 @@ class DishDetail extends Component {
           // find dish id in favorite to make sure we can show icon
           favorite={this.props.favorites.some(el => el === dishId)}
           toggleFavorite={() => this.toggleFavorite(dishId)}
-          toggleModal={this.toggleModal}
-          /* dismissModal={this.dismissModal}
-showModal={this.state.showModal}
-addComments={this.addComments} */
+          toggleModal={() => this.toggleModal(dishId)}
         />
         <RenderComments
           comments={this.props.comments.comments.filter(
@@ -200,7 +208,6 @@ addComments={this.addComments} */
         <Modal
           animationType="slide"
           transparent={false}
-          addComments={this.addComments}
           visible={this.state.showModal}
           onDismiss={() => this.dismissModal(false)}
           onRequestClose={() => this.dismissModal(false)}
@@ -230,9 +237,9 @@ addComments={this.addComments} */
 
               <Button
                 onPress={() => {
-                  this.handleSubmit();
+                  this.handleSubmit(dishId);
+                  console.log('THIS IS DISHID IN BUTTON', dishId);
                   this.dismissModal(false);
-                  /*  this.addComments(dishId, rating, author, comment); */
                 }}
                 color="purple"
                 title="SUBMIT"

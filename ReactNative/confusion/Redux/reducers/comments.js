@@ -12,16 +12,27 @@ export const comments = (
   // Results in a call to a method that switchs on action type passed to the reducer
   action
 ) => {
+  console.log('ACTIONTYPE', action.type);
+
   switch (action.type) {
     // Setting actiontype
+
     // When add_dishes action is called we do the following:
-    case ActionTypes.COMMENTS_DONE:
+    case ActionTypes.UPDATE_COMMENTS:
+      console.log('UPDATE_COMMENTS', action.payload);
+      // grab last id in state.
+
       return {
+        // redux state
         ...state,
         errMess: null,
-        isLoading: false,
+        isLoading: true,
         // our dishes is the action payload.
-        comments: action.payload,
+        comments: state.comments.concat({
+          ...action.payload,
+          // getting last id of element and adding it to the array as "ID"
+          id: state.comments.slice(-1)[0].id + 1,
+        }),
       };
 
     case ActionTypes.COMMENTS_LOADING:
@@ -31,6 +42,18 @@ export const comments = (
     case ActionTypes.COMMENTS_FAILED:
       // Takes all props from state. with ...state
       return { ...state, errMess: null, comments: [] };
+
+    case ActionTypes.SET_COMMENTS:
+      console.log('ACTION PAYLOAD SET COMMETNS:', action.payload);
+
+      return {
+        // redux state
+        ...state,
+        errMess: null,
+        isLoading: false,
+        // our dishes is the action payload.
+        comments: action.payload,
+      };
 
     default:
       return state;
