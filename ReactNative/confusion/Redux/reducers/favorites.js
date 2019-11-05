@@ -8,6 +8,9 @@ export const favorites = (state = [], action) => {
       console.log(`THIS IS STATE CONCAT${state}`);
       return state.concat(action.payload);
 
+    case ActionTypes.DELETE_FAVORITE:
+      return state.filter(favorite => favorite !== action.payload);
+
     case ActionTypes.FAVORITE_DELETE:
       return state.filter(el => el !== action.payload);
 
