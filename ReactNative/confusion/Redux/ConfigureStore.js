@@ -5,15 +5,23 @@ With redux-thunk we can overcome the problem and return functions from action cr
  */
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 import { dishes } from './reducers/dishes';
 import { comments } from './reducers/comments';
 import { promotions } from './reducers/promotions';
 import { leaders } from './reducers/leaders';
 import { favorites } from './reducers/favorites';
 
+const config = {
+  key: 'root',
+  storage,
+  debug: true,
+};
+
 export const ConfigureStore = () => {
   const store = createStore(
-    combineReducers({
+    persistCombineReducers(config, {
       dishes,
       comments,
       promotions,
@@ -23,5 +31,7 @@ export const ConfigureStore = () => {
     applyMiddleware(thunk, logger)
   );
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { persistor, store };
 };
