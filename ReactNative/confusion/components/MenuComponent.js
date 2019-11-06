@@ -30,13 +30,14 @@ class Menu extends Component {
 
     const renderMenuItem = ({ item, index }) => (
       // We set the ITEM and Key here we want to loop over.
-      <Animatable.View animation="fadeInRightBig" duration={2000}>
+      <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
         <Tile
           key={index}
           title={item.name}
           caption={item.description}
           featured
-          onPress={() => navigate('Dishdetail', { dishId: item.id })}
+          onPress={() => navigate('DishDetail', { dishId: item.id })}
+          // eslint-disable-next-line global-require
           imageSrc={{ uri: baseUrl + item.image }}
         />
       </Animatable.View>

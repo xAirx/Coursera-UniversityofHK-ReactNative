@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ScrollView, View, Text, Animated, Easing } from 'react-native';
 import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseurl';
 
 import {
@@ -11,6 +12,7 @@ import {
   fetchPromos,
   fetchLeaders,
 } from '../Redux/Api/ActionCreators';
+
 import { Loading } from './LoadingComponent';
 /* import { DISHES } from '../shared/dishes';
 import { PROMOTIONS } from '../shared/promotions';
@@ -67,42 +69,11 @@ RenderItem.propTypes = {
 class Home extends Component {
   // Local Navigation options ...
 
-  constructor(props) {
-    super(props);
-    this.animatedValue = new Animated.Value(0);
-  }
-
-  componentDidMount() {
-    this.animate();
-  }
-
   static navigationOptions = {
     title: 'Menu',
   };
 
-  animate() {
-    this.animatedValue.setValue(0);
-    Animated.timing(this.animatedValue, {
-      toValue: 8,
-      duration: 8000,
-      easing: Easing.linear,
-    }).start(() => this.animate());
-  }
-
   render() {
-    const xpos1 = this.animatedValue.interpolate({
-      inputRange: [0, 1, 3, 5, 8],
-      outputRange: [1200, 600, 0, -600, -1200],
-    });
-    const xpos2 = this.animatedValue.interpolate({
-      inputRange: [0, 2, 4, 6, 8],
-      outputRange: [1200, 600, 0, -600, -1200],
-    });
-    const xpos3 = this.animatedValue.interpolate({
-      inputRange: [0, 3, 5, 7, 8],
-      outputRange: [1200, 600, 0, -600, -1200],
-    });
-
     console.log(
       `THIS IS PROPS FOR NAVIGATION: ${JSON.stringify(this.props.navigation)}`
     );
@@ -113,20 +84,16 @@ class Home extends Component {
     return (
       <ScrollView>
         <View
-          style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}
+          style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}
         >
-          <Animated.View
-            style={{ width: '100%', transform: [{ translateX: xpos1 }] }}
-          >
+          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
             <RenderItem
               item={this.props.dishes.dishes.filter(dish => dish.featured)[0]}
               isLoading={this.props.dishes.isLoading}
               erreMess={this.props.dishes.erreMess}
             />
-          </Animated.View>
-          <Animated.View
-            style={{ width: '100%', transform: [{ translateX: xpos2 }] }}
-          >
+          </Animatable.View>
+          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
             <RenderItem
               item={
                 this.props.promotions.promotions.filter(
@@ -136,10 +103,8 @@ class Home extends Component {
               isLoading={this.props.promotions.isLoading}
               erreMess={this.props.promotions.erreMess}
             />
-          </Animated.View>
-          <Animated.View
-            style={{ width: '100%', transform: [{ translateX: xpos3 }] }}
-          >
+          </Animatable.View>
+          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
             <RenderItem
               item={
                 this.props.leaders.leaders.filter(leader => leader.featured)[0]
@@ -147,7 +112,7 @@ class Home extends Component {
               isLoading={this.props.leaders.isLoading}
               erreMess={this.props.leaders.erreMess}
             />
-          </Animated.View>
+          </Animatable.View>
         </View>
       </ScrollView>
     );
