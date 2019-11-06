@@ -84,11 +84,50 @@ RenderComments.propTypes = {
 };
 
 function RenderDish(props) {
+  const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
+    if (dx < -200) return true;
+    return false;
+  };
+
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: (e, gestureState) => true,
+    onPanResponderEnd: (e, gestureState) => {
+      console.log('pan responder end', gestureState);
+      if (recognizeDrag(gestureState))
+        Alert.alert(
+          'Add Favorite',
+          `Are you sure you wish to add ${dish.name} to favorite?`,
+          [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {
+              text: 'OK',
+              onPress: () => {
+                props.favorite
+                  ? console.log('Already favorite')
+                  : props.onPress();
+              },
+            },
+          ],
+          { cancelable: false }
+        );
+
+      return true;
+    },
+  });
+
   const { dish } = props;
   if (dish != null) {
-    console.log('We are here');
     return (
-      <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+      <Animatable.View
+        animation="fadeInDown"
+        duration={2000}
+        delay={1000}
+        {...panResponder.panHandlers}
+      >
         <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
           <Text style={{ margin: 10 }}>{dish.description}</Text>
 
