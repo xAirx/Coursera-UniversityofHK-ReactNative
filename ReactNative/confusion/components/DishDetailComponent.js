@@ -222,12 +222,14 @@ class DishDetail extends Component {
     const rightButton = [
       {
         /* component: IconFavorite, */
-        text: 'Add as Favorite',
+        /* text: 'Add as Favorite', */
+        text: 'Comment',
         type: 'add',
         scroll: 'no',
         autoClose: 'yes',
         onPress: () => {
-          console.log('WE ARE DELETING SWIPE'), this.addFavorite(dishId);
+          /* console.log('WE ARE DELETING SWIPE'), this.addFavorite(dishId); */
+          this.toggleModal(dishId);
         },
       },
     ];
@@ -235,12 +237,15 @@ class DishDetail extends Component {
     const leftButton = [
       {
         /* component: IconDelFavorite, */
-        text: 'Delete Favorite',
-        type: 'delete',
+        /*  text: 'Delete Favorite', */
+        text: 'Comment',
+        type: 'Comment',
+        /*  type: 'delete', */
         scroll: 'no',
         autoClose: 'yes',
         onPress: () => {
-          console.log('WE ARE DELETING SWIPE'), this.removeFavorite(dishId);
+          /*  console.log('WE ARE DELETING SWIPE'), this.removeFavorite(dishId); */
+          this.toggleModal(dishId);
         },
       },
     ];
