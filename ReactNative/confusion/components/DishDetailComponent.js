@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 /* import { Container, Row, Col } from 'reactstrap'; */
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
 import {
@@ -64,13 +65,15 @@ function RenderComments(props) {
   );
 
   return (
-    <Card title="Comments">
-      <FlatList
-        data={comments}
-        renderItem={renderCommentItem}
-        keyExtractor={item => item.id.toString()}
-      />
-    </Card>
+    <Animatable.View animation="fadeInUp" duration={2000} delay={1000}>
+      <Card title="Comments">
+        <FlatList
+          data={comments}
+          renderItem={renderCommentItem}
+          keyExtractor={item => item.id.toString()}
+        />
+      </Card>
+    </Animatable.View>
   );
 }
 
@@ -85,32 +88,30 @@ function RenderDish(props) {
   if (dish != null) {
     console.log('We are here');
     return (
-      <Card
-        featuredTitle={dish.name}
-        // eslint-disable-next-line global-require
-        image={{ uri: baseUrl + dish.image }}
-      >
-        <Text style={{ margin: 10 }}>{dish.description}</Text>
+      <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+        <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
+          <Text style={{ margin: 10 }}>{dish.description}</Text>
 
-        <View style={styles}>
-          <Icon
-            raised
-            reverse
-            name={props.favorite ? 'heart' : 'heart-o'}
-            type="font-awesome"
-            color="#f50"
-            onPress={() => props.toggleFavorite()}
-          />
-          <Icon
-            raised
-            reverse
-            name="pencil"
-            type="font-awesome"
-            color="purple"
-            onPress={() => props.toggleModal(true)}
-          />
-        </View>
-      </Card>
+          <View style={styles}>
+            <Icon
+              raised
+              reverse
+              name={props.favorite ? 'heart' : 'heart-o'}
+              type="font-awesome"
+              color="#f50"
+              onPress={() => props.toggleFavorite()}
+            />
+            <Icon
+              raised
+              reverse
+              name="pencil"
+              type="font-awesome"
+              color="purple"
+              onPress={() => props.toggleModal(true)}
+            />
+          </View>
+        </Card>
+      </Animatable.View>
     );
   }
 

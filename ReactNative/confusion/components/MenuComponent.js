@@ -3,6 +3,7 @@ import { View, FlatList, ScrollView, Text } from 'react-native';
 import { Tile } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
 import { DISHES } from '../shared/dishes';
@@ -29,15 +30,16 @@ class Menu extends Component {
 
     const renderMenuItem = ({ item, index }) => (
       // We set the ITEM and Key here we want to loop over.
-      <Tile
-        key={index}
-        title={item.name}
-        caption={item.description}
-        featured
-        onPress={() => navigate('DishDetail', { dishId: item.id })}
-        // eslint-disable-next-line global-require
-        imageSrc={{ uri: baseUrl + item.image }}
-      />
+      <Animatable.View animation="fadeInRightBig" duration={2000}>
+        <Tile
+          key={index}
+          title={item.name}
+          caption={item.description}
+          featured
+          onPress={() => navigate('Dishdetail', { dishId: item.id })}
+          imageSrc={{ uri: baseUrl + item.image }}
+        />
+      </Animatable.View>
     );
 
     // our props for this component will conatain one propery named navigation, we are extracting it here.

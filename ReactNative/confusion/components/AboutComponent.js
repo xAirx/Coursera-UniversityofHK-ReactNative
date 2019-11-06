@@ -3,6 +3,7 @@ import { ScrollView, Text, View, FlatList } from 'react-native';
 import { ListItem, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseurl';
 import { fetchLeaders } from '../Redux/Api/ActionCreators';
 import { Loading } from './LoadingComponent';
@@ -83,24 +84,28 @@ class About extends Component {
     if (leaders.errMess) {
       return (
         <ScrollView>
-          <History />
-          <Card title="Corporate Leadership">
-            <Text>{leaders.errMess}</Text>
-          </Card>
+          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+            <History />
+            <Card title="Corporate Leadership">
+              <Text>{this.props.leaders.errMess}</Text>
+            </Card>
+          </Animatable.View>
         </ScrollView>
       );
     }
 
     return (
       <ScrollView>
-        <History />
-        <Card title="Corporate Leadership">
-          <FlatList
-            data={leaders.leaders}
-            renderItem={renderMenuItem}
-            keyExtractor={item => item.id.toString()}
-          />
-        </Card>
+        <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <History />
+          <Card title="Corporate Leadership">
+            <FlatList
+              data={this.props.leaders.leaders}
+              renderItem={renderMenuItem}
+              keyExtractor={item => item.id.toString()}
+            />
+          </Card>
+        </Animatable.View>
       </ScrollView>
     );
   }
