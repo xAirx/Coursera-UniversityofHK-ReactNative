@@ -8,14 +8,13 @@ import {
   Modal,
   Button,
   SafeAreaView,
-  Alert,
-  PanResponder,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 /* import { Container, Row, Col } from 'reactstrap'; */
 import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
+import SwipeOut from 'react-native-swipeout';
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
 import {
@@ -86,93 +85,31 @@ RenderComments.propTypes = {
 };
 
 function RenderDish(props) {
-  // ////////////////////////// GESTURE //////////////////////
-
-  handleViewRef = ref => (this.view = ref);
-
-  const recognizeDrag = ({ moveX, moveY, dx, dy }) => {
-    if (dx < -200) return true;
-    return false;
-  };
-
-  const panResponder = PanResponder.create({
-    onStartShouldSetPanResponder: (e, gestureState) => true,
-    onPanResponderGrant: () => {
-      this.view
-        .rubberBand(1000)
-        .then(endState =>
-          console.log(endState.finished ? 'finished' : 'cancelled')
-        );
-    },
-    onPanResponderEnd: (e, gestureState) => {
-      console.log('pan responder end', gestureState);
-      if (recognizeDrag(gestureState))
-        Alert.alert(
-          'Add Favorite',
-          `Are you sure you wish to add ${dish.name} to favorite?`,
-          [
-            {
-              text: 'Cancel',
-              onPress: () => console.log('Cancel Pressed'),
-              style: 'cancel',
-            },
-            {
-              text: 'OK',
-              onPress: () => {
-                props.favorite
-                  ? console.log('Already favorite')
-                  : props.onPress();
-              },
-            },
-          ],
-          { cancelable: false }
-        );
-
-      return true;
-    },
-  });
-
-  // /////////////////////////////////////////////////
-
   const { dish } = props;
   if (dish != null) {
     return (
-      <Animatable.View
-        animation="fadeInDown"
-        duration={2000}
-        delay={1000}
-        ref={this.handleViewRef}
-        {...panResponder.panHandlers}
-      >
-        {/*   <Animatable.View
-         animation="fadeInDown"
-         duration={2000}
-         delay={1000}
-         {...panResponder.panHandlers}
-       >  */}
-        <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
-          <Text style={{ margin: 10 }}>{dish.description}</Text>
+      <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
+        <Text style={{ margin: 10 }}>{dish.description}</Text>
 
-          <View style={styles}>
-            <Icon
-              raised
-              reverse
-              name={props.favorite ? 'heart' : 'heart-o'}
-              type="font-awesome"
-              color="#f50"
-              onPress={() => props.toggleFavorite()}
-            />
-            <Icon
-              raised
-              reverse
-              name="pencil"
-              type="font-awesome"
-              color="purple"
-              onPress={() => props.toggleModal(true)}
-            />
-          </View>
-        </Card>
-      </Animatable.View>
+        <View style={styles}>
+          <Icon
+            raised
+            reverse
+            name={props.favorite ? 'heart' : 'heart-o'}
+            type="font-awesome"
+            color="#f50"
+            onPress={() => props.toggleFavorite()}
+          />
+          <Icon
+            raised
+            reverse
+            name="pencil"
+            type="font-awesome"
+            color="purple"
+            onPress={() => props.toggleModal(true)}
+          />
+        </View>
+      </Card>
     );
   }
 
@@ -190,6 +127,8 @@ class DishDetail extends Component {
 
     this.toggleModal = this.toggleModal.bind(this);
     this.dismissModal = this.dismissModal.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
+    this.removeFavorite = this.removeFavorite.bind(this);
     this.ratingCompleted = this.ratingCompleted.bind(this);
     this.state = {
       showModal: false,
@@ -216,6 +155,14 @@ class DishDetail extends Component {
       /* console.log('ADDING FAVORITE'); */
       this.props.addFavorite(dishId);
     }
+  }
+
+  addFavorite(dishId) {
+    this.props.addFavorite(dishId);
+  }
+
+  removeFavorite(dishId) {
+    this.props.removeFavorite(dishId);
   }
 
   ratingCompleted(rating) {
@@ -247,6 +194,28 @@ class DishDetail extends Component {
 
     console.log(`THIS IS THE DISHID${dishId}`);
 
+    // ////////////////////////// Swipe //////////////////////
+    const rightButton = [
+      {
+        text: 'Add as Favorite',
+        type: 'add',
+        onPress: () => {
+          console.log('WE ARE DELETING SWIPE'), this.addFavorite(dishId);
+        },
+      },
+    ];
+
+    const leftButton = [
+      {
+        text: 'Delete Favorite',
+        type: 'delete',
+        onPress: () => {
+          console.log('WE ARE DELETING SWIPE'), this.removeFavorite(dishId);
+        },
+      },
+    ];
+    // /////////////////////////////////////////////////
+
     if (this.props.dishes.isLoading) {
       return <Loading />;
     }
@@ -255,13 +224,15 @@ class DishDetail extends Component {
     }
     return (
       <ScrollView>
-        <RenderDish
-          dish={this.props.dishes.dishes[dishId]}
-          // find dish id in favorite to make sure we can show icon
-          favorite={this.props.favorites.some(el => el === dishId)}
-          toggleFavorite={() => this.toggleFavorite(dishId)}
-          toggleModal={() => this.toggleModal(dishId)}
-        />
+        <SwipeOut left={leftButton} right={rightButton} autoClose>
+          <RenderDish
+            dish={this.props.dishes.dishes[dishId]}
+            // find dish id in favorite to make sure we can show icon
+            favorite={this.props.favorites.some(el => el === dishId)}
+            toggleFavorite={() => this.toggleFavorite(dishId)}
+            toggleModal={() => this.toggleModal(dishId)}
+          />
+        </SwipeOut>
         <RenderComments
           comments={this.props.comments.comments.filter(
             comment => comment.dishId === dishId
