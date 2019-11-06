@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+/* eslint-disable class-methods-use-this */
+import React, { Component, Alert } from 'react';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 import {
   Text,
@@ -95,6 +98,42 @@ class Reservation extends Component {
     });
   }
 
+  handleReservation() {
+    console.log(JSON.stringify(this.state));
+    this.toggleModal();
+  }
+
+  async obtainNotificationPermission() {
+    let permission = await Permissions.getAsync(
+      Permissions.USER_FACING_NOTIFICATIONS
+    );
+    if (permission.status !== 'granted') {
+      permission = await Permissions.askAsync(
+        Permissions.USER_FACING_NOTIFICATIONS
+      );
+      if (permission.status !== 'granted') {
+        Alert.alert('Permission not granted to show notifications');
+      }
+    }
+    return permission;
+  }
+
+  async presentLocalNotification(date) {
+    await this.obtainNotificationPermission();
+    Notifications.presentLocalNotificationAsync({
+      title: 'Your Reservation',
+      body: `Reservation for ${date} requested`,
+      ios: {
+        sound: true,
+      },
+      android: {
+        sound: true,
+        vibrate: true,
+        color: '#512DA8',
+      },
+    });
+  }
+
   /*   handleReservation() {
       Alert.alert(
           'Your Reservation OK?',
@@ -125,10 +164,6 @@ class Reservation extends Component {
           showModal: false
       });
   } */
-  handleReservation() {
-    console.log(JSON.stringify(this.state));
-    this.toggleModal();
-  }
 
   render() {
     const { guests, date, smoking, showModal } = this.state;
@@ -225,6 +260,7 @@ class Reservation extends Component {
                 <Button
                   onPress={() => {
                     this.dismissModal();
+                    this.presentLocalNotification(this.state.date);
                     this.resetForm();
                   }}
                   color="#512DA8"
