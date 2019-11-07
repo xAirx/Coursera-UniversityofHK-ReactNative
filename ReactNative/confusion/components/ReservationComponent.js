@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import React, { Component, Alert } from 'react';
+import React, { Component } from 'react';
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 
@@ -12,13 +12,13 @@ import {
   Switch,
   Button,
   Modal,
+  Alert,
   SafeAreaView,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { Card } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
-import { Appearance, useColorScheme } from 'react-native-appearance';
-
+/* import { Appearance, useColorScheme } from 'react-native-appearance';
+ */
 const styles = StyleSheet.create({
   formRow: {
     alignItems: 'center',
