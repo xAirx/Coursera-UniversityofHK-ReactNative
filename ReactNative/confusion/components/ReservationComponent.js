@@ -104,6 +104,7 @@ class Reservation extends Component {
     this.toggleModal();
   }
 
+  // /////////////NOTIFICATIONS//////////////////////
   async obtainNotificationPermission() {
     let permission = await Permissions.getAsync(
       Permissions.USER_FACING_NOTIFICATIONS
@@ -134,7 +135,7 @@ class Reservation extends Component {
       },
     });
   }
-
+  // ///////////////////////////////////////////////
   /*   handleReservation() {
       Alert.alert(
           'Your Reservation OK?',

@@ -8,8 +8,8 @@ export default class Contact extends PureComponent {
     MailComposer.composeAsync({
       recipients: ['confusion@food.net'],
       subject: 'Enquiry',
-      body: 'To whom it may concern:'
-    })
+      body: 'To whom it may concern:',
+    });
   }
 
   render() {
@@ -32,8 +32,8 @@ export default class Contact extends PureComponent {
           </Text>
           <Button
             title="Send Email"
-            buttonStyle={{ backgroundColor: "#512DA8" }}
-            icon={<Icon name='envelope-o' type='font-awesome' color='white' />}
+            buttonStyle={{ backgroundColor: '#512DA8' }}
+            icon={<Icon name="envelope-o" type="font-awesome" color="white" />}
             onPress={this.sendMail}
           />
         </Card>

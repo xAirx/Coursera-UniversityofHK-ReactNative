@@ -21,11 +21,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "expo": {
-      "ios": {
-        "userInterfaceStyle": "automatic",
-        "supportsTablet": true
-      }
+    "ios": {
+      "userInterfaceStyle": "automatic",
+      "supportsTablet": true
     }
   }
 }

@@ -6,13 +6,9 @@ import {
   ScrollView,
   FlatList,
   Modal,
-  StyleSheet,
   SafeAreaView,
   Button,
-  Alert,
-  PanResponder,
   Share,
-  SafeArea,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -166,7 +162,7 @@ class DishDetail extends Component {
       rating: '',
       author: '',
       comment: '',
-      dishId: '',
+      /* dishId: '', */
     };
   }
 

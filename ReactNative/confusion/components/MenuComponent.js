@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
-import { DISHES } from '../shared/dishes';
+/* import { DISHES } from '../shared/dishes'; */
 // We will  make a class component here because we need to move the state into all of our components to get it ready with redux.
 
 const mapStateToProps = state => ({
