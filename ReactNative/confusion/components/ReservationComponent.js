@@ -17,6 +17,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import { Card } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
+import { Appearance, useColorScheme } from 'react-native-appearance';
 
 const styles = StyleSheet.create({
   formRow: {
@@ -168,6 +169,9 @@ class Reservation extends Component {
   render() {
     const { guests, date, smoking, showModal } = this.state;
 
+    /*    const colorScheme = useColorScheme;
+       const isDarkModeEnabled = colorScheme === 'dark'; */
+
     return (
       <ScrollView>
         <Animatable.View animation={zoomOut}>
@@ -200,6 +204,7 @@ class Reservation extends Component {
           <View style={styles.formRow}>
             <Text style={styles.formLabel}>Date and Time</Text>
             <DatePicker
+              /* isDarkModeEnabled={isDarkModeEnabled} */
               style={{ flex: 2, marginRight: 20 }}
               date={date}
               format=""
@@ -209,6 +214,10 @@ class Reservation extends Component {
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
               customStyles={{
+                datePicker: {
+                  /*                   backgroundColor: useColorScheme === 'dark' ? '#222' : 'white',
+                   */ backgroundColor: '#222',
+                },
                 dateIcon: {
                   position: 'absolute',
                   left: 0,
@@ -217,6 +226,7 @@ class Reservation extends Component {
                 },
                 dateInput: {
                   marginLeft: 36,
+                  Color: 'black',
                 },
                 // ... You can check the source to find the other keys.
               }}
