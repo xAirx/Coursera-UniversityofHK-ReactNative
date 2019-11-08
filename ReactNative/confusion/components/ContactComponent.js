@@ -1,5 +1,6 @@
+/* eslint-disable class-methods-use-this */
 import React, { PureComponent } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { Text } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import * as MailComposer from 'expo-mail-composer';
 

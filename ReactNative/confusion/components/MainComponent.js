@@ -1,13 +1,11 @@
+/* eslint-disable no-useless-constructor */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation';
 
 /* import PropTypes from 'prop-types'; */
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-
-import Menu from './MenuComponent';
-import DishDetail from './DishDetailComponent';
 
 import {
   fetchDishes,
@@ -15,17 +13,6 @@ import {
   fetchPromos,
   fetchLeaders,
 } from '../Redux/Api/ActionCreators';
-
-/* import {
-  IOSHandleConnectivityChange,
-  IOSInitialConnectivity,
-  IOSRemoveListener,
-} from './helpers/PlatformCheck/ios/ios';
-import {
-  AndroidHandleConnectivityChange,
-  AndroidInitialConnectivity,
-  AndroidRemoveListener,
-} from './helpers/PlatformCheck/android/android'; */
 
 import {
   LoginNavigator,
@@ -159,57 +146,13 @@ const MainNavigator = createDrawerNavigator(
 );
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-    /*   this.handleConnectivityChange = this.handleConnectivityChange.bind(this);
-      this.InitialConnectivity = this.InitialConnectivity.bind(this);
-      this.RemoveConnectivity = this.RemoveConnectivity.bind(this); */
-  }
 
   componentDidMount() {
     fetchDishes();
     fetchLeaders();
     fetchComments();
     fetchPromos();
-
-    // /////////////// NETINFO ////////////////////////
-
-    // Platform check
-
-    // Add eventlistener for all.
-    /*  this.InitialConnectivity();
-    this.handleConnectivityChange(); */
   }
-
-  componentWillUnmount() {
-    /*  this.RemoveConnectivity(); */
-  }
-
-  /* InitialConnectivity = () => {
-    console.log('INITIALCONNECTIVITY FROM MAINCOMP CALLED');
-    Platform.select({
-      ios: () => require(<IOSInitialConnectivity />),
-      android: () => require(<AndroidInitialConnectivity />),
-    });
-  };
-
-  handleConnectivityChange = () => {
-    console.log('HANDLECONNECTIVITY FROM MAINCOMP CALLED');
-    Platform.select({
-      ios: () => require(<IOSHandleConnectivityChange />),
-      android: () => require(<AndroidHandleConnectivityChange />),
-    });
-  };
-
-  RemoveConnectivity = () => {
-    console.log('REMOVECONNECTIVITY FROM MAINCOMP CALLED');
-    Platform.select({
-      ios: () => require(<IOSRemoveListener />),
-      android: () => require(<AndroidRemoveListener />),
-    });
-  };
- */
-  // ///////////////////////////////////////////////
 
   render() {
     return (

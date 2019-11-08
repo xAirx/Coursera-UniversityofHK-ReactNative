@@ -4,20 +4,15 @@ import {
   Text,
   View,
   ScrollView,
-  FlatList,
   Modal,
   SafeAreaView,
   Button,
-  Share,
 } from 'react-native';
 
+import { Rating, Input } from 'react-native-elements';
 import PropTypes from 'prop-types';
-import { Card, Icon, Rating, Input } from 'react-native-elements';
-/* import { Container, Row, Col } from 'reactstrap'; */
 import { connect } from 'react-redux';
-import * as Animatable from 'react-native-animatable';
 import SwipeOut from 'react-native-swipeout';
-import { baseUrl } from '../shared/baseurl';
 import { Loading } from './LoadingComponent';
 import {
   fetchDishes,
@@ -26,6 +21,9 @@ import {
   addFavorite,
   postComments,
 } from '../Redux/Api/ActionCreators';
+
+import RenderDish from './helpers/Components/RenderDish';
+import RenderComments from './helpers/Components/RenderComments';
 
 const styles = {
   alignItems: 'center',
@@ -50,103 +48,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(postComments(dishId, rating, author, comment));
   },
 });
-
-const formatter = new Intl.DateTimeFormat('en-GB');
-
-function RenderComments(props) {
-  const { comments } = props;
-  console.log('PROPS IN RENDERCOMMENTS ', props);
-  console.log('WE ARE RENDERING COMMENTS');
-  const renderCommentItem = ({ item, key }) => (
-    <View key={key} style={{ margin: 10 }}>
-      <Text style={{ fontSize: 14 }}>{item.comment}</Text>
-      <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
-      <Text style={{ fontSize: 12 }}>
-        {`-- ${item.author}, ${formatter.format(Date.parse(item.date))}`}
-      </Text>
-    </View>
-  );
-
-  return (
-    <Animatable.View animation="fadeInUp" duration={2000} delay={1000}>
-      <Card title="Comments">
-        <FlatList
-          data={comments}
-          renderItem={renderCommentItem}
-          keyExtractor={item => item.id.toString()}
-        />
-      </Card>
-    </Animatable.View>
-  );
-}
-
-RenderComments.propTypes = {
-  // // WTF?
-  /*   item: PropTypes.array.isRequired, */
-  comments: PropTypes.array.isRequired,
-};
-
-function RenderDish(props) {
-  const { dish } = props;
-
-  const shareDish = (title, message, url) => {
-    Share.share(
-      {
-        title,
-        message: `${title}: ${message} ${url}`,
-        url,
-      },
-      {
-        dialogTitle: `Share ${title}`,
-      }
-    );
-  };
-
-  if (dish != null) {
-    return (
-      <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
-        <Text style={{ margin: 10 }}>{dish.description}</Text>
-
-        <View style={styles}>
-          <Icon
-            raised
-            reverse
-            name={props.favorite ? 'heart' : 'heart-o'}
-            type="font-awesome"
-            color="#f50"
-            onPress={() => props.toggleFavorite()}
-          />
-          <Icon
-            raised
-            reverse
-            name="pencil"
-            type="font-awesome"
-            color="purple"
-            onPress={() => props.toggleModal(true)}
-          />
-          <Icon
-            raised
-            reverse
-            name="share"
-            type="font-awesome"
-            color="#51D2A8"
-            style={styles.cardItem}
-            onPress={() =>
-              shareDish(dish.name, dish.description, baseUrl + dish.image)
-            }
-          />
-        </View>
-      </Card>
-    );
-  }
-
-  return <View></View>;
-}
-
-RenderDish.propTypes = {
-  dish: PropTypes.object.isRequired,
-  favorite: PropTypes.bool.isRequired,
-};
 
 class DishDetail extends Component {
   constructor(props) {
