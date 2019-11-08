@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View, Share } from 'react-native';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'react-native-elements';

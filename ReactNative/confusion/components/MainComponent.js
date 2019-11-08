@@ -146,7 +146,6 @@ const MainNavigator = createDrawerNavigator(
 );
 
 class Main extends Component {
-
   componentDidMount() {
     fetchDishes();
     fetchLeaders();

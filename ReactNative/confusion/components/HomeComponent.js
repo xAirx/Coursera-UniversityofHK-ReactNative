@@ -1,22 +1,19 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View, Text, Animated, Easing } from 'react-native';
-import { Card } from 'react-native-elements';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
-import { baseUrl } from '../shared/baseurl';
 
 import {
   fetchDishes,
   fetchPromos,
   fetchLeaders,
 } from '../Redux/Api/ActionCreators';
-
-import { Loading } from './LoadingComponent';
 /* import { DISHES } from '../shared/dishes';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders'; */
+import RenderItem from './helpers/Components/RenderItem';
 
 const mapStateToProps = state => ({
   dishes: state.dishes,
@@ -29,35 +26,6 @@ const mapDispatchToProps = dispatch => ({
   fetchPromos: dispatch(fetchPromos()),
   fetchLeaders: dispatch(fetchLeaders()),
 });
-
-function RenderItem(props) {
-  const { item } = props;
-
-  if (props.isLoading) {
-    return <Loading />;
-  }
-  if (props.errMess) {
-    return (
-      <View>
-        <Text>{props.errMess}</Text>
-      </View>
-    );
-  }
-  /* if (props.) */
-  if (item != null) {
-    return (
-      <Card
-        featuredTitle={item.name}
-        featuredSubtitle={item.designation}
-        image={{ uri: baseUrl + item.image }}
-      >
-        <Text style={{ margin: 10 }}>{item.description}</Text>
-      </Card>
-    );
-  }
-
-  return <View></View>;
-}
 
 // IF we pass a prop that it cannot handle.
 // Will give an error.
