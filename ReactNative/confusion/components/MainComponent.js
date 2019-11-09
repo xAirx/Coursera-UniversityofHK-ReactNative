@@ -47,7 +47,7 @@ const MainNavigator = createDrawerNavigator(
             name="sign-in"
             type="font-awesome"
             size={24}
-            iconStyle={{ color: tintColor }}
+            iconStyle={{ color: 'white' }}
           />
         ),
       },
@@ -59,7 +59,12 @@ const MainNavigator = createDrawerNavigator(
         drawerLabel: 'Home',
         // eslint-disable-next-line react/prop-types
         drawerIcon: ({ tintColor, focused }) => (
-          <Icon name="home" type="font-awesome" size={24} color={tintColor} />
+          <Icon
+            name="home"
+            type="font-awesome"
+            size={24}
+            iconStyle={{ color: 'white' }}
+          />
         ),
       },
     },
@@ -74,7 +79,7 @@ const MainNavigator = createDrawerNavigator(
             name="info-circle"
             type="font-awesome"
             size={24}
-            color={tintColor}
+            iconStyle={{ color: 'white' }}
           />
         ),
       },
@@ -87,7 +92,12 @@ const MainNavigator = createDrawerNavigator(
         // ADDING PROPTYPES
         // eslint-disable-next-line react/prop-types
         drawerIcon: ({ tintColor, focused }) => (
-          <Icon name="list" ype="font-awesome" size={24} color={tintColor} />
+          <Icon
+            name="list"
+            ype="font-awesome"
+            size={24}
+            iconStyle={{ color: 'white' }}
+          />
         ),
       },
     },
@@ -101,7 +111,7 @@ const MainNavigator = createDrawerNavigator(
             name="cutlery"
             type="font-awesome"
             size={24}
-            iconStyle={{ color: tintColor }}
+            iconStyle={{ color: 'white' }}
           />
         ),
       },
@@ -116,7 +126,7 @@ const MainNavigator = createDrawerNavigator(
             name="heart"
             type="font-awesome"
             size={24}
-            iconStyle={{ color: tintColor }}
+            iconStyle={{ color: 'white' }}
           />
         ),
       },
@@ -133,7 +143,7 @@ const MainNavigator = createDrawerNavigator(
             name="address-card"
             type="font-awesome"
             size={22}
-            color={tintColor}
+            iconStyle={{ color: 'white' }}
           />
         ),
       },
@@ -141,8 +151,18 @@ const MainNavigator = createDrawerNavigator(
   },
   {
     initialRouteName: 'Home',
-    drawerBackgroundColor: '#D1C4E9',
+    drawerBackgroundColor: '#1a515b',
     contentComponent: CustomDrawerContentComponent,
+    contentOptions: {
+      activeTintColor: 'white',
+      activeBackgroundColor: 'transparent',
+      inactiveTintColor: 'grey',
+      inactiveBackgroundColor: 'transparent',
+      labelStyle: {
+        fontSize: 15,
+        marginLeft: 10,
+      },
+    },
   }
 );
 

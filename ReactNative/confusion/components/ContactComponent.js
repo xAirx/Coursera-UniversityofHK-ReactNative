@@ -34,7 +34,7 @@ export default class Contact extends PureComponent {
           </Text>
           <Button
             title="Contact us"
-            buttonStyle={{ backgroundColor: '#512DA8' }}
+            buttonStyle={{ backgroundColor: '#1a515b' }}
             /* icon={<Icon name="envelope-o" type="font-awesome" color="white" />} */
             onPress={this.sendMail}
           />

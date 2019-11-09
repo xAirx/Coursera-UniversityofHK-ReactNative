@@ -87,11 +87,16 @@ export default class Login extends Component {
               leftIcon={{ type: 'font-awesome', name: 'key' }}
               onChangeText={password => this.setstate({ password })}
               value={password}
+              color="#1a515b"
               containerStyle={styles.formInput}
             />
             <CheckBox
               title="Remember Me"
               center
+              iconType="material"
+              checkedIcon="clear"
+              uncheckedIcon="add"
+              checkedColor="red"
               checked={remember}
               onPress={() => this.setState({ remember: !remember })}
               containerStyle={styles.formCheckbox}
@@ -100,7 +105,8 @@ export default class Login extends Component {
               <Button
                 onPress={() => this.handleLogin()}
                 title="Login"
-                color="#512DA8"
+                color="#1a515b"
+                buttonStyle={{ backgroundColor: '#1a515b' }}
               />
             </View>
           </Card>

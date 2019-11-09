@@ -22,9 +22,10 @@ import DishDetail from '../../DishDetailComponent';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#1a515b',
   },
   drawerHeader: {
-    backgroundColor: '#512DA8',
+    backgroundColor: '#1a515b',
     height: 140,
     alignItems: 'center',
     justifyContent: 'center',
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   drawerImage: {
+    backgroundColor: '#1a515b',
     margin: 10,
     width: 80,
     height: 60,
@@ -49,11 +51,18 @@ export const MenuNavigator = createStackNavigator(
       screen: Menu,
       // Hvor kommer disse navigation options fra ?
       navigationOptions: ({ navigation }) => ({
+        headerStyle: {
+          backgroundColor: '#1a515b',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+          color: 'white',
+        },
         headerLeft: (
           <Icon
             name="menu"
             size={24}
-            color="white"
+            iconStyle={{ color: 'white', marginLeft: 20 }}
             onPress={() => navigation.toggleDrawer()}
           />
         ),
@@ -63,15 +72,23 @@ export const MenuNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Menu',
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
-      headerTintColor: '#fff',
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
-    },
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          iconStyle={{ color: 'white', marginLeft: 20 }}
+          onPress={() => navigation.toggleDrawer()}
+        />
+      ),
+    }),
   }
 );
 
@@ -82,17 +99,17 @@ export const HomeNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
-      headerTintColor: '#fff',
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
       headerLeft: (
         <Icon
           name="menu"
           size={24}
-          color="white"
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -106,17 +123,17 @@ export const ReservationNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
-      headerTintColor: '#fff',
       headerLeft: (
         <Icon
           name="menu"
           size={24}
-          iconStyle={{ color: 'white' }}
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -130,17 +147,18 @@ export const ContactNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
-      headerTintColor: '#fff',
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
       headerLeft: (
         <Icon
           name="menu"
           size={24}
           color="white"
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -154,17 +172,18 @@ export const AboutNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
-      headerTintColor: '#fff',
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
       headerLeft: (
         <Icon
           name="menu"
           size={24}
           color="white"
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -179,17 +198,17 @@ export const FavoritesNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
+      headerTintColor: 'white',
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
-      headerTintColor: '#fff',
       headerLeft: (
         <Icon
           name="menu"
           size={24}
-          iconStyle={{ color: 'white' }}
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -204,17 +223,17 @@ export const LoginNavigator = createStackNavigator(
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
-        backgroundColor: '#512DA8',
+        backgroundColor: '#1a515b',
       },
       headerTitleStyle: {
-        color: '#fff',
+        color: 'white',
       },
       headerTintColor: '#fff',
       headerLeft: (
         <Icon
           name="menu"
           size={24}
-          iconStyle={{ color: 'white' }}
+          iconStyle={{ color: 'white', marginLeft: 20 }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),
@@ -230,15 +249,21 @@ export const CustomDrawerContentComponent = props => (
       forceInset={{ top: 'always', horizontal: 'never' }}
     >
       <View style={styles.drawerHeader}>
-        <View style={{ flex: 1 }}>
-          <Image
+        {/*   <View
+          style={{
+            flex: 1,
+            alignItems: 'left',
+            justifyContent: 'left',
+          }}
+        > */}
+        {/*  <Image
             // eslint-disable-next-line global-require
             source={require('./images/logo.png')}
             style={styles.drawerImage}
-          />
-        </View>
-        <View style={{ flex: 2 }}>
-          <Text style={styles.drawerHeaderText}>Ristorante Con Fusion</Text>
+          /> */}
+        {/* </View> */}
+        <View style={{ flex: 1, marginLeft: 20 }}>
+          <Text style={styles.drawerHeaderText}>Ristorante Fusion</Text>
         </View>
       </View>
       {/*      EXPLAIN  whatever the props are just pass it into the drawer items, rest operator.

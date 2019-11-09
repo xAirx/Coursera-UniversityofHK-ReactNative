@@ -18,7 +18,7 @@ export default function RenderComments({ comments }) {
         name="star"
         type="font-awesome"
         color="#f50"
-        size="5"
+        size="15"
         onPress={() => console.log('hello')}
       />
     ));
