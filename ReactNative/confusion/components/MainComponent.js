@@ -2,6 +2,7 @@
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { createDrawerNavigator } from 'react-navigation';
+import NetInfo from '@react-native-community/netinfo';
 
 /* import PropTypes from 'prop-types'; */
 import { Icon } from 'react-native-elements';
@@ -151,7 +152,41 @@ class Main extends Component {
     fetchLeaders();
     fetchComments();
     fetchPromos();
+
+    NetInfo.getConnectionInfo().then(connectionInfo => {
+      console.log(
+        `Initial, type: ${connectionInfo.type}, effectiveType: ${connectionInfo.effectiveType}`
+      );
+    });
+
+    NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
   }
+
+  componentWillUnmount() {
+    NetInfo.removeEventListener(
+      'connectionChange',
+      this.handleConnectivityChange
+    );
+  }
+
+  handleConnectivityChange = connectionInfo => {
+    switch (connectionInfo.type) {
+      case 'none':
+        console.log('You are now offline!');
+        break;
+      case 'wifi':
+        console.log('You are now connected to WiFi!');
+        break;
+      case 'cellular':
+        console.log('You are now connected to Cellular!');
+        break;
+      case 'unknown':
+        console.log('You now have unknown connection!');
+        break;
+      default:
+        break;
+    }
+  };
 
   render() {
     return (
