@@ -93,6 +93,7 @@ Home.propTypes = {
   promotions: PropTypes.object.isRequired,
   dishes: PropTypes.object.isRequired,
   leaders: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default connect(

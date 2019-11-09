@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import { Card, Icon, Input, CheckBox } from 'react-native-elements';
+import { Input, CheckBox } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 
-class Login extends Component {
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    margin: 20,
+  },
+  formInput: {
+    margin: 40,
+  },
+  formCheckbox: {
+    margin: 40,
+    backgroundColor: null,
+  },
+  formButton: {
+    margin: 60,
+  },
+});
+
+export default class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -33,12 +50,15 @@ class Login extends Component {
 
   handleLogin() {
     console.log(JSON.stringify(this.state));
-    if (this.state.remember)
+
+    const { remember, username, password } = this.state;
+
+    if (remember)
       SecureStore.setItemAsync(
         'userinfo',
         JSON.stringify({
-          username: this.state.username,
-          password: this.state.password,
+          username: { username },
+          password: { password },
         })
       ).catch(error => console.log('Could not save user info', error));
     else
@@ -50,27 +70,29 @@ class Login extends Component {
   // ///////////////////////////////////////
 
   render() {
+    const { remember, username, password } = this.state;
+
     return (
       <View style={styles.container}>
         <Input
           placeholder="Username"
           leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-          onChangeText={username => this.setState({ username })}
-          value={this.state.username}
+          onChangeText={u => this.setState({ username: u })}
+          value={username}
           containerStyle={styles.formInput}
         />
         <Input
           placeholder="Password"
           leftIcon={{ type: 'font-awesome', name: 'key' }}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
+          onChangeText={p => this.setstate({ password: p })}
+          value={password}
           containerStyle={styles.formInput}
         />
         <CheckBox
           title="Remember Me"
           center
-          checked={this.state.remember}
-          onPress={() => this.setState({ remember: !this.state.remember })}
+          checked={remember}
+          onPress={() => this.setState({ remember: !remember })}
           containerStyle={styles.formCheckbox}
         />
         <View style={styles.formButton}>
@@ -84,22 +106,3 @@ class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    margin: 20,
-  },
-  formInput: {
-    margin: 40,
-  },
-  formCheckbox: {
-    margin: 40,
-    backgroundColor: null,
-  },
-  formButton: {
-    margin: 60,
-  },
-});
-
-export default Login;

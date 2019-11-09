@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Card } from 'react-native-elements';
+import PropTypes from 'prop-types';
 import { baseUrl } from '../../../shared/baseurl';
 import { Loading } from '../../LoadingComponent';
 
@@ -33,3 +34,9 @@ export default function RenderItem(props) {
 
   return <View></View>;
 }
+
+RenderItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errMess: PropTypes.object.isRequired,
+};

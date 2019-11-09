@@ -51,5 +51,7 @@ export default function RenderComments({ comments }) {
 
 RenderComments.propTypes = {
   // // WTF?
-  /*   item: PropTypes.array.isRequired, */
+  comments: PropTypes.array.isRequired,
+  item: PropTypes.object.isRequired,
+  key: PropTypes.object.isRequired,
 };

@@ -61,7 +61,7 @@ class About extends Component {
           <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
             <History />
             <Card title="Corporate Leadership">
-              <Text>{this.props.leaders.errMess}</Text>
+              <Text>{leaders.errMess}</Text>
             </Card>
           </Animatable.View>
         </ScrollView>
@@ -74,7 +74,7 @@ class About extends Component {
           <History />
           <Card title="Corporate Leadership">
             <FlatList
-              data={this.props.leaders.leaders}
+              data={leaders.leaders}
               renderItem={renderMenuItem}
               keyExtractor={item => item.id.toString()}
             />

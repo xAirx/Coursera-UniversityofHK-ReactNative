@@ -72,4 +72,6 @@ export default function RenderDish(props) {
 RenderDish.propTypes = {
   dish: PropTypes.object.isRequired,
   favorite: PropTypes.bool.isRequired,
+  toggleFavorite: PropTypes.object.isRequired,
+  toggleModal: PropTypes.object.isRequired,
 };

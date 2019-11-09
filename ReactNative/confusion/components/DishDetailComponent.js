@@ -242,6 +242,10 @@ DishDetail.propTypes = {
   dishes: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
   comments: PropTypes.object.isRequired,
+  removeFavorite: PropTypes.object.isRequired,
+  addFavorite: PropTypes.object.isRequired,
+  favorites: PropTypes.object.isRequired,
+  postComments: PropTypes.object.isRequired,
 };
 
 export default connect(

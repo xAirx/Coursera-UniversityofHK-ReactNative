@@ -23,7 +23,11 @@ export default function RenderMenuItems(props) {
         featured
         onPress={() => {
           /*           console.log(navigation) ||
-           */ navigation.navigate('DishDetail', { dishId: item.id });
+
+           */ navigation.navigate(
+            'DishDetail',
+            { dishId: item.id }
+          );
         }}
         // eslint-disable-next-line global-require
         imageSrc={{ uri: baseUrl + item.image }}
@@ -57,6 +61,11 @@ export default function RenderMenuItems(props) {
 RenderMenuItems.propTypes = {
   /*   item: PropTypes.array.isRequired, */
   dishes: PropTypes.object.isRequired,
+  name: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
+  item: PropTypes.object.isRequired,
+  index: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 /* export default function RenderComments(props) {
