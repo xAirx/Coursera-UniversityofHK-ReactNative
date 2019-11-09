@@ -54,14 +54,14 @@ class Home extends Component {
         <View
           style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}
         >
-          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <Animatable.View animation="fadeInDown" duration={500} delay={200}>
             <RenderItem
               item={this.props.dishes.dishes.filter(dish => dish.featured)[0]}
               isLoading={this.props.dishes.isLoading}
               erreMess={this.props.dishes.erreMess}
             />
           </Animatable.View>
-          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <Animatable.View animation="fadeInDown" duration={500} delay={200}>
             <RenderItem
               item={
                 this.props.promotions.promotions.filter(
@@ -72,7 +72,7 @@ class Home extends Component {
               erreMess={this.props.promotions.erreMess}
             />
           </Animatable.View>
-          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <Animatable.View animation="fadeInDown" duration={500} delay={200}>
             <RenderItem
               item={
                 this.props.leaders.leaders.filter(leader => leader.featured)[0]

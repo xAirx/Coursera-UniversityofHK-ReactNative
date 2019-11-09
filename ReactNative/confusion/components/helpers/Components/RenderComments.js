@@ -37,7 +37,7 @@ export default function RenderComments({ comments }) {
   );
 
   return (
-    <Animatable.View animation="fadeInUp" duration={2000} delay={1000}>
+    <Animatable.View animation="fadeInUp" duration={500} delay={200}>
       <Card title="Comments">
         <FlatList
           data={comments}

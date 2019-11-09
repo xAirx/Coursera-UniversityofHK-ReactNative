@@ -15,7 +15,7 @@ export default function RenderMenuItems(props) {
   // We set the ITEM and Key here we want to loop over.
   const renderMenuItem = ({ item, index }) => (
     // We set the ITEM and Key here we want to loop over.
-    <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+    <Animatable.View animation="fadeInDown" duration={500} delay={200}>
       <Tile
         key={index}
         title={item.name}

@@ -58,7 +58,7 @@ class About extends Component {
     if (leaders.errMess) {
       return (
         <ScrollView>
-          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <Animatable.View animation="fadeInDown" duration={500} delay={200}>
             <History />
             <Card title="Corporate Leadership">
               <Text>{leaders.errMess}</Text>
@@ -70,7 +70,7 @@ class About extends Component {
 
     return (
       <ScrollView>
-        <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+        <Animatable.View animation="fadeInDown" duration={500} delay={200}>
           <History />
           <Card title="Corporate Leadership">
             <FlatList

@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import * as MailComposer from 'expo-mail-composer';
+import * as Animatable from 'react-native-animatable';
 
 export default class Contact extends PureComponent {
   sendMail() {
@@ -15,7 +16,7 @@ export default class Contact extends PureComponent {
 
   render() {
     return (
-      <>
+      <Animatable.View animation="fadeInDown" duration={500} delay={1000}>
         <Card title="Contact Information">
           <Text style={{ margin: 10 }}>
             121, Clear Water Bay Road{'\n'}
@@ -32,13 +33,13 @@ export default class Contact extends PureComponent {
             {'\n'}
           </Text>
           <Button
-            title="Send Email"
+            title="Contact us"
             buttonStyle={{ backgroundColor: '#512DA8' }}
-            icon={<Icon name="envelope-o" type="font-awesome" color="white" />}
+            /* icon={<Icon name="envelope-o" type="font-awesome" color="white" />} */
             onPress={this.sendMail}
           />
         </Card>
-      </>
+      </Animatable.View>
     );
   }
 }

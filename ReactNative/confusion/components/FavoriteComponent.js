@@ -48,7 +48,7 @@ class Favorites extends Component {
       ];
       return (
         <SwipeOut right={rightButton} autoClose>
-          <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
+          <Animatable.View animation="fadeInDown" duration={500} delay={200}>
             <ListItem
               key={index}
               title={item.name}

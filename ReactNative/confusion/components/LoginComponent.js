@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import { Input, CheckBox } from 'react-native-elements';
+import { Card, Input, CheckBox } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
+import * as Animatable from 'react-native-animatable';
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     margin: 20,
   },
-  formInput: {
-    margin: 40,
-  },
+  formInput: { marginBottom: 50, marginTop: 50 },
   formCheckbox: {
     margin: 40,
     backgroundColor: null,
@@ -73,36 +72,40 @@ export default class Login extends Component {
     const { remember, username, password } = this.state;
 
     return (
-      <View style={styles.container}>
-        <Input
-          placeholder="Username"
-          leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-          onChangeText={u => this.setState({ username: u })}
-          value={username}
-          containerStyle={styles.formInput}
-        />
-        <Input
-          placeholder="Password"
-          leftIcon={{ type: 'font-awesome', name: 'key' }}
-          onChangeText={p => this.setstate({ password: p })}
-          value={password}
-          containerStyle={styles.formInput}
-        />
-        <CheckBox
-          title="Remember Me"
-          center
-          checked={remember}
-          onPress={() => this.setState({ remember: !remember })}
-          containerStyle={styles.formCheckbox}
-        />
-        <View style={styles.formButton}>
-          <Button
-            onPress={() => this.handleLogin()}
-            title="Login"
-            color="#512DA8"
-          />
+      <Animatable.View animation="fadeInDown" duration={500} delay={200}>
+        <View style={styles.container}>
+          <Card>
+            <Input
+              placeholder="Username"
+              leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+              onChangeText={username => this.setState({ username })}
+              value={username}
+              containerStyle={styles.formInput}
+            />
+            <Input
+              placeholder="Password"
+              leftIcon={{ type: 'font-awesome', name: 'key' }}
+              onChangeText={password => this.setstate({ password })}
+              value={password}
+              containerStyle={styles.formInput}
+            />
+            <CheckBox
+              title="Remember Me"
+              center
+              checked={remember}
+              onPress={() => this.setState({ remember: !remember })}
+              containerStyle={styles.formCheckbox}
+            />
+            <View style={styles.formButton}>
+              <Button
+                onPress={() => this.handleLogin()}
+                title="Login"
+                color="#512DA8"
+              />
+            </View>
+          </Card>
         </View>
-      </View>
+      </Animatable.View>
     );
   }
 }
