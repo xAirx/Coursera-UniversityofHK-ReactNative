@@ -100,6 +100,31 @@ class Reservation extends Component {
   }
 
   handleReservation() {
+    /*   console.log(JSON.stringify(this.state));
+      const message = `Number of guests: ${this.state.guests}\nSmoking? ${this.state.smoking}Date and Time: ${this.state.date}`;
+      Alert.alert(
+        'Your Reservation OK?',
+        message,
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {
+              console.log('Reservation Cancelled');
+              this.resetForm();
+            },
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => {
+              console.log('Reservation Submitted');
+              this.resetForm();
+            },
+            style: 'ok',
+          },
+        ],
+        { cancelable: false }
+      ); */
     console.log(JSON.stringify(this.state));
     this.toggleModal();
   }
@@ -109,6 +134,7 @@ class Reservation extends Component {
     let permission = await Permissions.getAsync(
       Permissions.USER_FACING_NOTIFICATIONS
     );
+    console.log('THIS IS STATUS FROM NOTIFICATION', permission.status);
     if (permission.status !== 'granted') {
       permission = await Permissions.askAsync(
         Permissions.USER_FACING_NOTIFICATIONS
@@ -117,10 +143,12 @@ class Reservation extends Component {
         Alert.alert('Permission not granted to show notifications');
       }
     }
+    console.log('THIS IS OUR FINAL PERMISSION', permission);
     return permission;
   }
 
   async presentLocalNotification(date) {
+    console.log('PRESENTLOCALNOTIFICATION I AM CALLED FORM MODAL');
     await this.obtainNotificationPermission();
     Notifications.presentLocalNotificationAsync({
       title: 'Your Reservation',
@@ -135,6 +163,7 @@ class Reservation extends Component {
       },
     });
   }
+
   // ///////////////////////////////////////////////
   /*   handleReservation() {
       Alert.alert(
@@ -270,8 +299,8 @@ class Reservation extends Component {
                 />
                 <Button
                   onPress={() => {
-                    this.dismissModal();
                     this.presentLocalNotification(this.state.date);
+                    this.dismissModal();
                     this.resetForm();
                   }}
                   color="#512DA8"
