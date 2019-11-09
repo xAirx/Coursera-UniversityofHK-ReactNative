@@ -96,10 +96,7 @@ export default class Login extends Component {
           <CheckBox
             title="Remember Me"
             center
-            iconType="material"
-            checkedIcon="clear"
-            uncheckedIcon="add"
-            checkedColor="red"
+
             checked={remember}
             onPress={() => this.setState({ remember: !remember })}
             containerStyle={styles.formCheckbox}
