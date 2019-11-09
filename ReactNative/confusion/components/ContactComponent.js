@@ -1,9 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
+import { Card, Button, Icon, Tile } from 'react-native-elements';
 import * as MailComposer from 'expo-mail-composer';
 import * as Animatable from 'react-native-animatable';
+import { baseUrl } from '../shared/baseurl';
 
 export default class Contact extends PureComponent {
   sendMail() {
@@ -17,7 +18,12 @@ export default class Contact extends PureComponent {
   render() {
     return (
       <Animatable.View animation="fadeInDown" duration={500} delay={1000}>
-        <Card title="Contact Information">
+        <Tile
+          title="Contact Information"
+          featured
+          imageSrc={{ url: 'http://localhost:3000/images/maps.png' }}
+        ></Tile>
+        <Card>
           <Text style={{ margin: 10 }}>
             121, Clear Water Bay Road{'\n'}
             {'\n'}

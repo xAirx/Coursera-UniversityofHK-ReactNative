@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, View, Text, Alert } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import SwipeOut from 'react-native-swipeout';
 import * as Animatable from 'react-native-animatable';

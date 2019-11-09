@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import DatePicker from 'react-native-datepicker';
-import { Card } from 'react-native-elements';
+import { Card, Tile } from 'react-native-elements';
 /* import { Appearance, useColorScheme } from 'react-native-appearance';
  */
 const styles = StyleSheet.create({
@@ -209,7 +209,12 @@ class Reservation extends Component {
     return (
       <ScrollView>
         {/* <Animatable.View animation={zoomOut}> */}
-        <Animatable.View animation="fadeInDown" duration={500} delay={200}>
+        <Animatable.View animation="fadeInDown" duration={500} delay={1000}>
+          <Tile
+            title="Reserve Table"
+            featured
+            imageSrc={{ url: 'http://localhost:3000/images/reserved.png' }}
+          ></Tile>
           <Card>
             <View style={styles.formRow}>
               <Text style={styles.formLabel}>Number of Guests</Text>

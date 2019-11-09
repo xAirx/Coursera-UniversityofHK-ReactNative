@@ -84,7 +84,11 @@ export const MenuNavigator = createStackNavigator(
         <Icon
           name="menu"
           size={24}
-          iconStyle={{ color: 'white', marginLeft: 20 }}
+          iconStyle={{
+            color: 'white',
+            marginLeft: 20,
+            backgroundColor: 'transparent',
+          }}
           onPress={() => navigation.toggleDrawer()}
         />
       ),

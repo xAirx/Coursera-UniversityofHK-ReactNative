@@ -1,11 +1,16 @@
 import React from 'react';
-import { Text, Card } from 'react-native-elements';
+import { Text, Tile, Card } from 'react-native-elements';
 
 export default function History() {
   return (
     <>
-      <Card title="Our History">
-        <Text style={{ margin: 10 }}>
+      <Tile
+        title="Our Leadership"
+        featured
+        // eslint-disable-next-line global-require
+        imageSrc={{ url: 'http://localhost:3000/images/history.png' }}
+      >
+        <Card style={{ margin: 10 }}>
           Started in 2010, Ristorante con Fusion quickly established itself as a
           culinary icon par excellence in Hong Kong.
           {'\n'}
@@ -22,8 +27,8 @@ export default function History() {
           The restaurant traces its humble beginnings to The Frying Pan, a
           successful chain started by our CEO, Mr. Peter Pan, that featured for
           the first time the world's best cuisines in a pan.
-        </Text>
-      </Card>
+        </Card>
+      </Tile>
     </>
   );
 }

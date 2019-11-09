@@ -74,7 +74,7 @@ class About extends Component {
           <History />
           <Card title="Corporate Leadership">
             <FlatList
-              data={leaders.leaders}
+              data={this.props.leaders.leaders}
               renderItem={renderMenuItem}
               keyExtractor={item => item.id.toString()}
             />

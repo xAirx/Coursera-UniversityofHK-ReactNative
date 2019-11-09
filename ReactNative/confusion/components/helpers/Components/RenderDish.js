@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, View, Share } from 'react-native';
 import PropTypes from 'prop-types';
-import { Card, Icon } from 'react-native-elements';
+import { Card, Icon, Tile } from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../../../shared/baseurl';
 
 const styles = {
@@ -30,8 +31,17 @@ export default function RenderDish(props) {
 
   if (dish != null) {
     return (
-      <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}>
-        <Text style={{ margin: 10 }}>{dish.description}</Text>
+      <Animatable.View animation="fadeInDown" duration={500} delay={200}>
+        <Tile
+          height={480}
+          title={dish.name}
+          caption={dish.description}
+          featured
+          // eslint-disable-next-line global-require
+          imageSrc={{ uri: baseUrl + dish.image }}
+        />
+        {/* <Card featuredTitle={dish.name} image={{ uri: baseUrl + dish.image }}> */}
+        {/*  <Text style={{ margin: 10 }}>{dish.description}</Text> */}
 
         <View style={styles}>
           <Icon
@@ -62,7 +72,7 @@ export default function RenderDish(props) {
             }
           />
         </View>
-      </Card>
+      </Animatable.View>
     );
   }
 

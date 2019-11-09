@@ -1,14 +1,15 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Car, Tile } from 'react-native-elements';
 import PropTypes from 'prop-types';
+import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../../../shared/baseurl';
 import { Loading } from '../../LoadingComponent';
 
 export default function RenderItem(props) {
   const { item } = props;
-
+  const { navigation } = props;
   if (props.isLoading) {
     return <Loading />;
   }
@@ -22,13 +23,16 @@ export default function RenderItem(props) {
   /* if (props.) */
   if (item != null) {
     return (
-      <Card
-        featuredTitle={item.name}
-        featuredSubtitle={item.designation}
-        image={{ uri: baseUrl + item.image }}
-      >
-        <Text style={{ margin: 10 }}>{item.description}</Text>
-      </Card>
+      <Animatable.View animation="fadeInDown" duration={500} delay={200}>
+        <Tile
+          height={280}
+          title={item.name}
+          caption={item.description}
+          featured
+          // eslint-disable-next-line global-require
+          imageSrc={{ uri: baseUrl + item.image }}
+        />
+      </Animatable.View>
     );
   }
 
