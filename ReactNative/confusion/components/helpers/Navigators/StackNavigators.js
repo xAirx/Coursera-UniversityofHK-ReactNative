@@ -222,17 +222,17 @@ export const FavoritesNavigator = createStackNavigator(
 
 export const LoginNavigator = createStackNavigator(
   {
-    Login: { screen: Login },
+    Login,
   },
   {
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: '#1a515b',
       },
+      headerTintColor: 'white',
       headerTitleStyle: {
         color: 'white',
       },
-      headerTintColor: '#fff',
       headerLeft: (
         <Icon
           name="menu"

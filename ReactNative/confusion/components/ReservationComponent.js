@@ -104,33 +104,34 @@ class Reservation extends Component {
   }
 
   handleReservation() {
-    /*   console.log(JSON.stringify(this.state));
-      const message = `Number of guests: ${this.state.guests}\nSmoking? ${this.state.smoking}Date and Time: ${this.state.date}`;
-      Alert.alert(
-        'Your Reservation OK?',
-        message,
-        [
-          {
-            text: 'Cancel',
-            onPress: () => {
-              console.log('Reservation Cancelled');
-              this.resetForm();
-            },
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => {
-              console.log('Reservation Submitted');
-              this.resetForm();
-            },
-            style: 'ok',
-          },
-        ],
-        { cancelable: false }
-      ); */
     console.log(JSON.stringify(this.state));
-    this.toggleModal();
+    const message = `Number of guests: ${this.state.guests}\nSmoking? ${this.state.smoking}Date and Time: ${this.state.date}`;
+    Alert.alert(
+      'Your Reservation OK?',
+      message,
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {
+            console.log('Reservation Cancelled');
+            this.resetForm();
+          },
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            console.log('Reservation Submitted');
+            this.resetForm();
+            this.presentLocalNotification(this.state.date);
+          },
+          style: 'ok',
+        },
+      ],
+      { cancelable: false }
+    );
+    console.log(JSON.stringify(this.state));
+    /* this.toggleModal(); */
   }
 
   // /////////////NOTIFICATIONS//////////////////////
