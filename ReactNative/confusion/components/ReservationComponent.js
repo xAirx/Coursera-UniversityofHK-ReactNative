@@ -18,6 +18,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import DatePicker from 'react-native-datepicker';
 import { Card, Tile } from 'react-native-elements';
+import * as Calendar from 'expo-calendar';
 /* import { Appearance, useColorScheme } from 'react-native-appearance';
  */
 const styles = StyleSheet.create({
@@ -124,6 +125,7 @@ class Reservation extends Component {
             console.log('Reservation Submitted');
             this.resetForm();
             this.presentLocalNotification(this.state.date);
+            this.addReservationToCalendar(this.state.date);
           },
           style: 'ok',
         },
@@ -167,6 +169,60 @@ class Reservation extends Component {
         color: '#512DA8',
       },
     });
+  }
+
+  async obtainCalendarPermission() {
+    let permission = await Permissions.getAsync(Permissions.CALENDAR);
+    console.log('THIS IS STATUS FROM NOTIFICATION', permission.status);
+    if (permission.status !== 'granted') {
+      permission = await Permissions.askAsync(Permissions.CALENDAR);
+      if (permission.status !== 'granted') {
+        Alert.alert('Permission not granted to show notifications');
+      }
+    }
+    console.log('THIS IS OUR FINAL PERMISSION', permission);
+    return permission;
+  }
+
+  /* async grabCalendar() {
+    const Calendars = await Calendar.getCalendarsAsync();
+    console.log('THIS IS CALENDAR FROM GRABCALENDAR', Calendars);
+    return Calendars;
+  } */
+
+  /*  async addReservationToCalendar(date) {
+     console.log('PRESENTLOCALNOTIFICATION I AM CALLED FORM MODAL');
+     await this.obtainCalendarPermission();
+     Calendar.createEventAsync(Calendar.DEFAULT, {
+       title: 'Con Fusion Table Reservation',
+       body: `Reservation for ${new Date(Date.parse(date))} requested`,
+       location:
+         '121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong',
+       timeZone: 'Asia/Hong_Kong',
+       ios: {
+         sound: true,
+       },
+       android: {
+         sound: true,
+         vibrate: true,
+         color: '#512DA8',
+       },
+     });
+   } */
+
+  async addReservationToCalendar(date) {
+    await this.obtainCalendarPermission();
+    const startDate = new Date(Date.parse(date));
+    const endDate = new Date(Date.parse(date) + 2 * 60 * 60 * 1000); // 2 hours
+    Calendar.createEventAsync(Calendar.DEFAULT, {
+      title: 'Con Fusion Table Reservation',
+      location:
+        '121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong',
+      startDate,
+      endDate,
+      timeZone: 'Asia/Hong_Kong',
+    });
+    Alert.alert('Reservation has been added to your calendar');
   }
 
   // ///////////////////////////////////////////////
