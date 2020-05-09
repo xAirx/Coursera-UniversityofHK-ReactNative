@@ -1,4 +1,4 @@
-# Coursera-UniversityofHK-ReactNative
+# Usage 
 
 cd /confusion
 
