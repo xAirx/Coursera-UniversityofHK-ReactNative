@@ -39,7 +39,7 @@ Expected List of Features & Architecture
 	---------Login functionality, registration ----------
            
         Users can register and login 
-	-  Backend ****  Work in progress
+	-  Backend - done
 	-> Frontend started ****  Work in progress
      
    
@@ -59,7 +59,7 @@ Expected List of Features & Architecture
        Admin Panel Frontend structure - done
        
         Admin  GET all the registered users' information from the database and see it in the adminpanel
-	-  Backend ****  Work in progress
+	-  Backend - done
 	-> Frontend started ****  Work in progress
     
         Admin allowed / able to upload files, such as images when creating new dishes. and see it in the adminpanel
@@ -67,15 +67,14 @@ Expected List of Features & Architecture
 	-> Frontend started ****  Work in progress
     
         Admin allowed see and flag dishes as featured or not. and see it in the adminpanel
-	-  Backend ****  Work in progress
+	-  Backend - done
 	-> Frontend started ****  Work in progress
     
         Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel
-	-  Backend ****  Work in progress
+	-  Backend - done
 	-> Frontend started ****  Work in progress
 	      
-             
-	
+            
 
 &nbsp;
 &nbsp;   
