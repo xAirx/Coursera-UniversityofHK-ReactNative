@@ -20,53 +20,222 @@ Expected List of Features & Architecture
 &nbsp;
 &nbsp;
 
-	---------Login functionality, registration ----------
-           
-        #####Standard Express - Users can register and login 
-	
-	-  Backend - done
-	
-	
-	####Adding auth0.  
-	-  Backend - Work in progress
-	
-	
-	
-	-> Frontend started ****  Work in progress
-     
-   
-        --------User panel Setup ----------
-        
-        Via Userpanel able to update profilepicture, description etc.  
-	-  Backend ****  Work in progress
-	-> Frontend started ****  Work in progress
-        
-        Via Userpanel able to update a submitted comment and delete a submitted comment
-	-  Backend ****  Work in progress
-	-> Frontend started ****  Work in progress
-        
-        
-	------------ Admin Panel setup -----------
+# React Native FullStack App
 
-       Admin Panel Frontend structure - done
-       
-        Admin  GET all the registered users' information from the database and see it in the adminpanel
-	-  Backend - done
-	-> Frontend started ****  Work in progress
-    
-        Admin allowed / able to upload files, such as images when creating new dishes. and see it in the adminpanel
-	-  Backend ****  Work in progress
-	-> Frontend started ****  Work in progress
-    
-        Admin allowed see and flag dishes as featured or not. and see it in the adminpanel
-	-  Backend - done
-	-> Frontend started ****  Work in progress
-    
-        Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel
-	-  Backend - done
-	-> Frontend started ****  Work in progress
-	      
-            
+
+________________________________________
+
+
+
+# Connect Online Express API to frontend
+
+
+	- Image handling 
+	- 
+	-
+	-
+	-
+	-
+	
+
+
+________________________________________
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+# Backend
+
+________________________________________
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Users Panel:
+
+________________________________________
+
+	  
+### #1 TODO ------>	  Favorite functionality for users**
+
+
+
+ -implemented - NOT TESTED
+
+	  
+
+### #2 TODO ------>	  Comment and form support for the users to interact with the content.**
+
+
+
+#### NOT IMPLEMENTED MIRROR LEADERS ROUTE CODE
+
+  
+
+### #3 TODO ------>	  Support for a user to manage their own comments, delete functionality. -implemented - NOT TESTED
+
+
+
+  
+
+## #4 Via Userpanel able to update profilepicture, description etc.**  
+
+
+
+#### Backend **** Work in progress
+
+#### Frontend started **** Work in progress
+
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+## Frontend
+
+________________________________________
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+## Login functionality, registration
+
+________________________________________
+  
+
+### 1# Passport - Users can register and login 
+
+
+
+#### Backend - done
+
+
+
+#### (DESIGN) Frontend work in progress 
+
+
+
+
+
+### 2# Adding auth0.  
+
+
+
+#### Backend - Work in progress
+
+#### Frontend work in progress.
+
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+## User panel Setup
+
+________________________________________   
+
+
+
+### 1# Via Userpanel be able to see your favorites and delete and see new ones added
+
+	Current favorites menu point is removed and only accessible from userpanel...
+
+
+#### Backend *** needs testing 
+
+#### Frontend *** Work in progress. 
+
+
+
+
+
+### 2# Via Userpanel able to update a submitted comment and delete a submitted comment
+
+
+
+#### Backend **** Work in progress
+
+#### Frontend started **** Work in progress
+
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;  
+
+   
+
+## Admin Panel setup
+
+________________________________________
+
+
+
+### 1# Admin Panel Frontend structure
+
+  
+
+#### Admin GET all the registered users' information from the database and see it in the adminpanel
+
+
+##### Backend done **** Work in progress
+##### Frontend started **** Work in progress
+
+
+
+
+### 2# Admin allowed / able to upload files, such as images when creating new dishes. and see it in the adminpanel
+
+
+
+#### Backend **** Work in progress
+
+
+#### Frontend started **** Work in progress
+
+
+
+### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
+
+
+
+#### Backend - done
+
+#### Frontend started **** Work in progress
+
+
+
+### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
+
+
+
+#### Backend - done
+
+#### Frontend started **** Work in progressReact Native FullStack App
+
+
+
+
 
 &nbsp;
 &nbsp;   
