@@ -30,9 +30,8 @@ ________________________________________
 # Connect Online Express API to frontend
 
 
-	-
-	-
-	-
+	- Image handling 
+	- 
 	-
 	-
 	-
@@ -115,7 +114,6 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
 
 ## Login functionality, registration
 
@@ -159,6 +157,7 @@ ________________________________________
 
 ### 1# Via Userpanel be able to see your favorites and delete and see new ones added
 
+	Current favorites menu point is removed and only accessible from userpanel...
 
 
 #### Backend *** needs testing 
