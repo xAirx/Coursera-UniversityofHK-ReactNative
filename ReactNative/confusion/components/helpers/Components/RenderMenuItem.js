@@ -8,64 +8,58 @@ import { baseUrl } from '../../../shared/baseurl';
 import { Loading } from '../../LoadingComponent';
 
 export default function RenderMenuItems(props) {
-  const { dishes } = props;
-  const { navigation } = props;
-  console.log('navigationfromchild', navigation);
+        const { dishes } = props;
+        const { navigation } = props;
+        console.log('navigationfromchild', navigation);
 
-  // We set the ITEM and Key here we want to loop over.
-  const renderMenuItem = ({ item, index }) => (
-    // We set the ITEM and Key here we want to loop over.
-    <Animatable.View animation="fadeInDown" duration={500} delay={200}>
-      <Tile
-        key={index}
-        title={item.name}
-        caption={item.description}
-        featured
-        onPress={() => {
-          /*           console.log(navigation) ||
+        // We set the ITEM and Key here we want to loop over.
+        const renderMenuItem = ({ item, index }) => (
+                // We set the ITEM and Key here we want to loop over.
+                <Animatable.View animation="fadeInDown" duration={500} delay={200}>
+                        <Tile
+                                key={index}
+                                title={item.name}
+                                caption={item.description}
+                                featured
+                                onPress={() => {
+                                        /*           console.log(navigation) ||
 
            */ navigation.navigate(
-            'DishDetail',
-            { dishId: item.id }
-          );
-        }}
-        // eslint-disable-next-line global-require
-        imageSrc={{ uri: baseUrl + item.image }}
-      />
-    </Animatable.View>
-  );
+                                                'DishDetail',
+                                                { dishId: item.id }
+                                        );
+                                }}
+                                // eslint-disable-next-line global-require
+                                imageSrc={{ uri: baseUrl + item.image }}
+                        />
+                </Animatable.View>
+        );
 
-  // our props for this component will conatain one propery named navigation, we are extracting it here.
-  // When we press an item in the menucomponent  we will pass this information to dishdetailcomponent with the navigator
-  if (dishes.isLoading) {
-    return <Loading />;
-  }
+        // our props for this component will conatain one propery named navigation, we are extracting it here.
+        // When we press an item in the menucomponent  we will pass this information to dishdetailcomponent with the navigator
+        if (dishes.isLoading) {
+                return <Loading />;
+        }
 
-  if (dishes.errMess) {
-    return (
-      <View>
-        <Text>{dishes.errMess}</Text>
-      </View>
-    );
-  }
+        if (dishes.errMess) {
+                return (
+                        <View>
+                                <Text>{dishes.errMess}</Text>
+                        </View>
+                );
+        }
 
-  return (
-    <FlatList
-      data={dishes.dishes}
-      renderItem={renderMenuItem}
-      keyExtractor={item => item.id.toString()}
-    />
-  );
+        return <FlatList data={dishes.dishes} renderItem={renderMenuItem} keyExtractor={item => item.id} />;
 }
 
 RenderMenuItems.propTypes = {
-  /*   item: PropTypes.array.isRequired, */
-  dishes: PropTypes.object.isRequired,
-  name: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired,
-  index: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
+        /*   item: PropTypes.array.isRequired, */
+        dishes: PropTypes.object.isRequired,
+        name: PropTypes.object.isRequired,
+        description: PropTypes.object.isRequired,
+        item: PropTypes.object.isRequired,
+        index: PropTypes.object.isRequired,
+        navigation: PropTypes.object.isRequired,
 };
 
 /* export default function RenderComments(props) {

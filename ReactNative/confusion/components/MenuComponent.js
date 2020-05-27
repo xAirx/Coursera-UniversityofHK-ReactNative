@@ -7,28 +7,28 @@ import { connect } from 'react-redux';
 import RenderMenuItems from './helpers/Components/RenderMenuItem';
 
 const mapStateToProps = state => ({
-  dishes: state.dishes,
+        dishes: state.dishes,
 });
 
 class Menu extends Component {
-  // Local Navigation options ...
-  static navigationOptions = {
-    title: 'Menu',
-  };
+        // Local Navigation options ...
+        static navigationOptions = {
+                title: 'Menu',
+        };
 
-  render() {
-    const { dishes } = this.props;
-    const { navigation } = this.props;
-    console.log('navigationfromparent', navigation);
+        render() {
+                const { dishes } = this.props;
+                const { navigation } = this.props;
+                console.log('navigationfromparent', navigation);
 
-    return <RenderMenuItems dishes={dishes} navigation={navigation} />;
-  }
+                return <RenderMenuItems dishes={dishes} navigation={navigation} />;
+        }
 }
 
 Menu.propTypes = {
-  /*   item: PropTypes.array.isRequired, */
-  dishes: PropTypes.object.isRequired,
-  navigation: PropTypes.object.isRequired,
+        /*   item: PropTypes.array.isRequired, */
+        dishes: PropTypes.object.isRequired,
+        navigation: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(Menu);
