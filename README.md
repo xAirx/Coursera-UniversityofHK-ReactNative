@@ -25,15 +25,14 @@ Expected List of Features & Architecture
         #####Standard Express - Users can register and login 
 	
 	-  Backend - done
+	-  Frontend work in progress 
 	
 	
 	####Adding auth0.  
 	-  Backend - Work in progress
+	-  Frontend work in progress.
 	
 	
-	
-	-> Frontend started ****  Work in progress
-     
    
         --------User panel Setup ----------
         
