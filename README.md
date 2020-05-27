@@ -23,6 +23,25 @@ Expected List of Features & Architecture
 # React Native FullStack App
 
 
+________________________________________
+
+
+
+# Connect Online Express API to frontend
+
+
+	-
+	-
+	-
+	-
+	-
+	-
+	-
+	
+
+
+________________________________________
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -81,19 +100,6 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-
-
-________________________________________
-
-
-
-# Connect Online Express API to frontend
-
-
-
-________________________________________
-
 &nbsp;
 &nbsp;
 &nbsp;
