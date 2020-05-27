@@ -23,14 +23,20 @@ Expected List of Features & Architecture
 # React Native FullStack App
 
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 # Backend
 
 ________________________________________
 
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 ## Users Panel:
 
 ________________________________________
@@ -68,7 +74,13 @@ ________________________________________
 
 
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 
 
@@ -82,13 +94,22 @@ ________________________________________
 
 ________________________________________
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## Frontend
 
 ________________________________________
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## Login functionality, registration
 
@@ -119,7 +140,10 @@ ________________________________________
 
 
 
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## User panel Setup
 
@@ -149,7 +173,10 @@ ________________________________________
 
 
 
-   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;  
 
    
 
