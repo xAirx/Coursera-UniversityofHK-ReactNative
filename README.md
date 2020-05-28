@@ -20,6 +20,119 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 &nbsp;
 # Devlog
 
+
+________________________________________
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+## Login functionality, registration
+
+________________________________________
+
+
+#### (DESIGN) Frontend work in progress 
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+
+### #2 Registration image upload 
+
+	Moving functionality from state based to work with backend API - fetching images from FS (heroku server + cloudinary) -  multer and store images serverside under user ID.
+
+	### Adding auth0 button etc.
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+## User panel Setup
+
+________________________________________   
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+### 1# Via Userpanel be able to see your favorites and delete and see new ones added
+
+	The idea : Remove current favorites menu point and only show inside user panel.
+	
+	Migrate favorites functionality from using localstorage to using the express api and storing information under the 	   user login
+
+
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+
+
+### 2# Via Userpanel able to update a submitted comment and delete a submitted comment
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;  
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;  
+
+## Admin Panel setup
+
+________________________________________
+
+
+
+### 1# Admin Panel Frontend structure
+
+  
+
+#### Admin GET all the registered users' information from the database and see it in the adminpanel
+
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+
+### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see the temp picture in the adminpanel
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
+
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 ## React Native 
 
 &nbsp;
