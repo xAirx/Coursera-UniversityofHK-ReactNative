@@ -114,8 +114,16 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-## Frontend
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+# Frontend
 
 ________________________________________
 
@@ -196,8 +204,12 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;  
-
-   
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;  
 
 ## Admin Panel setup
 
@@ -253,10 +265,6 @@ ________________________________________
 
 #### Frontend started **** Work in progressReact Native FullStack App
 
-
-
-
-
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -264,10 +272,6 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-
-
-
 &nbsp;
 
 # Devlog
