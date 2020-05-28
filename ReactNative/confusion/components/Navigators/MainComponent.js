@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable react/display-name */
 import React, { Component } from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import NetInfo from '@react-native-community/netinfo';
-
+import PropTypes from 'prop-types';
 /* import PropTypes from 'prop-types'; */
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-
-import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../../../../../Redux/Api/ActionCreators';
+import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../../Redux/Api/ActionCreators';
 
 import {
   LoginNavigator,
@@ -125,7 +126,6 @@ const MainNavigator = createDrawerNavigator(
     },
   }
 );
-
 class Main extends Component {
   componentDidMount() {
     fetchDishes();
@@ -147,16 +147,16 @@ class Main extends Component {
   handleConnectivityChange = connectionInfo => {
     switch (connectionInfo.type) {
       case 'none':
-        console.log('You are now offline!');
+        /* console.log('You are now offline!'); */
         break;
       case 'wifi':
-        console.log('You are now connected to WiFi!');
+        /* console.log('You are now connected to WiFi!'); */
         break;
       case 'cellular':
-        console.log('You are now connected to Cellular!');
+        /*  console.log('You are now connected to Cellular!'); */
         break;
       case 'unknown':
-        console.log('You now have unknown connection!');
+        /* console.log('You now have unknown connection!'); */
         break;
       default:
         break;
@@ -166,10 +166,12 @@ class Main extends Component {
   render() {
     return (
       /* <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
-       */ <MainNavigator />
+       */
+      <MainNavigator />
       /* </View>
        */
     );
   }
 }
+
 export default connect(null, mapDispatchToProps)(Main);

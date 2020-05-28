@@ -8,9 +8,9 @@ import { PersistGate } from 'redux-persist/es/integration/react';
   AppearanceProvider,
   useColorScheme,
 } from 'react-native-appearance'; */
-import Main from './components/MainComponent';
+import Main from './components/Navigators/MainComponent.js';
 import { ConfigureStore } from './Redux/ConfigureStore';
-import { Loading } from './components/LoadingComponent';
+import { Loading } from './components/helpers/Components/LoadingComponent.js';
 
 console.disableYellowBox = true;
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Car, Tile } from 'react-native-elements';
+import { Tile } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../../../shared/baseurl';
@@ -9,7 +9,7 @@ import { Loading } from './LoadingComponent';
 
 export default function RenderItem(props) {
   const { item } = props;
-  const { navigation } = props;
+
   if (props.isLoading) {
     return <Loading />;
   }

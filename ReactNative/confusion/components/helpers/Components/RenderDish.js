@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View, Share } from 'react-native';
+import { View, Share } from 'react-native';
 import PropTypes from 'prop-types';
-import { Card, Icon, Tile } from 'react-native-elements';
+import { Icon, Tile } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import { baseUrl } from '../../../shared/baseurl';
 

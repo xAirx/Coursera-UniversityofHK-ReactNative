@@ -89,14 +89,14 @@ class DishDetail extends Component {
   }
 
   ratingCompleted(rating) {
-    console.log(`Rating is: ${rating}`);
+    /* console.log(`Rating is: ${rating}`); */
     // eslint-disable-next-line object-shorthand
     this.setState({ rating });
   }
 
   handleSubmit(dishId) {
     // eslint-disable-next-line object-shorthand
-    console.log('THIS IS THE STATE', dishId);
+    /*  console.log('THIS IS THE STATE', dishId); */
     // eslint-disable-next-line object-shorthand
     this.props.postComments(dishId, this.state.rating, this.state.author, this.state.comment, this.state.date);
   }
@@ -106,10 +106,10 @@ class DishDetail extends Component {
   };
 
   render() {
-    console.log('THIS ARE THISPROPS ', this.props);
+    /* console.log('THIS ARE THISPROPS ', this.props); */
     const dishId = this.props.navigation.getParam('dishId', '');
 
-    console.log(`THIS IS THE DISHID${dishId}`);
+    /*  console.log(`THIS IS THE DISHID${dishId}`); */
 
     // ////////////////////////// Swipe //////////////////////
     const rightButton = [
@@ -189,7 +189,7 @@ class DishDetail extends Component {
               <Button
                 onPress={() => {
                   this.handleSubmit(dishId);
-                  console.log('THIS IS DISHID IN BUTTON', dishId);
+                  /* console.log('THIS IS DISHID IN BUTTON', dishId); */
                   this.dismissModal(false);
                 }}
                 color="purple"

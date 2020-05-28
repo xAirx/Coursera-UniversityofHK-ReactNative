@@ -6,18 +6,17 @@ import {
   /*  Platform, */
   Text,
   ScrollView,
-  Image,
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import Home from '../../HomeComponent';
-import Contact from '../../ContactComponent';
-import About from '../../AboutComponent';
-import Favorites from '../../FavoriteComponent';
-import Login from '../../pages/LoginComponent';
-import Reservation from '../../pages/ReservationComponent';
-import Menu from '../../MenuComponent';
-import DishDetail from '../../DishDetailComponent';
+import Home from '../pages/HomeComponent';
+import Contact from '../pages/ContactComponent';
+import About from '../pages/AboutComponent';
+import Favorites from '../pages/FavoriteComponent';
+import Login from '../pages/LoginComponent';
+import Reservation from '../pages/ReservationComponent';
+import Menu from './MenuComponent';
+import DishDetail from '../helpers/Components/RenderDishDetails';
 
 const styles = StyleSheet.create({
   container: {

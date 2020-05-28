@@ -4,9 +4,9 @@ import { ListItem, Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import SwipeOut from 'react-native-swipeout';
 import * as Animatable from 'react-native-animatable';
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseurl';
-import { deleteFavorite } from '../Redux/Api/ActionCreators';
+import { Loading } from '../helpers/Components/LoadingComponent.js';
+import { baseUrl } from '../../shared/baseurl';
+import { deleteFavorite } from '../../Redux/Api/ActionCreators';
 
 const mapDispatchToProps = dispatch => ({
   deleteFavorite: dishId => dispatch(deleteFavorite(dishId)),

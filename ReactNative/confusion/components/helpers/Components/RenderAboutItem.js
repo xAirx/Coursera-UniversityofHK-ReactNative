@@ -1,20 +1,16 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
-import { View, FlatList, Text } from 'react-native';
-import React, { Component } from 'react';
-import { ScrollView, Text, View, FlatList } from 'react-native';
+import { ScrollView, FlatList, Text } from 'react-native';
 import { ListItem, Card } from 'react-native-elements';
-import PropTypes from 'prop-types';
-import * as Animatable from 'react-native-animatable';
-import { baseUrl } from '../shared/baseurl';
-import { Loading } from './LoadingComponent';
-import History from './helpers/Components/History';
 import { baseUrl } from '../../../shared/baseurl';
 import { Loading } from './LoadingComponent';
+import History from './History';
 
 export default function RenderAboutItems(props) {
   const { leaders } = props;
-  console.log('PROPS WITHIN RENDERABOUTITEM', leaders);
+  /* console.log('PROPS WITHIN RENDERABOUTITEM', leaders); */
 
   const RenderAboutItem = ({ item, key }) => (
     // We set the ITEM and Key here we want to loop over.
@@ -63,7 +59,7 @@ export default function RenderAboutItems(props) {
         <History />
         <Card title="Corporate Leadership">
           <FlatList
-            data={this.props.leaders.leaders}
+            data={props.leaders.leaders}
             renderItem={RenderAboutItem}
             keyExtractor={item => item.id /* .toString() */}
           />
@@ -71,9 +67,4 @@ export default function RenderAboutItems(props) {
       </Animatable.View>
     </ScrollView>
   );
-
 }
-
-RenderAboutItem.propTypes = {
-    leaders: PropTypes.object.isRequired,
-  };

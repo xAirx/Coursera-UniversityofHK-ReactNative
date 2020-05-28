@@ -10,8 +10,8 @@ import { Loading } from './LoadingComponent';
 export default function RenderMenuItems(props) {
   const { dishes } = props;
   const { navigation } = props;
-  console.log('navigationfromchild', navigation);
-  console.log('PROPS WITHIN RENDERMENUITEM', props.dishes);
+  /*   console.log('navigationfromchild', navigation);
+  console.log('PROPS WITHIN RENDERMENUITEM', props.dishes); */
 
   // We set the ITEM and Key here we want to loop over.
   const renderMenuItem = ({ item, index }) => (
@@ -53,10 +53,10 @@ export default function RenderMenuItems(props) {
 RenderMenuItems.propTypes = {
   /*   item: PropTypes.array.isRequired, */
   dishes: PropTypes.object.isRequired,
-  name: PropTypes.object.isRequired,
-  description: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired,
-  index: PropTypes.object.isRequired,
+  /*  name: PropTypes.object.isRequired, */
+  /*  description: PropTypes.object.isRequired, */
+  /*  item: PropTypes.object.isRequired, */
+  /*  index: PropTypes.object.isRequired, */
   navigation: PropTypes.object.isRequired,
 };
 
