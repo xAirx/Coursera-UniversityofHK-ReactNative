@@ -59,11 +59,43 @@ ________________________________________
 &nbsp;   
 &nbsp;
 
-### 1# Via Userpanel be able to see your favorites and delete and see new ones added
+### 1# Via Userpanel be able to GET your favorites and DELETE and POST 
 
 	The idea : Remove current favorites menu point and only show inside user panel.
 	
 	Migrate favorites functionality from using localstorage to using the express api and storing information under the 	   user login
+	
+
+	Task #1 implement favorites fetchreducer, actions are created.
+	
+		  Actions within actionscreators.js
+
+					export const addFavorite = dishId => ({
+					  type: ActionTypes.ADD_FAVORITE,
+					  payload: dishId,
+					});
+
+					export const removeFavorite = dishId => ({
+					  type: ActionTypes.FAVORITE_DELETE,
+					  payload: dishId,
+					});
+
+					export const deleteFavorite = dishId => ({
+					  type: ActionTypes.DELETE_FAVORITE,
+					  payload: dishId,
+					});
+
+	
+	Task #2 add mapstatetoprops to favoritescomponent pulling the data from REDUX, which pulls from API.
+		The data contains both the dishes and the favorites in one get request (population from backend)
+		
+			files: Actioncreators.js
+
+			files: Reducers/favorites.js
+
+			files: Pages/favoritesComponent
+
+			
 
 
 
@@ -72,21 +104,73 @@ ________________________________________
 &nbsp;   
 &nbsp;
 
+### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
+
+	The functionality for adding a comment is only visible if youre logged in correctly.
+	
+		Task #1
+
+			We need to grab the comments based on the ID of the dish and display it on the frontend
+
+			Files: 
+
+			RenderDishComments.js, - childcomponent to renderdishdetails.
+
+			RenderDishDetails.js: 
+				Redux: (runs, fetchComments() + fetchdishes()) + dispatches postComments
 
 
-### 2# Via Userpanel able to update a submitted comment and delete a submitted comment
+							// ////// FETCHING DATA FROM API /////////
+							export const fetchComments = () => dispatch => {
+							  dispatch(commentsLoading());
+							  /*  fetch(`${baseUrl}comments`) */
+							  /*  console.log('FETCHING OUR DATA FROM API'); */
+							  fetch(`${baseUrl}comments`)
+							    .then(
+
+							export const fetchDishes = () => dispatch => {
+							  dispatch(dishesLoading());
+
+							  return fetch(`${baseUrl}dishes`)
+							    .then(
 
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;  
-&nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;  
+				Redux: comments.js 
+				
+				
+		#Task 2 Create functionality to POST comments to the API
+
+				We need to make sure we are sending all the data we need
+				So far the comments+dish data is concatinated within the updateComments Action??
+				
+						 case ActionTypes.UPDATE_COMMENTS:
+						      console.log('UPDATE_COMMENTS', action.payload);
+						      // grab last id in state.
+
+						      return {
+							// redux state
+							...state,
+							errMess: null,
+							isLoading: true,
+							// our dishes is the action payload.
+							comments: state.comments.concat({
+							  ...action.payload,
+							  // getting last id of element and adding it to the array as "ID"
+							  id: state.comments.slice(-1)[0].id + 1,
+							}),
+						      };
+
+
+	
+
+### 3# Via Userpanel able to update a submitted comment and delete a submitted comment
+
+
+
+
+
+
+
 
 ## Admin Panel setup
 
