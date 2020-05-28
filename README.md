@@ -18,7 +18,7 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 &nbsp;
 &nbsp;
 &nbsp;
-# Devlog
+# Frontend Feature Pipeline 
 
 
 ________________________________________
@@ -37,9 +37,7 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 
 ### #2 Registration image upload 
 
@@ -50,17 +48,11 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+
 
 ## User panel Setup
 
 ________________________________________   
-&nbsp;
-&nbsp;   
-&nbsp;
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -108,9 +100,7 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 
 #### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
 
@@ -171,9 +161,7 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 	
 
 #### 3# Via Userpanel able to update a submitted comment and delete a submitted comment
@@ -210,9 +198,7 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 
 ### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see the temp picture in the adminpanel
 
@@ -220,18 +206,13 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 ### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
 
 
 &nbsp;
 &nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+&nbsp; 
 ### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
 
 
