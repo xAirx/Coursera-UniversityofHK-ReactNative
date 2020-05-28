@@ -28,9 +28,13 @@ ________________________________________
 
 
 # Connect Online Express API to frontend
-
-
-	- Image handling 
+	
+	-BaseURL - done 
+	-Redux pulls data correctly - done
+	 
+	 
+        - Seeding Database with data to test all endpoints and application.
+	- Image handling (Multer /// Filestorage)
 	- 
 	-
 	-
@@ -60,17 +64,17 @@ ________________________________________
 ________________________________________
 
 	  
-### #1 TODO ------>	  Favorite functionality for users**
+### #1 TODO ------> Favorite functionality for users**
 &nbsp;
 &nbsp;   
 &nbsp;
 
-
+  
  -implemented - NOT TESTED
 
 	  
 
-### #2 TODO ------>	  Comment and form support for the users to interact with the content.**
+### #2 TODO ------> Comment CRUD support for the users to interact with the content.**
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -78,9 +82,13 @@ ________________________________________
 
 #### NOT IMPLEMENTED MIRROR LEADERS ROUTE CODE
 
-  
+ 	LeaderRouter.route('/:leaderId/feedback')
+ 
+ 	TODO ------  Support for a user to manage their own comments, delete functionality. -implemented - NOT TESTED
 
-### #3 TODO ------>	  Support for a user to manage their own comments, delete functionality. -implemented - NOT TESTED
+#### Backend **** Work in progress
+
+#### Frontend started **** Work in progress
 
 &nbsp;
 &nbsp;   
@@ -88,8 +96,10 @@ ________________________________________
 
   
 
-## #4 Via Userpanel able to update profilepicture, description etc.**  
-
+### #3 Via Userpanel able to update profilepicture, description etc.**  
+	Mirror functionality from registraiton page 
+	  getImageFromCamera = async () => {
+	    console.log('GETIMAGEFORMCAMERATRIGGRED');
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -151,8 +161,12 @@ ________________________________________
 &nbsp;
 
 
+### #2 Registration image upload 
 
-### 2# Adding auth0.  
+	Moving functionality from state based to work with multer and store images serverside under user ID.
+
+
+### 3# Adding auth0.  
 
 
 
@@ -177,7 +191,9 @@ ________________________________________
 
 ### 1# Via Userpanel be able to see your favorites and delete and see new ones added
 
-	Current favorites menu point is removed and only accessible from userpanel...
+	The idea : Remove current favorites menu point and only show inside user panel.
+	
+	Migrate favorites functionality from using localstorage to using the express api and storing information under the 	   user login
 
 
 #### Backend *** needs testing 
@@ -191,7 +207,6 @@ ________________________________________
 
 
 ### 2# Via Userpanel able to update a submitted comment and delete a submitted comment
-
 
 
 #### Backend **** Work in progress
@@ -232,8 +247,7 @@ ________________________________________
 &nbsp;
 
 
-### 2# Admin allowed / able to upload files, such as images when creating new dishes. and see it in the adminpanel
-
+### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see it in the adminpanel
 
 
 #### Backend **** Work in progress
@@ -274,6 +288,24 @@ ________________________________________
 &nbsp;
 &nbsp;
 
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 # Devlog
 
 ## React Native 
