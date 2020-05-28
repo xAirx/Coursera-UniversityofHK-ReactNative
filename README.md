@@ -51,11 +51,33 @@ ________________________________________
 &nbsp;
 
 
-### #2 Registration image upload 
+### #2 Registration image upload - using cloudinary
 
-	Moving functionality from state based to work with backend API - fetching images from FS (heroku server + cloudinary) -  multer and store images serverside under user ID.
+		https://devcenter.heroku.com/articles/cloudinary#using-with-node-js
+		
+				Here’s a sample code that uses the Express framework for displaying an upload form, uploading an image to Cloudinary using streams and displaying a transformed version of the uploaded image:
+
+				var express = require('express');
+				var fs = require('fs');
+
+				var cloudinary = require('cloudinary');
+
+				var app = express.createServer(express.logger());
+				app.use(express.bodyParser())
+
+				app.get('/', function(req, res) {
+				  res.send('<form method="post" enctype="multipart/form-data">'
+				    + '<p>Public ID: <input type="text" name="title"/></p>'
+				    + '<p>Image: <input type="file" name="image"/></p>'
+				    + '<p><input type="submit" value="Upload"/></p>'
+				    + '</form>');
+				});
+
+		Moving functionality from state based to work with backend API - fetching images from FS (heroku server + cloudinary) -  multer and store images serverside under user ID.
 
 	### Adding auth0 button etc.
+	
+	
 
 &nbsp;
 &nbsp;   
@@ -114,7 +136,37 @@ ________________________________________
 &nbsp;
 
 
-#### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
+#### 4# via userpanel change your profilepicture and information
+
+		https://devcenter.heroku.com/articles/cloudinary#using-with-node-js
+		
+				Here’s a sample code that uses the Express framework for displaying an upload form, uploading an image to Cloudinary using streams and displaying a transformed version of the uploaded image:
+
+				var express = require('express');
+				var fs = require('fs');
+
+				var cloudinary = require('cloudinary');
+
+				var app = express.createServer(express.logger());
+				app.use(express.bodyParser())
+
+				app.get('/', function(req, res) {
+				  res.send('<form method="post" enctype="multipart/form-data">'
+				    + '<p>Public ID: <input type="text" name="title"/></p>'
+				    + '<p>Image: <input type="file" name="image"/></p>'
+				    + '<p><input type="submit" value="Upload"/></p>'
+				    + '</form>');
+				});
+
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp; 
+
+## Adding Comment functionality to each dish
+
+#### 1# via each dish be able to POST a comment to the specific dish that is shown on the page
 
 	The component for adding a comment is only visible if youre logged in correctly. (conditionally)
 	
@@ -176,18 +228,10 @@ ________________________________________
 
 	
 
-#### 3# Via dish within dishdetails able to update a submitted comment and delete a submitted comment
-
+#### 2# Via dish within dishdetails able to update a submitted comment and delete a submitted comment
 
 	Posting dish ID along with user ID + Payload(content) to backend.
 
-
-&nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -216,6 +260,26 @@ ________________________________________
 
 
 ### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see the temp picture in the adminpanel
+
+		https://devcenter.heroku.com/articles/cloudinary#using-with-node-js
+		
+				Here’s a sample code that uses the Express framework for displaying an upload form, uploading an image to Cloudinary using streams and displaying a transformed version of the uploaded image:
+
+				var express = require('express');
+				var fs = require('fs');
+
+				var cloudinary = require('cloudinary');
+
+				var app = express.createServer(express.logger());
+				app.use(express.bodyParser())
+
+				app.get('/', function(req, res) {
+				  res.send('<form method="post" enctype="multipart/form-data">'
+				    + '<p>Public ID: <input type="text" name="title"/></p>'
+				    + '<p>Image: <input type="file" name="image"/></p>'
+				    + '<p><input type="submit" value="Upload"/></p>'
+				    + '</form>');
+				});
 
 
 &nbsp;
