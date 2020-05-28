@@ -37,7 +37,9 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 ### #2 Registration image upload 
 
@@ -45,7 +47,9 @@ ________________________________________
 
 	### Adding auth0 button etc.
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
@@ -54,12 +58,14 @@ ________________________________________
 ## User panel Setup
 
 ________________________________________   
-
+&nbsp;
+&nbsp;   
+&nbsp;
 &nbsp;
 &nbsp;   
 &nbsp;
 
-### 1# Via Userpanel be able to GET your favorites and DELETE and POST 
+#### 1# Via Userpanel be able to GET your favorites and DELETE and POST 
 
 	The idea : Remove current favorites menu point and only show inside user panel.
 	
@@ -99,12 +105,14 @@ ________________________________________
 
 
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 &nbsp;
 &nbsp;   
 &nbsp;
 
-### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
+#### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
 
 	The functionality for adding a comment is only visible if youre logged in correctly.
 	
@@ -160,16 +168,29 @@ ________________________________________
 							}),
 						      };
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
 	
 
-### 3# Via Userpanel able to update a submitted comment and delete a submitted comment
+#### 3# Via Userpanel able to update a submitted comment and delete a submitted comment
 
 
-
-
-
-
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
 ## Admin Panel setup
@@ -189,7 +210,9 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 ### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see the temp picture in the adminpanel
 
@@ -197,14 +220,18 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-
+&nbsp;
+&nbsp;   
+&nbsp;
 ### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
 
 
 &nbsp;
 &nbsp;   
 &nbsp;
-
+&nbsp;
+&nbsp;   
+&nbsp;
 ### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
 
 
@@ -216,8 +243,19 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-## React Native 
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+## DEV LOG - React Native 
 
 &nbsp;
 &nbsp;
