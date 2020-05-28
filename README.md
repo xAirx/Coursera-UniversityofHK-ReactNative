@@ -31,14 +31,12 @@ ________________________________________
 	
 	
 	- Connect to heroku API. BaseURL - done 
-	-Redux pulls data correctly - done
+	- Redux pulls data correctly - done
 	 
-	 - Refactor and comment Favoritecomponent // LoginComponent // ReservationComponent
-	 - Refactor and comment Aboutcomponnet + Menucomponent - done
+
+         - Learn how to seed a leader
+	 - Learn how to add a promos
 	 
-	 - Clean up paths and proptypes // destructuring.
-	 
-         - Seeding Database with data to test all endpoints and application.
 	 - Image handling (Multer /// Filestorage)
 	 - 
 	 -
