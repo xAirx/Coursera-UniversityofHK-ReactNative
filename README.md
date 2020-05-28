@@ -61,7 +61,9 @@ ________________________________________
 
 	  
 ### #1 TODO ------>	  Favorite functionality for users**
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
  -implemented - NOT TESTED
@@ -69,7 +71,9 @@ ________________________________________
 	  
 
 ### #2 TODO ------>	  Comment and form support for the users to interact with the content.**
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
 #### NOT IMPLEMENTED MIRROR LEADERS ROUTE CODE
@@ -78,13 +82,17 @@ ________________________________________
 
 ### #3 TODO ------>	  Support for a user to manage their own comments, delete functionality. -implemented - NOT TESTED
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
   
 
 ## #4 Via Userpanel able to update profilepicture, description etc.**  
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 #### Backend **** Work in progress
 
@@ -130,7 +138,9 @@ ________________________________________
 
 #### (DESIGN) Frontend work in progress 
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
 
@@ -153,7 +163,9 @@ ________________________________________
 
 ________________________________________   
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 ### 1# Via Userpanel be able to see your favorites and delete and see new ones added
 
@@ -164,7 +176,9 @@ ________________________________________
 
 #### Frontend *** Work in progress. 
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
 
@@ -201,7 +215,9 @@ ________________________________________
 ##### Backend done **** Work in progress
 ##### Frontend started **** Work in progress
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 
 ### 2# Admin allowed / able to upload files, such as images when creating new dishes. and see it in the adminpanel
@@ -213,7 +229,9 @@ ________________________________________
 
 #### Frontend started **** Work in progress
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 ### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
 
@@ -223,7 +241,9 @@ ________________________________________
 
 #### Frontend started **** Work in progress
 
-
+&nbsp;
+&nbsp;   
+&nbsp;
 
 ### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
 
