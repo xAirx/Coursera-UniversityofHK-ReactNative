@@ -33,7 +33,9 @@ ________________________________________
 	-Redux pulls data correctly - done
 	 
 	 - Refactor and comment Favoritecomponent // LoginComponent // ReservationComponent
-	 - Refactor and comment Aboutcomponnet + Menucomponent to use rendermenuitem, 
+	 - Refactor and comment Aboutcomponnet + Menucomponent - done
+	 
+	 - Clean up paths and proptypes // destructuring.
 	 
          - Seeding Database with data to test all endpoints and application.
 	 - Image handling (Multer /// Filestorage)
