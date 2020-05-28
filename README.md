@@ -29,6 +29,18 @@ ________________________________________
 
 ## Login functionality, registration
 
+&nbsp;
+&nbsp;   
+&nbsp;
+
+### #1 implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
+
+&nbsp;
+&nbsp;   
+&nbsp;
+
+### #2 implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
+
 ________________________________________
 
 
@@ -104,7 +116,7 @@ ________________________________________
 
 #### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
 
-	The functionality for adding a comment is only visible if youre logged in correctly.
+	The component for adding a comment is only visible if youre logged in correctly. (conditionally)
 	
 		Task #1
 
@@ -164,7 +176,10 @@ ________________________________________
 
 	
 
-#### 3# Via Userpanel able to update a submitted comment and delete a submitted comment
+#### 3# Via dish within dishdetails able to update a submitted comment and delete a submitted comment
+
+
+	Posting dish ID along with user ID + Payload(content) to backend.
 
 
 &nbsp;
