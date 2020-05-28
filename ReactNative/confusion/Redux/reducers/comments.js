@@ -43,7 +43,7 @@ export const comments = (
       // Takes all props from state. with ...state
       return { ...state, errMess: null, comments: [] };
 
-    case ActionTypes.SET_COMMENTS:
+    case ActionTypes.DONE_COMMENTS:
       console.log('ACTION PAYLOAD SET COMMETNS:', action.payload);
 
       return {

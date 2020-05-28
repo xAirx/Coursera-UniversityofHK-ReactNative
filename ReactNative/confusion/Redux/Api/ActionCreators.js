@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../../shared/baseurl';
 
-// /////////////////////////////// COMMENTS/////////////////////////////////
+// /////////////////////////////// COMMENTS SYSTEM/////////////////////////////////
 export const commentsFailed = errmess => ({
   type: ActionTypes.COMMENTS_FAILED,
   payload: errmess,
@@ -36,8 +36,8 @@ export const commentsLoading = () => ({
   type: ActionTypes.COMMENTS_LOADING,
 });
 
-export const setComments = comments => ({
-  type: ActionTypes.SET_COMMENTS,
+export const addComments = comments => ({
+  type: ActionTypes.DONE_COMMENTS,
   payload: comments,
 });
 
@@ -64,7 +64,7 @@ export const fetchComments = () => dispatch => {
     )
     .then(response => response.json())
     // comments is promise resolve response after json format
-    .then(comments => dispatch(setComments(comments)))
+    .then(comments => dispatch(addComments(comments)))
     .catch(error => dispatch(commentsFailed(error.message)));
 
   // / Fetch on success dispatch commentsDONE.
@@ -208,3 +208,26 @@ export const deleteFavorite = dishId => ({
   type: ActionTypes.DELETE_FAVORITE,
   payload: dishId,
 });
+
+/* export const fetchFavorites = () => dispatch => {
+  dispatch(leadersLoading());
+
+  return fetch(`${baseUrl}favorites`)
+    .then(
+      response => {
+        if (response.ok) {
+          return response;
+        }
+        const error = new Error(`Error ${response.status}: ${response.statusText}`);
+        error.response = response;
+        throw error;
+      },
+      error => {
+        const errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then(response => response.json())
+    .then(leaders => dispatch(addLeaders(leaders)))
+    .catch(error => dispatch(leadersFailed(error.message)));
+}; */

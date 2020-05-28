@@ -16,7 +16,7 @@ import {
 } from '../../../Redux/Api/ActionCreators';
 
 import RenderDish from './RenderDish';
-import RenderComments from './RenderComments';
+import RenderDishComments from './RenderDishComments';
 
 const styles = {
   alignItems: 'center',
@@ -161,7 +161,7 @@ class DishDetail extends Component {
             toggleModal={() => this.toggleModal(dishId)}
           />
         </SwipeOut>
-        <RenderComments comments={this.props.comments.comments.filter(comment => comment.dishId === dishId)} />
+        <RenderDishComments comments={this.props.comments.comments.filter(comment => comment.dishId === dishId)} />
         <Modal
           animationType="slide"
           transparent={false}
