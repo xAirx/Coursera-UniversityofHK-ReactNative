@@ -14,8 +14,8 @@ import Home from '../../HomeComponent';
 import Contact from '../../ContactComponent';
 import About from '../../AboutComponent';
 import Favorites from '../../FavoriteComponent';
-import Login from '../../LoginComponent';
-import Reservation from '../../ReservationComponent';
+import Login from '../../pages/LoginComponent';
+import Reservation from '../../pages/ReservationComponent';
 import Menu from '../../MenuComponent';
 import DishDetail from '../../DishDetailComponent';
 
@@ -248,10 +248,7 @@ export const LoginNavigator = createStackNavigator(
 // Display logo and stuff inside drawer
 export const CustomDrawerContentComponent = props => (
   <ScrollView>
-    <SafeAreaView
-      style={styles.container}
-      forceInset={{ top: 'always', horizontal: 'never' }}
-    >
+    <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
       <View style={styles.drawerHeader}>
         {/*   <View
           style={{

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // We just learned that calling fetch from an action creator does not work
 /* That’s because Redux is expecting objects as actions but we’re trying to return a Promise.
@@ -14,26 +15,26 @@ import { leaders } from './reducers/leaders';
 import { favorites } from './reducers/favorites';
 
 const config = {
-        key: 'root',
-        storage,
-        debug: true,
+  key: 'root',
+  storage,
+  debug: true,
 };
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const ConfigureStore = () => {
-        const store = createStore(
-                persistCombineReducers(config, {
-                        dishes,
-                        comments,
-                        promotions,
-                        leaders,
-                        favorites,
-                }),
-                composeEnhancer(applyMiddleware(thunk, logger))
-        );
+  const store = createStore(
+    persistCombineReducers(config, {
+      dishes,
+      comments,
+      promotions,
+      leaders,
+      favorites,
+    }),
+    composeEnhancer(applyMiddleware(thunk, logger))
+  );
 
-        const persistor = persistStore(store);
+  const persistor = persistStore(store);
 
-        return { persistor, store };
+  return { persistor, store };
 };

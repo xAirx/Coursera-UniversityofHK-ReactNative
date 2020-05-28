@@ -11,8 +11,7 @@ export const COMMENTS = [
     id: 1,
     dishId: 0,
     rating: 4,
-    comment:
-      'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+    comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
     author: 'Paul McVites',
     date: '2014-09-05T17:57:28.556094Z',
   },
@@ -52,8 +51,7 @@ export const COMMENTS = [
     id: 6,
     dishId: 1,
     rating: 4,
-    comment:
-      'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+    comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
     author: 'Paul McVites',
     date: '2014-09-05T17:57:28.556094Z',
   },
@@ -93,8 +91,7 @@ export const COMMENTS = [
     id: 11,
     dishId: 2,
     rating: 4,
-    comment:
-      'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+    comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
     author: 'Paul McVites',
     date: '2014-09-05T17:57:28.556094Z',
   },
@@ -134,8 +131,7 @@ export const COMMENTS = [
     id: 16,
     dishId: 3,
     rating: 4,
-    comment:
-      'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+    comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
     author: 'Paul McVites',
     date: '2014-09-05T17:57:28.556094Z',
   },
