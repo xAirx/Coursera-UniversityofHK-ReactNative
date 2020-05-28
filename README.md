@@ -28,11 +28,6 @@ ________________________________________
 &nbsp;
 
 ## Login functionality, registration
-
-&nbsp;
-&nbsp;   
-&nbsp;
-
 ### #1 implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
 
 &nbsp;
@@ -87,9 +82,6 @@ ________________________________________
 ## User panel Setup
 
 ________________________________________   
-&nbsp;
-&nbsp;   
-&nbsp;
 
 #### 1# Via Userpanel be able to GET your favorites and DELETE and POST 
 
@@ -241,17 +233,12 @@ ________________________________________
 
 
 ## Admin Panel setup
-
 ________________________________________
-
-
 
 ### 1# Admin Panel Frontend structure
 
-  
 
 #### Admin GET all the registered users' information from the database and see it in the adminpanel
-
 
 
 &nbsp;
