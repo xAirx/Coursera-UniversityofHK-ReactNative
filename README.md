@@ -33,8 +33,8 @@ ________________________________________
 	-Redux pulls data correctly - done
 	 
 	 
-        - Seeding Database with data to test all endpoints and application.
-	- Image handling (Multer /// Filestorage)
+         - Seeding Database with data to test all endpoints and application.
+	 - Image handling (Multer /// Filestorage)
 	- 
 	-
 	-
