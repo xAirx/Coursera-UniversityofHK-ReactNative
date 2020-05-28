@@ -27,9 +27,10 @@ ________________________________________
 
 
 
-# Connect Online Express API to frontend
+# Todo 
 	
-	-BaseURL - done 
+	
+	- Connect to heroku API. BaseURL - done 
 	-Redux pulls data correctly - done
 	 
 	 - Refactor and comment Favoritecomponent // LoginComponent // ReservationComponent
