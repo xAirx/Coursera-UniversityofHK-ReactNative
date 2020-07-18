@@ -83,6 +83,11 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
           
 
 
+
+## Add CSS -> SCSS "Setup" for the React Native project.
+
+
+
 ### Implementing Styled Components Where it makes sense
 
 
@@ -115,11 +120,14 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 
 
 ### Look at UI-KITS, other than react native elements. 
-
+					
+					https://link.medium.com/evSopMexc8
 					
 					https://medium.com/@victorvarghese/super-cool-material-ui-components-in-react-native-dd7c4434bc26
 					
 					https://code.tutsplus.com/articles/best-react-native-app-templates--cms-29602
+					
+					https://akveo.github.io/react-native-ui-kitten/
 					
 					
 	                        ## Extra 
@@ -141,8 +149,13 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 
 
 
-
 ## Implement Storybook for existing components.
+
+	https://www.digitalocean.com/community/tutorials/how-to-build-js-components-with-storybook
+	https://www.learnstorybook.com/intro-to-storybook/react-native/en/get-started/
+	https://dev.to/codypearce/how-to-setup-react-native-web-with-storybook-1eb3
+	https://medium.com/javascript-in-plain-english/building-a-react-native-component-library-with-storybook-js-76db79ceb359
+	https://sophieau.com/article/react-native-storybook/
 
 	----------------Storybook Basics and writing stories Guide etc--------------
 
