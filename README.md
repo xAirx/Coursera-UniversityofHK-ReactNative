@@ -9,19 +9,6 @@ yarn start ( if needed it will install expo cli)
 Run your app with expo-cli and press i from the command line or Run on iOS simulator
 
 &nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;   
@@ -246,32 +233,45 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 
 ## Login functionality, registration
 
-### implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
 
-### implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
+		### implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
 
-### Add frontend for Oauth functionality.
+		### implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
+
+		### Add frontend for Oauth functionality.
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
+
+## User Panel setup
+________________________________________
+
+
+		###  User Panel Frontend structure
+
+		###  Proper FileUploading functionality.
+
+		#### Frontend Structure & User GET all the registered users' information from the database and see it in the UserPanel
+
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
+
 
 ## Admin Panel setup
 ________________________________________
 
-###  Admin Panel Frontend structure
 
-### Proper FileUploading functionality.
+		###  Admin Panel Frontend structure
 
-#### Frontend Structure & Admin GET all the registered users' information from the database and see it in the adminpanel
+		### Proper FileUploading functionality.
+
+		#### Frontend Structure & Admin GET all the registered users' information from the database and see it in the adminpanel
 
 &nbsp;
 &nbsp;
@@ -284,12 +284,6 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-
-
-
-
-
 &nbsp;
 &nbsp;   
 &nbsp;
