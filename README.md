@@ -25,8 +25,8 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 			Onenote ------------------------- Styled Components + sub chapters
 		
 			Onenote ------------------------- Storybook + sub chapters
-		 
-		      Onenote ------------------------- Hooks  + sub chapters
+		  
+		        Onenote ------------------------- Hooks  + sub chapters
 			
 			Onenote ------------------------- Portals   + sub chapters
 			
