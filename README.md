@@ -14,7 +14,282 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 &nbsp;
 &nbsp;
 &nbsp;
+&nbsp;   
 &nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+
+# Frontend Feature Pipeline :
+
+
+ ------------------Onenote Chapters: ------------------
+
+		 
+			Onenote ------------------------- Styled Components + sub chapters
+		
+			Onenote ------------------------- Storybook + sub chapters
+		 
+		      Onenote ------------------------- Hooks  + sub chapters
+			
+			Onenote ------------------------- Portals   + sub chapters
+			
+			
+			
+		    -------------------------------------- React advanced patterns and composition ------------------------------------------
+			  
+		      Onenote ------------------------- Advanced patterns + sub chapters
+		
+					- Onenote notes: 
+
+			-Done		Quick overview of each pattern: 
+					
+			-Done		Reuseable componetns 
+					
+			-Done		Controlled components
+
+			-Done		State reducer
+
+			-Done		Slots pattern
+
+			-Done		Compound components
+
+			-Done		Context API
+
+			-Done		Render props
+
+			-Done		HOC		
+										
+			-Done		Functional programming pattern
+
+			-Done		Hooks
+
+
+		
+
+					
+## Smaller projects [Hooks]
+
+
+       https://reactnativemaster.com/react-native-hooks-example/
+
+       https://medium.com/crowdbotics/build-a-react-native-app-with-react-hooks-5498e1d5fdf6
+ 
+
+
+### Rewrite Project to Hooks "where it makes sense"
+
+
+           https://dzone.com/articles/ultimate-guide-for-using-redux-with-react-native
+           
+            
+           https://github.com/underscopeio/react-native-navigation-hooks
+          
+
+
+### Implementing Styled Components Where it makes sense
+
+
+            https://medium.com/javascript-in-plain-english/styling-your-react-native-app-with-styled-components-6939afde3d2f
+            
+            https://dev.to/amanhimself/using-styled-components-with-react-native-4k15
+            
+            https://dev.to/blarzhernandez/styling-your-react-native-app-with-styled-components-reusability-and-flexibility-3lf8
+            
+            https://www.freecodecamp.org/news/react-native-styling-styled-components-flexbox-layouts-and-more/
+            
+            https://medium.com/better-programming/rapid-native-prototyping-with-expo-client-redux-native-debugger-and-styled-components-5741ff052a11
+
+
+
+### Implement Dark and Light mode using Context API Styled Components and Theming 
+
+
+---------------------------Theming with Styled Components context API + Hooks + Dark light  mode-------------------------
+
+
+					####What is the Theme Provider ?
+					- What is Styled theming  - done
+
+					https://jamie.build/styled-theming.html
+					https://medium.com/@rossbulat/creating-themes-in-react-with-styled-components-6fce744b4e54
+
+					####Write example for the patterns section in the codesandbox.io.
+					
+
+
+### Look at UI-KITS, other than react native elements. 
+
+					
+					https://medium.com/@victorvarghese/super-cool-material-ui-components-in-react-native-dd7c4434bc26
+					
+					https://code.tutsplus.com/articles/best-react-native-app-templates--cms-29602
+					
+					
+	                        ## Extra 
+
+						## Shoutem UI 
+
+						  https://shoutem.github.io/ui/
+
+						 ## React Native Animations
+
+						 https://medium.com/react-native-training/react-native-animations-using-the-animated-api-ebe8e0669fae
+
+						 ## React Native Elements
+						 https://github.com/react-native-training/react-native-elements
+
+
+						  ## NativeBase
+						  https://github.com/GeekyAnts/NativeBas
+
+
+
+
+## Implement Storybook for existing components.
+
+	----------------Storybook Basics and writing stories Guide etc--------------
+
+
+					#####Read:  -done
+
+						https://spin.atomicobject.com/2018/01/24/react-storybook/
+
+						https://storybook.js.org/docs/basics/writing-stories/
+
+						https://www.digitalocean.com/community/tutorials/how-to-build-js-components-with-storybook
+
+
+
+				####Added Snapshot Testing - Done
+
+						https://github.com/storybookjs/storybook/tree/master/addons/storyshots
+
+
+						https://github.com/storybookjs/storybook/tree/master/addons/storyshots/storyshots-core
+
+
+
+				####ADDONS - done.
+
+
+						- done // Installing Addons: 
+
+
+						https://github.com/storybookjs/storybook/tree/master/addons/storysource
+
+
+						@storybook/addon-storysource --dev
+						https://github.com/storybookjs/storybook/tree/master/addons/storysource
+
+
+						@storybook/addon-viewport 
+						https://github.com/storybookjs/storybook/tree/master/addons/viewport
+
+
+
+						##  storybook-addon-styled-component-theme 
+						https://www.npmjs.com/package/storybook-addon-styled-component-theme
+
+
+
+						@storybook/addon-knobs
+
+						https://github.com/storybookjs/storybook/tree/master/addons/knobs
+
+
+
+
+
+				#### Add ThemeProvider and Connect with storybook.
+
+
+					OUTDATED -> https://dzone.com/articles/practical-guide-to-storybook-driven-development
+
+
+					FIX OUTDATED SOLUTION: Connect ThemeProvider with storybook so all components will have the themes inside storybook.
+
+
+					What are decorators?
+
+					What are decorators?
+
+					Local Decorator example
+
+
+					https://github.com/echoulen/storybook-addon-styled-component-theme
+
+
+
+
+				#### Add Storybook Theme Playground
+
+					https://github.com/jeslage/storybook-addon-theme-playground
+                              
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+## Login functionality, registration
+
+### implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
+
+### implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
+
+### Add frontend for Oauth functionality.
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+## Admin Panel setup
+________________________________________
+
+###  Admin Panel Frontend structure
+
+### Proper FileUploading functionality.
+
+#### Frontend Structure & Admin GET all the registered users' information from the database and see it in the adminpanel
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+
+
+
+
 &nbsp;
 &nbsp;   
 &nbsp;
@@ -24,6 +299,7 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 &nbsp;
 &nbsp;   
 &nbsp;
+
 ## DEV LOG - React Native 
 
 &nbsp;
@@ -233,112 +509,3 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 &nbsp;
 &nbsp;
 &nbsp;
-
-
- ## React website (Frontend)
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-### Website  - A work in progress
-
-The task was to build a site entirely with react-strap.
-With react,redux,routing and more.
-
-![](https://media.giphy.com/media/d5xPDBmDGvhuWiO6nY/giphy.gif)
-
-![](https://media.giphy.com/media/iehQ45MNpKN56Z4At1/giphy.gif)
-
-![](https://media.giphy.com/media/Jq87f8wLGyDp4GREvn/giphy.gif)
-
-![](https://media.giphy.com/media/jUnnEOWLHlkjdjI2EP/giphy.gif)
-
-![](https://media.giphy.com/media/cLY3Lw11yJH16zMscd/giphy.gif)
-
-![](https://media.giphy.com/media/j3JZrptEGxdvaD7dTv/giphy.gif)
-
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-#### Notes: 
-
-
-
-onenote: https://d.docs.live.net/0897203c158e872f/Documents/marcos%20notesbog/MERN%20stack/
-                
-
-     Frontend built in React.js, supporting react router based on Redux.
-     Introduced new action types and action creators to support the fetching of the information from the server and update the Redux store.
-
-  
-
-
-  #### Part 1 & 2 :
-
-       Setting up the project &. Creating components needed - done
-
-       Created a new DishdetailComponent and added it to React application. - done
-
-       Updated the view of the DishdetailComponent to display the details of the selected dish using an reactstrap card component. - done
-
-       Updated the view of the DishdetailComponent to display the list of comments about the dish using the Bootstrap unstyled list component. - done
-
-       Integrated the AboutComponent given above into the single page application. - done
-
-       Added a new functional component named <RenderLeader> through the RenderLeader() function to AboutComponent.js that    renders the details of a given leader using the reactstrap <Media> component. - done
-
-      Construct and render the list of leaders in the About Us page using the <RenderLeader
-
-      component implemented above. - done 
-      
-      
-
-#### Part 3:
-
-       Configure The React application to make use of Redux   - done
-
-       Provide a form to enable users to submit their comments   - done
-
-       Validate the information entered by the users in the form   - done
-
-       Set up the form as a local form using the react-redux-form    - done
-
-
-
- #### Part 4 : 
-
-       Introduced new action types and action creators to support the fetching of the leaders information from the server and update the Redux store. - done
-
-       Updated the Home and the About component to render the information about the leaders using the downloaded data from the server - done
-
-       Add simple animations to the About component where the leaders information is displayed. - done
-
-       Enabled the users to submit feedback through the feedback form by creating a new feedback service that accepts the form data and uses Restangular to record their feedback on the server. - done
-
-     Appropriate action types and action creators have been added. - done
-
-      The Home component is correctly using the leader data, and handling any errors that might arise. - done
-
-      The About component is correctly using the leader data, and handling any errors that might arise. - done
-
-      A new postFeedback() action creator is correctly implemented to post the feedback data to the server. - done
-
-      The Contact component has been correctly updated to use postFeedback() to post the form data to the server. - done
-
-      Appropriate animation has been added to stagger the rendering of the leaders in the AboutComponent. - done
-
-
-
-
