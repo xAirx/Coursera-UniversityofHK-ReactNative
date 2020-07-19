@@ -20,6 +20,11 @@ Run your app with expo-cli and press i from the command line or Run on iOS simul
 
 
 
+## Upgrading Navigation to 5.0 and implement hooks where necessesary in the components.
+
+
+
+
 ## Login functionality, registration
 
 
