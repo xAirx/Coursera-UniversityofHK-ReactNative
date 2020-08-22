@@ -34,7 +34,10 @@ class Home extends Component {
   };
 
   render() {
-    console.log(`THIS IS PROPS FOR NAVIGATION: ${JSON.stringify(this.props.navigation)}`);
+    /*     console.log(`THIS IS PROPS FOR NAVIGATION: ${JSON.stringify(this.props.navigation)}`);
+     */
+    console.log(`THIS IS PROPS FOR LEADERS: ${JSON.stringify(this.props.leaders)}`);
+
     const { promotions } = this.props.promotions;
     const { dishes } = this.props.dishes;
     const { leaders } = this.props.leaders;

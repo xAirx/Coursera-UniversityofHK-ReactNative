@@ -6,6 +6,8 @@ With redux-thunk we can overcome the problem and return functions from action cr
  */
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+/* persistCombineReducers provides a way of combining the reducers, replacing redux's @see combineReducers
+ */
 import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import { dishes } from './reducers/dishes';
@@ -20,17 +22,24 @@ const config = {
   debug: true,
 };
 
+// if we get the COMPOSE ERROR ////
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+/* configureStore will return our store with all our Reducers into it. */
 export const ConfigureStore = () => {
-  const store = createStore(
+  /*   createStore holds all the state trees of your app.The only way to change this store is with Dispatch Actions.
+   */ const store = createStore(
+    /*     rootReducer will return an object with all our Reducers
+     */ /* const rootReducer = combineReducers({ */
+    // here persistCombinereducers takes over from combineReducers..
     persistCombineReducers(config, {
       dishes,
       comments,
       promotions,
       leaders,
       favorites,
-    }),
+    }) /* ,
+    applyMiddleware(thunk, logger) */,
     composeEnhancer(applyMiddleware(thunk, logger))
   );
 
