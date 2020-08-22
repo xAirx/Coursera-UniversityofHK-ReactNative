@@ -8,232 +8,71 @@ yarn start ( if needed it will install expo cli)
 
 Run your app with expo-cli and press i from the command line or Run on iOS simulator
 
-
-
+&nbsp;
+&nbsp;
 &nbsp;
 &nbsp;   
 &nbsp;
 &nbsp;
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-# Frontend Feature Pipeline 
+
+# Frontend Feature Pipeline :
 
 
-________________________________________
 
-&nbsp;
-&nbsp;
-&nbsp;
+## Upgrading Navigation to 5.0 and implement hooks where necessesary in the components.
+
+
+
 
 ## Login functionality, registration
 
+
+		### implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
+
+		### implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
+
+		### Add frontend for Oauth functionality.
 &nbsp;
-&nbsp;   
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 &nbsp;
 
-### #1 implementing Routing Logic that shows components (userpanel // adminpanel) based on JWT token and AUTH.
-
-&nbsp;
-&nbsp;   
-&nbsp;
-
-### #2 implementing conditional logic for  component adding: comment editing, posting and deleting based on user authentication.
-
+## User Panel setup
 ________________________________________
 
 
-#### (DESIGN) Frontend work in progress 
+		###  User Panel Frontend structure
+
+		###  Proper FileUploading functionality.
+
+		#### Frontend Structure & User GET all the registered users' information from the database and see it in the UserPanel
 
 &nbsp;
-&nbsp;   
-&nbsp;
-
-
-### #2 Registration image upload 
-
-	Moving functionality from state based to work with backend API - fetching images from FS (heroku server + cloudinary) -  multer and store images serverside under user ID.
-
-	### Adding auth0 button etc.
-
-&nbsp;
-&nbsp;   
-&nbsp;
-
-
-## User panel Setup
-
-________________________________________   
-&nbsp;
-&nbsp;   
-&nbsp;
-
-#### 1# Via Userpanel be able to GET your favorites and DELETE and POST 
-
-	The idea : Remove current favorites menu point and only show inside user panel.
-	
-	Migrate favorites functionality from using localstorage to using the express api and storing information under the 	   user login
-	
-
-	Task #1 implement favorites fetchreducer, actions are created.
-	
-		  Actions within actionscreators.js
-
-					export const addFavorite = dishId => ({
-					  type: ActionTypes.ADD_FAVORITE,
-					  payload: dishId,
-					});
-
-					export const removeFavorite = dishId => ({
-					  type: ActionTypes.FAVORITE_DELETE,
-					  payload: dishId,
-					});
-
-					export const deleteFavorite = dishId => ({
-					  type: ActionTypes.DELETE_FAVORITE,
-					  payload: dishId,
-					});
-
-	
-	Task #2 add mapstatetoprops to favoritescomponent pulling the data from REDUX, which pulls from API.
-		The data contains both the dishes and the favorites in one get request (population from backend)
-		
-			files: Actioncreators.js
-
-			files: Reducers/favorites.js
-
-			files: Pages/favoritesComponent
-
-			
-
-
-
-&nbsp;
-&nbsp;   
-&nbsp;
-
-
-#### 2# via each dish be able to POST a comment to the specific dish that is shown on the page
-
-	The component for adding a comment is only visible if youre logged in correctly. (conditionally)
-	
-		Task #1
-
-			We need to grab the comments based on the ID of the dish and display it on the frontend
-
-			Files: 
-
-			RenderDishComments.js, - childcomponent to renderdishdetails.
-
-			RenderDishDetails.js: 
-				Redux: (runs, fetchComments() + fetchdishes()) + dispatches postComments
-
-
-							// ////// FETCHING DATA FROM API /////////
-							export const fetchComments = () => dispatch => {
-							  dispatch(commentsLoading());
-							  /*  fetch(`${baseUrl}comments`) */
-							  /*  console.log('FETCHING OUR DATA FROM API'); */
-							  fetch(`${baseUrl}comments`)
-							    .then(
-
-							export const fetchDishes = () => dispatch => {
-							  dispatch(dishesLoading());
-
-							  return fetch(`${baseUrl}dishes`)
-							    .then(
-
-
-				Redux: comments.js 
-				
-				
-		#Task 2 Create functionality to POST comments to the API
-
-				We need to make sure we are sending all the data we need
-				So far the comments+dish data is concatinated within the updateComments Action??
-				
-						 case ActionTypes.UPDATE_COMMENTS:
-						      console.log('UPDATE_COMMENTS', action.payload);
-						      // grab last id in state.
-
-						      return {
-							// redux state
-							...state,
-							errMess: null,
-							isLoading: true,
-							// our dishes is the action payload.
-							comments: state.comments.concat({
-							  ...action.payload,
-							  // getting last id of element and adding it to the array as "ID"
-							  id: state.comments.slice(-1)[0].id + 1,
-							}),
-						      };
-
-&nbsp;
-&nbsp;   
-&nbsp;
-
-	
-
-#### 3# Via dish within dishdetails able to update a submitted comment and delete a submitted comment
-
-
-	Posting dish ID along with user ID + Payload(content) to backend.
-
-
-&nbsp;
-&nbsp;   
 &nbsp;
 &nbsp;
-&nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
-&nbsp;
-&nbsp;   
 &nbsp;
 
 
 ## Admin Panel setup
-
 ________________________________________
 
 
+		###  Admin Panel Frontend structure
 
-### 1# Admin Panel Frontend structure
+		### Proper FileUploading functionality.
 
-  
-
-#### Admin GET all the registered users' information from the database and see it in the adminpanel
-
-
+		#### Frontend Structure & Admin GET all the registered users' information from the database and see it in the adminpanel
 
 &nbsp;
-&nbsp;   
 &nbsp;
-
-
-### 2# Admin allowed / able to upload files, (MULTER and FS) such as images when creating new dishes. and see the temp picture in the adminpanel
-
-
 &nbsp;
-&nbsp;   
 &nbsp;
-
-### 3#  Admin allowed see and flag dishes as featured or not. and see it in the adminpanel**
-
-
 &nbsp;
-&nbsp;   
-&nbsp; 
-### 4#  Admin can see and flag leaders as featured for the frontpage and see it in the adminpanel**
-
-
-
 &nbsp;
-&nbsp;   
 &nbsp;
 &nbsp;
 &nbsp;
@@ -248,9 +87,7 @@ ________________________________________
 &nbsp;
 &nbsp;   
 &nbsp;
-&nbsp;
-&nbsp;   
-&nbsp;
+
 ## DEV LOG - React Native 
 
 &nbsp;
@@ -460,112 +297,3 @@ ________________________________________
 &nbsp;
 &nbsp;
 &nbsp;
-
-
- ## React website (Frontend)
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-### Website  - A work in progress
-
-The task was to build a site entirely with react-strap.
-With react,redux,routing and more.
-
-![](https://media.giphy.com/media/d5xPDBmDGvhuWiO6nY/giphy.gif)
-
-![](https://media.giphy.com/media/iehQ45MNpKN56Z4At1/giphy.gif)
-
-![](https://media.giphy.com/media/Jq87f8wLGyDp4GREvn/giphy.gif)
-
-![](https://media.giphy.com/media/jUnnEOWLHlkjdjI2EP/giphy.gif)
-
-![](https://media.giphy.com/media/cLY3Lw11yJH16zMscd/giphy.gif)
-
-![](https://media.giphy.com/media/j3JZrptEGxdvaD7dTv/giphy.gif)
-
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-#### Notes: 
-
-
-
-onenote: https://d.docs.live.net/0897203c158e872f/Documents/marcos%20notesbog/MERN%20stack/
-                
-
-     Frontend built in React.js, supporting react router based on Redux.
-     Introduced new action types and action creators to support the fetching of the information from the server and update the Redux store.
-
-  
-
-
-  #### Part 1 & 2 :
-
-       Setting up the project &. Creating components needed - done
-
-       Created a new DishdetailComponent and added it to React application. - done
-
-       Updated the view of the DishdetailComponent to display the details of the selected dish using an reactstrap card component. - done
-
-       Updated the view of the DishdetailComponent to display the list of comments about the dish using the Bootstrap unstyled list component. - done
-
-       Integrated the AboutComponent given above into the single page application. - done
-
-       Added a new functional component named <RenderLeader> through the RenderLeader() function to AboutComponent.js that    renders the details of a given leader using the reactstrap <Media> component. - done
-
-      Construct and render the list of leaders in the About Us page using the <RenderLeader
-
-      component implemented above. - done 
-      
-      
-
-#### Part 3:
-
-       Configure The React application to make use of Redux   - done
-
-       Provide a form to enable users to submit their comments   - done
-
-       Validate the information entered by the users in the form   - done
-
-       Set up the form as a local form using the react-redux-form    - done
-
-
-
- #### Part 4 : 
-
-       Introduced new action types and action creators to support the fetching of the leaders information from the server and update the Redux store. - done
-
-       Updated the Home and the About component to render the information about the leaders using the downloaded data from the server - done
-
-       Add simple animations to the About component where the leaders information is displayed. - done
-
-       Enabled the users to submit feedback through the feedback form by creating a new feedback service that accepts the form data and uses Restangular to record their feedback on the server. - done
-
-     Appropriate action types and action creators have been added. - done
-
-      The Home component is correctly using the leader data, and handling any errors that might arise. - done
-
-      The About component is correctly using the leader data, and handling any errors that might arise. - done
-
-      A new postFeedback() action creator is correctly implemented to post the feedback data to the server. - done
-
-      The Contact component has been correctly updated to use postFeedback() to post the form data to the server. - done
-
-      Appropriate animation has been added to stagger the rendering of the leaders in the AboutComponent. - done
-
-
-
-
