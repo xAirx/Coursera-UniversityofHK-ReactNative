@@ -4,8 +4,6 @@ Getting started
 
 Install JSON Server
 
-npm install
-
 Start JSON Server
 
 json-server --watch db.json
